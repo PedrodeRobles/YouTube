@@ -17,7 +17,15 @@ class VideoFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'user_id'     => 1,
+            'category_id' => 1,
+            'title'       => $this->faker->sentence(),
+            'image'       => $this->faker->url(),
+            'video'       => $this->faker->url(),
+            'description' => $this->faker->text(200),
+            'likes'       => rand(0, 10),
+            'dislikes'    => rand(0, 10),
+            'views'       => rand(0, 10),
         ];
     }
 }
