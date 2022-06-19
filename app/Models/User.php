@@ -9,6 +9,9 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Video;
+use App\Models\Comment;
+use App\Models\Subscriber;
 
 class User extends Authenticatable
 {
@@ -58,4 +61,19 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function videos() 
+    {
+        return $this->hasMany(Video::class);
+    }
+
+    public function comments() 
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function subscribers() 
+    {
+        return $this->hasMany(Subscriber::class);
+    }
 }

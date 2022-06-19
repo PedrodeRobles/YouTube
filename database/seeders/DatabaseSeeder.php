@@ -24,12 +24,5 @@ class DatabaseSeeder extends Seeder
         Video::factory(20)->create();
         Comment::factory(40)->create();
         Subscriber::factory(1)->create();
-
-        // \App\Models\User::factory(10)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
     }
 }
