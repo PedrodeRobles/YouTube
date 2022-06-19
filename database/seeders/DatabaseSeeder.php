@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Category;
 use App\Models\Comment;
+use App\Models\Subscriber;
 use App\Models\Video;
 
 class DatabaseSeeder extends Seeder
@@ -22,6 +23,7 @@ class DatabaseSeeder extends Seeder
         Category::factory(4)->create();
         Video::factory(20)->create();
         Comment::factory(40)->create();
+        Subscriber::factory(1)->create();
 
         // \App\Models\User::factory(10)->create();
 
