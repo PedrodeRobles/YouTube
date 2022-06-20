@@ -23575,12 +23575,12 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       showMenu: false,
-      stringInsertadoHijo: null
+      query: null
     };
   },
   methods: {
-    enviarPadre: function enviarPadre() {
-      this.$emit('obtenerVariable', this.stringInsertadoHijo);
+    sendToFather: function sendToFather() {
+      this.$emit('getQuery', this.query);
     }
   }
 });
@@ -23606,7 +23606,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      variableRecibida: null
+      q: null
     };
   },
   props: {
@@ -23615,14 +23615,14 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   methods: {
-    variableHijo: function variableHijo(value) {
-      this.variableRecibida = value;
+    querySon: function querySon(value) {
+      this.q = value;
     }
   },
   watch: {
-    variableRecibida: function variableRecibida(_variableRecibida) {
+    q: function q(_q) {
       this.$inertia.get(this.route('home', {
-        variableRecibida: _variableRecibida
+        q: _q
       }), {}, {
         preserveState: true
       });
@@ -27524,16 +27524,16 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* PROPS */
   , ["href"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
-      return $data.stringInsertadoHijo = $event;
+      return $data.query = $event;
     }),
     "class": "sm:h-6 sm:bg-slate-900 sm:text-white placeholder:text-slate-600 sm:rounded-md",
     type: "text",
     placeholder: "Search..."
   }, null, 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.stringInsertadoHijo]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.query]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     onClick: _cache[2] || (_cache[2] = function ($event) {
-      return $options.enviarPadre();
+      return $options.sendToFather();
     })
   }, "Search")]), _hoisted_8]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Menu, null, null, 512
   /* NEED_PATCH */
@@ -27590,7 +27590,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var _hoisted_1 = {
-  "class": "bg-slate-900 pt-20 sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5"
+  "class": "bg-slate-900 pt-20 pb-96 sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5"
 };
 var _hoisted_2 = {
   "class": "mb-6 grid grid-cols-1 place-content-start"
@@ -27630,10 +27630,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Header = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Header");
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Header, {
-    onObtenerVariable: $options.variableHijo
+    onGetQuery: $options.querySon
   }, null, 8
   /* PROPS */
-  , ["onObtenerVariable"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.videos, function (video) {
+  , ["onGetQuery"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.videos, function (video) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
       key: video.id,
       "class": "sm:flex sm:justify-center"

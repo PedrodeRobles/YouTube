@@ -11,7 +11,7 @@ class PageController extends Controller
     public function home(Request $request)
     {
         $videos = Video::latest()
-            ->where('title', 'LIKE', "%$request->variableRecibida%")
+            ->where('title', 'LIKE', "%$request->q%")
             ->get();
 
         return Inertia::render('Home', ['videos' => $videos->load('user')]);

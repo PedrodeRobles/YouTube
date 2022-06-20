@@ -1,7 +1,7 @@
 <template>
     <div>
-        <Header @obtenerVariable="variableHijo"></Header>
-        <div class="bg-slate-900 pt-20 sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
+        <Header @getQuery="querySon"></Header>
+        <div class="bg-slate-900 pt-20 pb-96 sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
             <div v-for="video in videos" :key="video.id" class="sm:flex sm:justify-center">
                 <div class="mb-6 grid grid-cols-1 place-content-start">
                     <div>
@@ -34,7 +34,7 @@ export default {
     },
     data() {
         return {
-            variableRecibida: null
+            q: null
         }
     },
     props: {
@@ -43,13 +43,13 @@ export default {
         },
     },
     methods: {
-        variableHijo(value) {
-            this.variableRecibida = value;
+        querySon(value) {
+            this.q = value;
         }
     },
     watch: {
-        variableRecibida: function (variableRecibida) {
-            this.$inertia.get(this.route('home', {variableRecibida: variableRecibida}), {}, {preserveState: true})
+        q: function (q) {
+            this.$inertia.get(this.route('home', {q: q}), {}, {preserveState: true})
         }
     },
 }
