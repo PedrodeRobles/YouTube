@@ -12,7 +12,8 @@
                 </div>
             </div>
             <div class="invisible  sm:visible sm:flex sm:items-center">
-                <input class="sm:h-6 sm:bg-slate-900 sm:text-white placeholder:text-slate-600 sm:rounded-md" type="text" placeholder="Search...">
+                <input v-model="stringInsertadoHijo" class="sm:h-6 sm:bg-slate-900 sm:text-white placeholder:text-slate-600 sm:rounded-md" type="text" placeholder="Search...">
+                <button @click="enviarPadre()" >Search</button>
             </div>
             <div>
                 <img src="../../../img/profile.png" alt="Profile">
@@ -32,6 +33,12 @@ export default {
     data() {
         return {
             showMenu: false,
+            stringInsertadoHijo: null,
+        }
+    },
+    methods: {
+        enviarPadre() {
+            this.$emit('obtenerVariable', this.stringInsertadoHijo);
         }
     },
 }
