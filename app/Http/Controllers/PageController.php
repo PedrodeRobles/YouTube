@@ -8,9 +8,11 @@ use App\Models\Video;
 
 class PageController extends Controller
 {
-    public function home()
+    public function home(Request $request)
     {
-        $videos = Video::all();
+        $videos = Video::latest()
+            ->where('title', 'LIKE', "%$request->q%")
+            ->get();
 
         return Inertia::render('Home', ['videos' => $videos->load('user')]);
     }
