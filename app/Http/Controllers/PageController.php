@@ -12,6 +12,6 @@ class PageController extends Controller
     {
         $videos = Video::all();
 
-        return Inertia::render('Home', compact('videos'));
+        return Inertia::render('Home', ['videos' => $videos->load('user')]);
     }
 }

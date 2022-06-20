@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="fixed w-full">
         <div class="bg-slate-800 flex justify-between px-2 border-b border-slate-700">
             <div class="flex space-x-3">
                 <div class="w-6 flex items-center">
