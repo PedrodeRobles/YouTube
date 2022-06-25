@@ -1203,6 +1203,12 @@ select {
 .h-24 {
   height: 6rem;
 }
+.h-28 {
+  height: 7rem;
+}
+.h-32 {
+  height: 8rem;
+}
 .min-h-screen {
   min-height: 100vh;
 }
@@ -2257,6 +2263,10 @@ select {
     height: 7rem;
   }
 
+  .sm\:h-32 {
+    height: 8rem;
+  }
+
   .sm\:w-10 {
     width: 2.5rem;
   }
@@ -2458,6 +2468,10 @@ select {
 
   .md\:h-36 {
     height: 9rem;
+  }
+
+  .md\:h-44 {
+    height: 11rem;
   }
 
   .md\:grid-cols-3 {

@@ -15,7 +15,12 @@ class UserController extends Controller
             ->where('user_id', $user->id)
             ->get();
 
-        return Inertia::render('User/Index', ['userVideos' => $userVideos->load('user')]);
+        $userName = $user->name;
+
+        return Inertia::render('User/Index', [
+            'userVideos' => $userVideos->load('user'),
+            'userName'   => $userName
+        ]);
     }
 
     public function create()

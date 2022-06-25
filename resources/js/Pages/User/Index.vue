@@ -2,7 +2,7 @@
     <div>
         <Header></Header>
 
-        <InfoProfile></InfoProfile>
+        <InfoProfile :user="userName"></InfoProfile>
 
         <!-- Videos -->
         <div class="bg-slate-900 pt-24 pb-96 sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
@@ -42,6 +42,9 @@ export default {
     props: {
         userVideos: {
             type: Array,
+        },
+        userName: {
+            type: String
         },
     },
 }
