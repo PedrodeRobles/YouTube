@@ -2,7 +2,7 @@
     <div>
         <Header></Header>
 
-        
+        <InfoProfile></InfoProfile>
 
         <!-- Videos -->
         <div class="bg-slate-900 pt-24 pb-96 sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
@@ -32,10 +32,12 @@
 
 <script>
 import Header from '../Header/Header.vue';
+import InfoProfile from './InfoProfile.vue';
 
 export default {
     components: {
-        Header
+        Header,
+        InfoProfile
     },
     props: {
         userVideos: {

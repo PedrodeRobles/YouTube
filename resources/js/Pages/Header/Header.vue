@@ -6,9 +6,9 @@
                     <img class="cursor-pointer" @click="showMenu = !showMenu" src="../../../img/burgerMenu.png" alt="Menu">
                 </div>
                 <div class="w-12 flex items-center">
-                    <inertial-link :href="route('home')">
+                    <Link :href="route('home')">
                         <img class="cursor-pointer" src="../../../img/youtubeLogo.png" alt="Logo YouTube">
-                    </inertial-link>
+                    </Link>
                 </div>
             </div>
             <div class="invisible  sm:visible sm:flex sm:items-center">
@@ -27,10 +27,12 @@
 
 <script>
 import Menu from './Menu.vue';
+import { Link } from '@inertiajs/inertia-vue3';
 
 export default {
     components: {
         Menu,
+        Link
     },
     data() {
         return {
