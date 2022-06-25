@@ -1957,6 +1957,13 @@ select {
   --tw-text-opacity: 1;
   color: rgb(17 24 39 / var(--tw-text-opacity));
 }
+.hover\:underline:hover {
+  -webkit-text-decoration-line: underline;
+          text-decoration-line: underline;
+}
+.hover\:underline-offset-1:hover {
+  text-underline-offset: 1px;
+}
 .focus\:z-10:focus {
   z-index: 10;
 }
