@@ -1191,17 +1191,8 @@ select {
 .h-20 {
   height: 5rem;
 }
-.h-40 {
-  height: 10rem;
-}
 .h-48 {
   height: 12rem;
-}
-.h-7 {
-  height: 1.75rem;
-}
-.h-full {
-  height: 100%;
 }
 .min-h-screen {
   min-height: 100vh;
@@ -1250,9 +1241,6 @@ select {
 }
 .w-20 {
   width: 5rem;
-}
-.w-72 {
-  width: 18rem;
 }
 .w-80 {
   width: 20rem;
@@ -1481,6 +1469,10 @@ select {
   --tw-border-opacity: 1;
   border-color: rgb(51 65 85 / var(--tw-border-opacity));
 }
+.border-slate-600 {
+  --tw-border-opacity: 1;
+  border-color: rgb(71 85 105 / var(--tw-border-opacity));
+}
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
@@ -1562,6 +1554,9 @@ select {
 }
 .p-6 {
   padding: 1.5rem;
+}
+.p-1 {
+  padding: 0.25rem;
 }
 .px-4 {
   padding-left: 1rem;
@@ -1652,14 +1647,14 @@ select {
 .pt-8 {
   padding-top: 2rem;
 }
-.pt-20 {
-  padding-top: 5rem;
-}
-.pb-80 {
-  padding-bottom: 20rem;
+.pt-24 {
+  padding-top: 6rem;
 }
 .pb-96 {
   padding-bottom: 24rem;
+}
+.pb-80 {
+  padding-bottom: 20rem;
 }
 .text-left {
   text-align: left;
@@ -1705,9 +1700,6 @@ select {
 }
 .font-semibold {
   font-weight: 600;
-}
-.font-bold {
-  font-weight: 700;
 }
 .uppercase {
   text-transform: uppercase;
@@ -2187,16 +2179,16 @@ select {
     height: 2.5rem;
   }
 
+  .sm\:h-40 {
+    height: 10rem;
+  }
+
   .sm\:h-20 {
     height: 5rem;
   }
 
-  .sm\:h-6 {
-    height: 1.5rem;
-  }
-
-  .sm\:h-40 {
-    height: 10rem;
+  .sm\:h-8 {
+    height: 2rem;
   }
 
   .sm\:w-10 {
@@ -2209,10 +2201,6 @@ select {
 
   .sm\:w-72 {
     width: 18rem;
-  }
-
-  .sm\:w-80 {
-    width: 20rem;
   }
 
   .sm\:max-w-md {
@@ -2237,10 +2225,6 @@ select {
 
   .sm\:flex-1 {
     flex: 1 1 0%;
-  }
-
-  .sm\:flex-none {
-    flex: none;
   }
 
   .sm\:translate-y-0 {
@@ -2358,10 +2342,6 @@ select {
     --tw-text-opacity: 1;
     color: rgb(255 255 255 / var(--tw-text-opacity));
   }
-
-  .sm\:first-letter\:justify-center::first-letter {
-    justify-content: center;
-  }
 }
 @media (min-width: 768px) {
 
@@ -2379,10 +2359,6 @@ select {
 
   .md\:grid {
     display: grid;
-  }
-
-  .md\:flex-none {
-    flex: none;
   }
 
   .md\:grid-cols-3 {

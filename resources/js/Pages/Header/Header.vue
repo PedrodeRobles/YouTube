@@ -12,10 +12,12 @@
                 </div>
             </div>
             <div class="invisible  sm:visible sm:flex sm:items-center">
-                <input v-model="query" class="sm:h-6 sm:bg-slate-900 sm:text-white placeholder:text-slate-600 sm:rounded-md" type="text" placeholder="Search...">
-                <button @click="sendToFather()">Search</button>
+                <input v-model="query" class="sm:h-8 sm:bg-slate-900 sm:text-white placeholder:text-slate-600" type="text" placeholder="Search...">
+                <button @click="sendToFather()" class="border-2 border-slate-600 bg-slate-900 p-1">
+                    <img class="w-5" src="../../../img/searchIcon.png" alt="Search">
+                </button>
             </div>
-            <div>
+            <div class="flex items-center">
                 <img src="../../../img/profile.png" alt="Profile">
             </div>
         </div>
