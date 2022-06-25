@@ -9,10 +9,10 @@ use Inertia\Inertia;
 
 class UserController extends Controller
 {
-    public function index(User $id)
+    public function index(User $user)
     {
         $userVideos = Video::latest()
-            ->where('user_id', 2)
+            ->where('user_id', $user->id)
             ->get();
 
         return Inertia::render('User/Index', ['userVideos' => $userVideos->load('user')]);

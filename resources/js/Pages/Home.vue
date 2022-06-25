@@ -15,7 +15,9 @@
                         <div class="col-span-5">
                             <h6 class="text-white text-lg font-semibold">{{ video.title }}</h6>
                             <div class="text-slate-500 flex space-x-2 sm:block sm:space-x-0">
-                                <p>{{ video.user.name }} .</p>
+                                <Link :href="route('userVideos', video.user.id)">
+                                    <p>{{ video.user.name }} .</p>
+                                </Link>
                                 <p>{{ video.views}} Views</p>
                             </div>
                         </div>
@@ -29,10 +31,12 @@
 
 <script>
 import Header from './Header/Header.vue';
+import { Link } from '@inertiajs/inertia-vue3';
 
 export default {
     components: {
         Header,
+        Link,
     },
     data() {
         return {

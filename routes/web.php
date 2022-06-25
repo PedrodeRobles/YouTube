@@ -30,6 +30,6 @@ use App\Http\Controllers\VideoController;
 
 Route::get('/', [PageController::class, 'home'])->name('home');
 
-Route::get('user/{id}', [UserController::class, 'index'])->name('userVideos');
+Route::get('user/{user}', [UserController::class, 'index'])->name('userVideos');
 
 Route::resource('videos', VideoController::class);
