@@ -27531,16 +27531,16 @@ var _hoisted_1 = {
   "class": "fixed w-full"
 };
 var _hoisted_2 = {
-  "class": "bg-slate-800 flex justify-between px-2 border-b border-slate-700"
+  "class": "bg-slate-800 flex justify-between px-2 py-1 border-b border-slate-700"
 };
 var _hoisted_3 = {
-  "class": "flex space-x-3"
+  "class": "flex"
 };
 var _hoisted_4 = {
-  "class": "w-6 flex items-center"
+  "class": "w-6 flex items-center md:ml-4"
 };
 var _hoisted_5 = {
-  "class": "w-12 flex items-center"
+  "class": "w-12 flex items-center ml-5"
 };
 
 var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
@@ -27566,7 +27566,7 @@ var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 var _hoisted_9 = [_hoisted_8];
 
 var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "flex items-center"
+  "class": "flex items-center mr-4"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
   src: _img_profile_png__WEBPACK_IMPORTED_MODULE_4__["default"],
   alt: "Profile"
@@ -27601,7 +27601,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
       return $data.query = $event;
     }),
-    "class": "sm:h-8 sm:bg-slate-900 sm:text-white placeholder:text-slate-600",
+    "class": "sm:h-8 sm:bg-slate-900 sm:text-white placeholder:text-slate-600 w-96",
     type: "text",
     placeholder: "Search..."
   }, null, 512
@@ -28936,7 +28936,7 @@ var _hoisted_1 = {
 };
 
 var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
-  "class": "text-2xl text-white pt-4 bg-slate-900 md:pl-10"
+  "class": "text-2xl text-white pt-4 bg-slate-900 sm:pl-16 md:pl-10"
 }, " Uploads ", -1
 /* HOISTED */
 );
