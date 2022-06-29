@@ -24371,6 +24371,25 @@ __webpack_require__.r(__webpack_exports__);
     subscribers: {
       type: Number
     }
+  },
+  data: function data() {
+    return {
+      q: null
+    };
+  },
+  methods: {
+    querySon: function querySon(value) {
+      this.q = value;
+    }
+  },
+  watch: {
+    q: function q(_q) {
+      this.$inertia.get(this.route('home', {
+        q: _q
+      }), {}, {
+        preserveState: true
+      });
+    }
   }
 });
 
@@ -28983,7 +29002,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   var _component_InfoProfile = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("InfoProfile");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Header), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_InfoProfile, {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Header, {
+    onGetQuery: $options.querySon
+  }, null, 8
+  /* PROPS */
+  , ["onGetQuery"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_InfoProfile, {
     user: $props.userName,
     subscribers: $props.subscribers
   }, null, 8

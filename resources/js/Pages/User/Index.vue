@@ -1,6 +1,6 @@
 <template>
     <div class="bg-slate-900">
-        <Header></Header>
+        <Header  @getQuery="querySon"></Header>
 
         <InfoProfile 
             :user="userName"
@@ -55,6 +55,21 @@ export default {
         },
         subscribers: {
             type: Number
+        }
+    },
+    data() {
+        return {
+            q: null
+        }
+    },
+    methods: {
+        querySon(value) {
+            this.q = value;
+        }
+    },
+    watch: {
+        q: function (q) {
+            this.$inertia.get(this.route('home', {q: q}), {}, {preserveState: true})
         }
     },
 }
