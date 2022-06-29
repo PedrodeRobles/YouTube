@@ -1,12 +1,30 @@
 <template>
     <div>
-        <div class="bg-red-500 pt-12">
+        <div class="bg-slate-800 pt-12">
             <div class="bg-indigo-600">
                 <img class="h-32 sm:h-26 md:h-44 lg:h-60 w-full" src="../../../img/videoImage.png" alt="image">
             </div>
-            <div class="flex justify-center">
-                <img src="../../../img/profile.png" alt="">
-                <p>{{ user }}</p>
+            <div class="flex justify-center pt-2">
+                <div class="flex-none">
+                    <div class="flex justify-center">
+                        <img src="../../../img/profile.png" alt="Profile">
+                    </div>
+                    <div class="text-white">
+                        <h2 class="text-xl text-bold">
+                            {{ user }}
+                        </h2>
+                    </div>
+                    <div class="flex justify-center py-2">
+                        <button class="bg-red-600 py-2 px-3">
+                            <p class="text-white">SUBSCRIBE</p> 
+                        </button>
+                    </div>
+                    <div class="flex justify-center">
+                        <p class="text-white">
+                            {{ subscribers }} subscribers
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -16,7 +34,8 @@
 
 export default  {
     props: {
-        user: String
+        user: String,
+        subscribers: Number
     },
 }
 

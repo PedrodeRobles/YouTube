@@ -2,10 +2,17 @@
     <div>
         <Header></Header>
 
-        <InfoProfile :user="userName"></InfoProfile>
+        <InfoProfile 
+            :user="userName"
+            :subscribers="subscribers"
+        >
+        </InfoProfile>
 
         <!-- Videos -->
-        <div class="bg-slate-900 pt-24 pb-96 sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
+        <div class="bg-slate-900 pt-10 pb-96 sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
+            <p class="text-2xl text-white pb-2">
+                Uploads
+            </p>
             <div v-for="video in userVideos" :key="video.id" class="sm:flex sm:justify-center">
                 <div class="mb-6 grid grid-cols-1 place-content-start">
                     <div>
@@ -46,6 +53,9 @@ export default {
         userName: {
             type: String
         },
+        subscribers: {
+            type: Number
+        }
     },
 }
 </script>

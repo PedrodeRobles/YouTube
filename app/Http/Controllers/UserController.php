@@ -16,10 +16,12 @@ class UserController extends Controller
             ->get();
 
         $userName = $user->name;
+        $subscribers = $user->subscribers;
 
         return Inertia::render('User/Index', [
             'userVideos' => $userVideos->load('user'),
-            'userName'   => $userName
+            'userName'   => $userName,
+            'subscribers' => $subscribers,
         ]);
     }
 
