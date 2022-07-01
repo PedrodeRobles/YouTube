@@ -1206,6 +1206,9 @@ select {
 .h-32 {
   height: 8rem;
 }
+.h-full {
+  height: 100%;
+}
 .min-h-screen {
   min-height: 100vh;
 }
@@ -1674,6 +1677,12 @@ select {
 }
 .pt-12 {
   padding-top: 3rem;
+}
+.pt-20 {
+  padding-top: 5rem;
+}
+.pt-44 {
+  padding-top: 11rem;
 }
 .text-left {
   text-align: left;
@@ -2237,6 +2246,14 @@ select {
     width: 13rem;
   }
 
+  .sm\:w-24 {
+    width: 6rem;
+  }
+
+  .sm\:w-36 {
+    width: 9rem;
+  }
+
   .sm\:max-w-md {
     max-width: 28rem;
   }
@@ -2507,6 +2524,10 @@ select {
 
   .lg\:w-full {
     width: 100%;
+  }
+
+  .lg\:w-96 {
+    width: 24rem;
   }
 
   .lg\:grid-cols-3 {

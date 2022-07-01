@@ -24,7 +24,7 @@
                         </div>
                     </div>
 
-                    <div v-if="userLoggedId == userId">
+                    <div v-if="userLoggedId == userId" class="flex justify-center">
                         <Link :href="route('videos.create')">
                             <img src="../../../img/create.png" alt="Add video">
                         </Link>
