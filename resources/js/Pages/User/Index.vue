@@ -5,6 +5,8 @@
         <InfoProfile 
             :user="userName"
             :subscribers="subscribers"
+            :userLoggedId="userLoggedId"
+            :userId="userId"
         >
         </InfoProfile>
 
@@ -55,7 +57,13 @@ export default {
         },
         subscribers: {
             type: Number
-        }
+        },
+        userLoggedId: {
+            type: Number
+        },
+        userId: {
+            type: Number
+        },
     },
     data() {
         return {

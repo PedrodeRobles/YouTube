@@ -4,17 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Video;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class VideoController extends Controller
 {
-    public function index()
-    {
-        
-    }
-
     public function create()
     {
-        //
+        return Inertia::render('User/CreateVideo');
     }
 
     public function store(Request $request)

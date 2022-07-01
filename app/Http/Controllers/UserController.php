@@ -15,18 +15,26 @@ class UserController extends Controller
             ->where('user_id', $user->id)
             ->get();
 
-        $userName = $user->name;
+        //This user data
+        $userName    = $user->name;
         $subscribers = $user->subscribers;
+        $userId      = $user->id;
 
+        //query
         $videos = Video::latest()
         ->where('title', 'LIKE', "%$request->q%")
         ->get();
 
+        //get logged user
+        $userLoggedId = auth()->user()->id;
+
         return Inertia::render('User/Index', [
-            'userVideos'  => $userVideos->load('user'),
-            'userName'    => $userName,
-            'subscribers' => $subscribers,
-            'videos'      => $videos->load('user'),
+            'userVideos'   => $userVideos->load('user'),
+            'userName'     => $userName,
+            'subscribers'  => $subscribers,
+            'videos'       => $videos->load('user'),
+            'userId'       => $userId,
+            'userLoggedId' => $userLoggedId,
         ]);
     }
 

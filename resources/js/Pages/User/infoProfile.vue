@@ -24,11 +24,17 @@
                         </div>
                     </div>
 
-                    <div class="flex justify-center py-2">
+                    <div v-if="userLoggedId == userId">
+                        <Link :href="route('videos.create')">
+                            <img src="../../../img/create.png" alt="Add video">
+                        </Link>
+                    </div>
+                    <div v-else class="flex justify-center py-2">
                         <button class="bg-red-600 py-2 px-3">
                             <p class="text-white">SUBSCRIBE</p> 
                         </button>
                     </div>
+
                     <div class="flex justify-center md:hidden">
                         <p class="text-white">
                             {{ subscribers }} subscribers
@@ -41,12 +47,19 @@
 </template>
 
 <script>
+import { Link } from '@inertiajs/inertia-vue3';
+
 
 export default  {
     props: {
         user: String,
-        subscribers: Number
+        subscribers: Number,
+        userLoggedId: Number,
+        userId: Number,
     },
+    components: {
+        Link
+    }
 }
 
 </script>
