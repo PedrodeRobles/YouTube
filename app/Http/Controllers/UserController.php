@@ -35,7 +35,7 @@ class UserController extends Controller
             'videos'       => $videos->load('user'),
             'userId'       => $userId,
             'userLoggedId' => $userLoggedId,
-            'userVideos'   => Video::orderBy('id', 'DESC')->get()->map(function($video) {
+            'userVideos'   => Video::where('user_id', $user->id)->orderBy('id', 'DESC')->get()->map(function($video) {
                 return [
                     'id'          => $video->id,
                     'title'       => $video->title,
