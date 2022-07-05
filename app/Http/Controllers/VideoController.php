@@ -26,15 +26,20 @@ class VideoController extends Controller
             'category_id' => 'required',
         ]);
 
-        Video::create(
-            $request->all() + 
-            [
-                'user_id'  => auth()->user()->id,
-                'likes'    => 0,
-                'dislikes' => 0,
-                'views'    => 0
-            ]
-        );
+        $image = $request->file('image')->store('images', 'public');
+        $video = $request->file('video')->store('videos', 'public');
+
+        Video::create([
+            'title'       => $request->title,
+            'image'       => $image,
+            'video'       => $video,
+            'description' => $request->description,
+            'category_id' => $request->category_id,
+            'user_id'     => auth()->user()->id,
+            'likes'       => 0,
+            'dislikes'    => 0,
+            'views'       => 0
+        ]);
     }
 
     public function show(Video $video)

@@ -11,11 +11,19 @@
                     </div>
                     <div>
                         <p>Image</p>
-                        <input type="text" v-model="form.image" class="bg-slate-800">
+                        <input 
+                            type="file"
+                            ref="photo"
+                            class="bg-slate-800"
+                        >
                     </div>
                     <div>
                         <p>Video</p>
-                        <input type="text" v-model="form.video" class="bg-slate-800">
+                        <input 
+                            type="file"
+                            ref="video"
+                            class="bg-slate-800"
+                        >
                     </div>
                     <div>
                         <p>Description</p>
@@ -63,8 +71,12 @@ export default {
     },
     methods: {
         submit() {
+            if (this.$refs.photo && this.$refs.video) {
+                this.form.image = this.$refs.photo.files[0];
+                this.form.video = this.$refs.video.files[0];
+            }
             this.$inertia.post(this.route('videos.store'), this.form);
-        }
+        },
     }
 }
 </script>
