@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\Video;
 use App\Models\Category;
+use Illuminate\Support\Facades\Redirect;
 
 class VideoController extends Controller
 {
@@ -20,8 +21,8 @@ class VideoController extends Controller
     {
         $request->validate([
             'title'       => 'required',
-            'image'       => 'required',
-            'video'       => 'required',
+            'image'       => 'required|image|max:2048',
+            'video'       => 'required|mimes:mp4|max:60000',
             'description' => 'max:200',
             'category_id' => 'required',
         ]);
@@ -40,6 +41,8 @@ class VideoController extends Controller
             'dislikes'    => 0,
             'views'       => 0
         ]);
+
+        return Redirect::route('home');
     }
 
     public function show(Video $video)

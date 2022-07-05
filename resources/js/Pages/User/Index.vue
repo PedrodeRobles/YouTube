@@ -27,8 +27,6 @@
                         <div class="col-span-5">
                             <h6 class="text-white text-md font-semibold">{{ video.title }}</h6>
                             <div class="text-slate-500 flex space-x-2 sm:block sm:space-x-0">
-                                <p>{{ userName }} .</p>
-                                <p>{{ video.id }} </p>
                                 <p>{{ video.views}} Views</p>
                             </div>
                         </div>
