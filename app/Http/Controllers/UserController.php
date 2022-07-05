@@ -22,19 +22,33 @@ class UserController extends Controller
 
         //query
         $videos = Video::latest()
-        ->where('title', 'LIKE', "%$request->q%")
-        ->get();
+            ->where('title', 'LIKE', "%$request->q%")
+            ->get();
 
         //get logged user
         $userLoggedId = auth()->user()->id;
 
         return Inertia::render('User/Index', [
-            'userVideos'   => $userVideos->load('user'),
+            // 'userVideos'   => $userVideos->load('user'),
             'userName'     => $userName,
             'subscribers'  => $subscribers,
             'videos'       => $videos->load('user'),
             'userId'       => $userId,
             'userLoggedId' => $userLoggedId,
+            'userVideos'   => Video::orderBy('id', 'DESC')->get()->map(function($video) {
+                return [
+                    'id'          => $video->id,
+                    'title'       => $video->title,
+                    'image'       => asset('storage/' . $video->image),
+                    'video'       => asset('storage/' . $video->video),
+                    'description' => $video->description,
+                    'category_id' => $video->category_id,
+                    'user_id'     => $video->user_id,
+                    'likes'       => 0,
+                    'dislikes'    => 0,
+                    'views'       => 0 
+                ];
+            }),
         ]);
     }
 
