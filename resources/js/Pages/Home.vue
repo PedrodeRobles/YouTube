@@ -7,7 +7,7 @@
                 <div v-for="video in videos" :key="video.id">
                     <div class="mb-6 grid grid-cols-1 place-content-start cursor-pointer">
                         <div>
-                            <img class="h-48 w-full sm:h-40 sm:w-72" src="../../img/videoImage.png" alt="Video Cover">
+                            <img class="h-48 w-full sm:h-40 sm:w-72" :src="video.image" alt="Video Cover">
                         </div>
                         <div class="grid grid-cols-6 w-80 sm:w-72 space-x-2 mt-2 ml-4 sm:ml-0">
                             <div class="col-span-1">
