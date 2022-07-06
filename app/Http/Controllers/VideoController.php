@@ -47,7 +47,31 @@ class VideoController extends Controller
 
     public function show(Video $video)
     {
-        //
+        $video->image = asset('storage/' . $video->image);
+        $video->video = asset('storage/' . $video->video);
+
+        return Inertia::render('Video', [
+            'video'   => $video->load('user'),
+            'iframe'  => $video->video,
+            'image'   => $video->image,
+            'videos'   => Video::orderByRaw("RAND()")
+                ->limit(10)
+                ->get()
+                ->map(function($video) {
+                    return [
+                        'id'          => $video->id,
+                        'title'       => $video->title,
+                        'image'       => asset('storage/' . $video->image),
+                        'video'       => asset('storage/' . $video->video),
+                        'description' => $video->description,
+                        'category_id' => $video->category_id,
+                        'user_id'     => $video->user_id,
+                        'likes'       => $video->likes,
+                        'dislikes'    => $video->dislikes,
+                        'views'       => $video->views 
+                    ];
+                }),
+        ]);
     }
 
     public function edit(Video $video)
