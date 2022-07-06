@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Video;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -26,7 +27,13 @@ class UserController extends Controller
             ->get();
 
         //get logged user
-        $userLoggedId = auth()->user()->id;
+        $userLoggedId = null;
+
+        if(Auth::check()) {
+            $userLoggedId = auth()->user()->id;
+        } else {
+            $userLoggedId = null;
+        }
 
         return Inertia::render('User/Index', [
             // 'userVideos'   => $userVideos->load('user'),
