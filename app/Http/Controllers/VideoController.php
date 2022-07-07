@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\Video;
 use App\Models\Category;
+use App\Models\User;
 use Illuminate\Support\Facades\Redirect;
 
 class VideoController extends Controller
@@ -54,7 +55,7 @@ class VideoController extends Controller
             'video'   => $video->load('user'),
             'iframe'  => $video->video,
             'image'   => $video->image,
-            'videos'   => Video::orderByRaw("RAND()")
+            'videos'  => Video::orderByRaw("RAND()")
                 ->limit(10)
                 ->get()
                 ->map(function($video) {
@@ -68,7 +69,8 @@ class VideoController extends Controller
                         'user_id'     => $video->user_id,
                         'likes'       => $video->likes,
                         'dislikes'    => $video->dislikes,
-                        'views'       => $video->views 
+                        'views'       => $video->views,
+                        'user'        => User::where('id', $video->user_id)->first(),
                     ];
                 }),
         ]);

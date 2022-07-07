@@ -3,7 +3,7 @@
         <Header @getQuery="querySon"></Header>
         <!-- Videos -->
         <div class="sm:flex justify-center bg-slate-900">
-            <div class="pt-24 pb-96 sm:grid sm:grid-cols-2 sm:gap-x-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
+            <div class="pt-24 md:pb-[500px] 2xl:pb-[1000px] sm:grid sm:grid-cols-2 sm:gap-x-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
                 <div v-for="video in videos" :key="video.id">
                     <Link :href="route('videos.show', video.id)">
                         <div class="mb-6 grid grid-cols-1 place-content-start cursor-pointer">
