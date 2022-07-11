@@ -21,14 +21,18 @@
                 <div 
                     v-if="userAuth === false"
                     class="text-white space-x-2"
-                    >
+                >
                     <Link :href="route('login')">Log in</Link>
                     <Link :href="route('register')">Register</Link>
                 </div>
-                <img 
-                    v-else
-                    src="../../../img/profile.png" 
-                    alt="Profile">
+                <div v-else>
+                    <img src="../../../img/profile.png" alt="Profile">
+                    <form @submit.prevent="logout">
+                        <button>
+                            Log Out
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
         <Menu v-show="showMenu"></Menu>
@@ -42,7 +46,7 @@ import { Link } from '@inertiajs/inertia-vue3';
 export default {
     components: {
         Menu,
-        Link
+        Link,
     },
     props: {
         userAuth: Boolean
@@ -56,7 +60,12 @@ export default {
     methods: {
         sendToFather() {
             this.$emit('getQuery', this.query);
-        }
+        },
+        logout() {
+            this.$inertia.post(this.route('logout'), this.form);
+        },
+        // const logout = () => {
+        //     Inertia.post(route('logout'));
     },
 }
 
