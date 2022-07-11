@@ -58,10 +58,16 @@
                             </div>
                         </div>
                         <div class="flex items-center">
-                            <button class="bg-red-600 py-2 px-3">
-                                <p>SUBSCRIBE</p> 
-                            </button>
+                            <form v-if="subscribed == null" @submit.prevent="subscribe">
+                                <button class="bg-red-600 py-2 px-3" type="submit">
+                                    <p class="text-white">SUBSCRIBE</p> 
+                                </button>
+                            </form>
+                            <div v-else>
+                                Chau
+                            </div>
                         </div>
+                        
                     </div>
                     <div class="px-20 pb-4">
                         <p class="mt-4">
@@ -121,11 +127,25 @@ export default {
         userAuth: Boolean,
         userLoggedName: String,
         searchVideos: Array,
+        userLoggedId: Number,
+        userId: Number,
+        subscribed: Object,
+    },
+    data() {
+        return {
+            form: {
+                'user_id': this.userLoggedId,
+                'otherUser': this.userId,
+            },
+        }
     },
     methods: {
         querySon(value) {
             this.q = value;
-        }
+        },
+        subscribe() {
+            this.$inertia.post('subscribe', this.form)
+        },
     },
 }
 

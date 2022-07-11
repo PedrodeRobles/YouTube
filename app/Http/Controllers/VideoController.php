@@ -7,6 +7,7 @@ use Inertia\Inertia;
 use App\Models\Video;
 use App\Models\Category;
 use App\Models\User;
+use App\Models\Subscriber;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 
@@ -69,18 +70,30 @@ class VideoController extends Controller
         /*Show user´s img or show Log in and Register*/ 
         $userAuth = false;
         $userLoggedName = null;
+        $userLoggedId = null;
 
         if ( Auth::check() ) {
             $userAuth = true;
             $userLoggedName= auth()->user()->name;
+            $userLoggedId= auth()->user()->id;
         } else {
             $userAuth = false;
-            $userLoggedName= null;
+            $userLoggedName = null;
+            $userLoggedId = null;
         }
         /*-----*/
 
+        $userId = $video->user_id;
+
         $video->image = asset('storage/' . $video->image);
         $video->video = asset('storage/' . $video->video);
+
+        /*Get subscription record to validate if the user is subscribed to this channel*/
+        $subscribed = Subscriber::where('user_id', $userLoggedId)
+            ->where('otherUser', $userId)
+            ->first();
+        /*-----*/
+
 
         return Inertia::render('Video', [
             'userAuth'       => $userAuth,
@@ -88,6 +101,9 @@ class VideoController extends Controller
             'video'          => $video->load('user'),
             'iframe'         => $video->video,
             'image'          => $video->image,
+            'subscribed'     => $subscribed,
+            'userLoggedId'   => $userLoggedId,
+            'userId'         => $userId,
             'videos'         => Video::orderByRaw("RAND()")
                 ->limit(10)
                 ->get()
@@ -122,5 +138,17 @@ class VideoController extends Controller
     public function destroy(Video $video)
     {
         //
+    }
+
+    public function subscribe(Request $request)
+    {
+        $request->validate([
+            'user_id'   => 'required',
+            'otherUser' => 'required',
+        ]);
+
+        Subscriber::create($request->all());
+
+        return redirect()->back();
     }
 }

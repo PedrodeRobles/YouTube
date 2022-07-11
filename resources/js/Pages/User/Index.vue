@@ -12,6 +12,7 @@
             :subscribers="subscribers"
             :userLoggedId="userLoggedId"
             :userId="userId"
+            :subscribed="subscribed"
         >
         </InfoProfile>
 
@@ -74,6 +75,7 @@ export default {
         },
         userAuth: Boolean,
         userLoggedName: String,
+        subscribed: Object,
     },
     data() {
         return {

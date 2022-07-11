@@ -35,3 +35,5 @@ Route::get('/', [PageController::class, 'home'])->name('home');
 /*Own videos*/
 Route::get('{user:name}', [UserController::class, 'index'])->name('userVideos');
 Route::resource('videos', VideoController::class);
+Route::post('subscribe', [UserController::class, 'subscribe']);
+Route::post('videos/subscribe', [VideoController::class, 'subscribe']);

@@ -30,9 +30,17 @@
                         </Link>
                     </div>
                     <div v-else class="flex justify-center py-2">
-                        <button class="bg-red-600 py-2 px-3">
+                        <!-- <button class="bg-red-600 py-2 px-3">
                             <p class="text-white">SUBSCRIBE</p> 
-                        </button>
+                        </button> -->
+                        <form v-if="subscribed == null" @submit.prevent="subscribe">
+                            <button class="bg-red-600 py-2 px-3" type="submit">
+                                <p class="text-white">SUBSCRIBE</p> 
+                            </button>
+                        </form>
+                        <div v-else>
+                            Chau
+                        </div>
                     </div>
 
                     <div class="flex justify-center md:hidden">
@@ -56,10 +64,24 @@ export default  {
         subscribers: Number,
         userLoggedId: Number,
         userId: Number,
+        subscribed: Object
+    },
+    data() {
+        return {
+            form: {
+                'user_id': this.userLoggedId,
+                'otherUser': this.userId,
+            },
+        }
     },
     components: {
         Link
-    }
+    },
+    methods: {
+        subscribe() {
+            this.$inertia.post('subscribe', this.form)
+        },
+    },
 }
 
 </script>

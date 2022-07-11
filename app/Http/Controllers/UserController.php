@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Video;
+use App\Models\Subscriber;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class UserController extends Controller
 {
@@ -37,6 +39,7 @@ class UserController extends Controller
         /*Get logged user*/
         $userLoggedId = null;
         $userLoggedName = null;
+        /*-----*/
 
         /*Logged user verification*/
         if(Auth::check()) {
@@ -48,15 +51,22 @@ class UserController extends Controller
         }
         /*-----*/
 
+        /*Get subscription record to validate if the user is subscribed to this channel*/
+        $subscribed = Subscriber::where('user_id', $userLoggedId)
+            ->where('otherUser', $userId)
+            ->first();
+        /*-----*/
+
         return Inertia::render('User/Index', [
-            'userAuth'     => $userAuth,
-            'userName'     => $userName,
-            'subscribers'  => $subscribers,
-            'videos'       => $videos->load('user'),
-            'userId'       => $userId,
-            'userLoggedId' => $userLoggedId,
+            'userAuth'       => $userAuth,
+            'userName'       => $userName,
+            'subscribers'    => $subscribers,
+            'videos'         => $videos->load('user'),
+            'userId'         => $userId,
+            'userLoggedId'   => $userLoggedId,
             'userLoggedName' => $userLoggedName,
-            'userVideos'   => Video::where('user_id', $user->id)->orderBy('id', 'DESC')->get()->map(function($video) {
+            'subscribed'     => $subscribed,
+            'userVideos'     => Video::where('user_id', $user->id)->orderBy('id', 'DESC')->get()->map(function($video) {
                 return [
                     'id'          => $video->id,
                     'title'       => $video->title,
@@ -73,33 +83,15 @@ class UserController extends Controller
         ]);
     }
 
-    public function create()
+    public function subscribe(Request $request)
     {
-        //
-    }
+        $request->validate([
+            'user_id'   => 'required',
+            'otherUser' => 'required',
+        ]);
 
-    public function store(Request $request)
-    {
-        //
-    }
+        Subscriber::create($request->all());
 
-    public function show(User $user)
-    {
-        //
-    }
-
-    public function edit(User $user)
-    {
-        //
-    }
-
-    public function update(Request $request, User $user)
-    {
-        //
-    }
-
-    public function destroy(User $user)
-    {
-        //
+        return redirect()->back();
     }
 }
