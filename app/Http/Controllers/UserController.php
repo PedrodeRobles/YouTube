@@ -36,12 +36,15 @@ class UserController extends Controller
 
         /*Get logged user*/
         $userLoggedId = null;
+        $userLoggedName = null;
 
         /*Logged user verification*/
         if(Auth::check()) {
             $userLoggedId = auth()->user()->id;
+            $userLoggedName = auth()->user()->name;
         } else {
             $userLoggedId = null;
+            $userLoggedName = null;
         }
         /*-----*/
 
@@ -52,6 +55,7 @@ class UserController extends Controller
             'videos'       => $videos->load('user'),
             'userId'       => $userId,
             'userLoggedId' => $userLoggedId,
+            'userLoggedName' => $userLoggedName,
             'userVideos'   => Video::where('user_id', $user->id)->orderBy('id', 'DESC')->get()->map(function($video) {
                 return [
                     'id'          => $video->id,

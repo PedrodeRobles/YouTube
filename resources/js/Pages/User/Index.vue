@@ -3,6 +3,7 @@
         <Header 
             @getQuery="querySon"
             :userAuth="userAuth"
+            :userLoggedName="userLoggedName"
         >
         </Header>
 
@@ -72,6 +73,7 @@ export default {
             type: Number
         },
         userAuth: Boolean,
+        userLoggedName: String,
     },
     data() {
         return {

@@ -16,11 +16,14 @@ class VideoController extends Controller
     {
         /*Show user´s img or show Log in and Register*/ 
         $userAuth = false;
+        $userLoggedName = null;
 
         if ( Auth::check() ) {
             $userAuth = true;
+            $userLoggedName= auth()->user()->name;
         } else {
             $userAuth = false;
+            $userLoggedName= null;
         }
         /*-----*/
 
@@ -28,6 +31,7 @@ class VideoController extends Controller
 
         return Inertia::render('User/CreateVideo', [
             'userAuth' => $userAuth,
+            'userLoggedName' => $userLoggedName,
             'categories' => $categories
         ]);
     }
@@ -64,11 +68,14 @@ class VideoController extends Controller
     {
         /*Show user´s img or show Log in and Register*/ 
         $userAuth = false;
+        $userLoggedName = null;
 
         if ( Auth::check() ) {
             $userAuth = true;
+            $userLoggedName= auth()->user()->name;
         } else {
             $userAuth = false;
+            $userLoggedName= null;
         }
         /*-----*/
 
@@ -76,11 +83,12 @@ class VideoController extends Controller
         $video->video = asset('storage/' . $video->video);
 
         return Inertia::render('Video', [
-            'userAuth' => $userAuth,
-            'video'    => $video->load('user'),
-            'iframe'   => $video->video,
-            'image'    => $video->image,
-            'videos'   => Video::orderByRaw("RAND()")
+            'userAuth'       => $userAuth,
+            'userLoggedName' => $userLoggedName,
+            'video'          => $video->load('user'),
+            'iframe'         => $video->video,
+            'image'          => $video->image,
+            'videos'         => Video::orderByRaw("RAND()")
                 ->limit(10)
                 ->get()
                 ->map(function($video) {

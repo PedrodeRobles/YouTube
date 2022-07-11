@@ -3,6 +3,7 @@
         <Header 
             @getQuery="querySon"
             :userAuth="userAuth"
+            :userLoggedName="userLoggedName"
         >
         </Header>
 
@@ -118,6 +119,13 @@ export default {
         image: String,
         videos: Array,
         userAuth: Boolean,
+        userLoggedName: String,
+        searchVideos: Array,
+    },
+    methods: {
+        querySon(value) {
+            this.q = value;
+        }
     },
 }
 

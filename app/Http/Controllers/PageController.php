@@ -22,9 +22,20 @@ class PageController extends Controller
         }
         /*-----*/
 
+        /*Logged user verification*/
+        $userLoggedName = null;
+        
+        if(Auth::check()) {
+            $userLoggedName= auth()->user()->name;
+        } else {
+            $userLoggedName = null;
+        }
+        /*-----*/
+
         return Inertia::render('Home', [
-            'userAuth' => $userAuth,
-            'videos'   => Video::where('title', 'LIKE', "%$request->q%")
+            'userAuth'       => $userAuth,
+            'userLoggedName' => $userLoggedName,
+            'videos'         => Video::where('title', 'LIKE', "%$request->q%")
                 ->orderBy('id', 'DESC')
                 ->get()
                 ->map(function($video) {

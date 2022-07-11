@@ -26,46 +26,49 @@
                     <Link :href="route('register')">Register</Link>
                 </div>
                 <div v-else>
-                    <img src="../../../img/profile.png" alt="Profile">
-                    <form @submit.prevent="logout">
-                        <button>
-                            Log Out
-                        </button>
-                    </form>
+                    <img 
+                        src="../../../img/profile.png" alt="Profile"
+                        @click="showOptions = !showOptions"
+                    >
+                    <div class="flex justify-center">
+                        <UserOptions 
+                            v-show="showOptions"
+                            :userLoggedName="userLoggedName"
+                        ></UserOptions>
+                    </div>
                 </div>
             </div>
         </div>
-        <Menu v-show="showMenu"></Menu>
     </div>
+    <Menu v-show="showMenu"></Menu>
 </template>
 
 <script>
 import Menu from './Menu.vue';
 import { Link } from '@inertiajs/inertia-vue3';
+import UserOptions from './UserOptions.vue'
 
 export default {
     components: {
         Menu,
         Link,
+        UserOptions,
     },
     props: {
-        userAuth: Boolean
+        userAuth: Boolean,
+        userLoggedName: String,
     },
     data() {
         return {
             showMenu: false,
             query: null,
+            showOptions: false,
         }
     },
     methods: {
         sendToFather() {
             this.$emit('getQuery', this.query);
         },
-        logout() {
-            this.$inertia.post(this.route('logout'), this.form);
-        },
-        // const logout = () => {
-        //     Inertia.post(route('logout'));
     },
 }
 
