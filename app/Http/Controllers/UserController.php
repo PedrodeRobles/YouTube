@@ -12,31 +12,41 @@ class UserController extends Controller
 {
     public function index(User $user, Request $request)
     {
-        $userVideos = Video::latest()
-            ->where('user_id', $user->id)
-            ->get();
+        /*Show user´s img or show Log in and Register*/ 
+        $userAuth = false;
 
-        //This user data
+        if ( Auth::check() ) {
+            $userAuth = true;
+        } else {
+            $userAuth = false;
+        }
+        /*-----*/
+
+        /*Get this data from this user*/
         $userName    = $user->name;
         $subscribers = $user->subscribers;
         $userId      = $user->id;
+        /*-----*/
 
-        //query
+        /*Search bar, Query*/
         $videos = Video::latest()
             ->where('title', 'LIKE', "%$request->q%")
             ->get();
+        /*-----*/
 
-        //get logged user
+        /*Get logged user*/
         $userLoggedId = null;
 
+        /*Logged user verification*/
         if(Auth::check()) {
             $userLoggedId = auth()->user()->id;
         } else {
             $userLoggedId = null;
         }
+        /*-----*/
 
         return Inertia::render('User/Index', [
-            // 'userVideos'   => $userVideos->load('user'),
+            'userAuth'     => $userAuth,
             'userName'     => $userName,
             'subscribers'  => $subscribers,
             'videos'       => $videos->load('user'),

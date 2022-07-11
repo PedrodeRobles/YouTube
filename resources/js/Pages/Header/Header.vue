@@ -18,7 +18,17 @@
                 </button>
             </div>
             <div class="flex items-center mr-4">
-                <img src="../../../img/profile.png" alt="Profile">
+                <div 
+                    v-if="userAuth === false"
+                    class="text-white space-x-2"
+                    >
+                    <Link :href="route('login')">Log in</Link>
+                    <Link :href="route('register')">Register</Link>
+                </div>
+                <img 
+                    v-else
+                    src="../../../img/profile.png" 
+                    alt="Profile">
             </div>
         </div>
         <Menu v-show="showMenu"></Menu>
@@ -33,6 +43,9 @@ export default {
     components: {
         Menu,
         Link
+    },
+    props: {
+        userAuth: Boolean
     },
     data() {
         return {

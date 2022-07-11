@@ -8,6 +8,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\VideoController;
 
 
+Route::redirect('/', 'login');
+Route::redirect('/', 'register');
 
 Route::get('/hola', function () {
     return Inertia::render('Welcome', [

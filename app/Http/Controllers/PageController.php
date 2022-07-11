@@ -6,12 +6,24 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\Video;
+use Illuminate\Support\Facades\Auth;
 
 class PageController extends Controller
 {
     public function home(Request $request)
     {
+        /*Show user´s img or show Log in and Register*/ 
+        $userAuth = false;
+
+        if ( Auth::check() ) {
+            $userAuth = true;
+        } else {
+            $userAuth = false;
+        }
+        /*-----*/
+
         return Inertia::render('Home', [
+            'userAuth' => $userAuth,
             'videos'   => Video::where('title', 'LIKE', "%$request->q%")
                 ->orderBy('id', 'DESC')
                 ->get()

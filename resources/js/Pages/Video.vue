@@ -1,6 +1,10 @@
 <template>
     <div>
-        <Header></Header>
+        <Header 
+            @getQuery="querySon"
+            :userAuth="userAuth"
+        >
+        </Header>
 
         <div class="pt-14 pb-96 bg-slate-900 text-white lg:grid lg:grid-cols-8">
             <div class="lg:col-span-5 xl:col-span-6">
@@ -113,6 +117,7 @@ export default {
         iframe: String,
         image: String,
         videos: Array,
+        userAuth: Boolean,
     },
 }
 

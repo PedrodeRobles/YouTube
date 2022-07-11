@@ -1,6 +1,10 @@
 <template>
     <div class="bg-slate-900">
-        <Header></Header>
+        <Header 
+            @getQuery="querySon"
+            :userAuth="userAuth"
+        >
+        </Header>
 
         <div class="pt-20 pb-96 flex justify-center text-white">
             <div>
@@ -82,6 +86,7 @@ export default {
     },
     props: {
         categories: Array,
+        userAuth: Boolean,
     },
     methods: {
         submit() {

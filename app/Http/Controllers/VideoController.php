@@ -7,15 +7,29 @@ use Inertia\Inertia;
 use App\Models\Video;
 use App\Models\Category;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 
 class VideoController extends Controller
 {
     public function create()
     {
+        /*Show user´s img or show Log in and Register*/ 
+        $userAuth = false;
+
+        if ( Auth::check() ) {
+            $userAuth = true;
+        } else {
+            $userAuth = false;
+        }
+        /*-----*/
+
         $categories = Category::all();
 
-        return Inertia::render('User/CreateVideo', ['categories' => $categories]);
+        return Inertia::render('User/CreateVideo', [
+            'userAuth' => $userAuth,
+            'categories' => $categories
+        ]);
     }
 
     public function store(Request $request)
@@ -48,14 +62,25 @@ class VideoController extends Controller
 
     public function show(Video $video)
     {
+        /*Show user´s img or show Log in and Register*/ 
+        $userAuth = false;
+
+        if ( Auth::check() ) {
+            $userAuth = true;
+        } else {
+            $userAuth = false;
+        }
+        /*-----*/
+
         $video->image = asset('storage/' . $video->image);
         $video->video = asset('storage/' . $video->video);
 
         return Inertia::render('Video', [
-            'video'   => $video->load('user'),
-            'iframe'  => $video->video,
-            'image'   => $video->image,
-            'videos'  => Video::orderByRaw("RAND()")
+            'userAuth' => $userAuth,
+            'video'    => $video->load('user'),
+            'iframe'   => $video->video,
+            'image'    => $video->image,
+            'videos'   => Video::orderByRaw("RAND()")
                 ->limit(10)
                 ->get()
                 ->map(function($video) {

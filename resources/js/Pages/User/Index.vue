@@ -1,6 +1,10 @@
 <template>
     <div class="bg-slate-900">
-        <Header  @getQuery="querySon"></Header>
+        <Header 
+            @getQuery="querySon"
+            :userAuth="userAuth"
+        >
+        </Header>
 
         <InfoProfile 
             :user="userName"
@@ -67,6 +71,7 @@ export default {
         userId: {
             type: Number
         },
+        userAuth: Boolean,
     },
     data() {
         return {
