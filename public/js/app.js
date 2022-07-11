@@ -24507,6 +24507,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @inertiajs/inertia-vue3 */ "./node_modules/@inertiajs/inertia-vue3/dist/index.js");
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  components: {
+    Link: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_0__.Link
+  },
   props: {
     user: String,
     subscribers: Number,
@@ -24518,12 +24521,10 @@ __webpack_require__.r(__webpack_exports__);
     return {
       form: {
         'user_id': this.userLoggedId,
-        'otherUser': this.userId
+        'otherUser': this.userId,
+        'subscribers': this.subscribers
       }
     };
-  },
-  components: {
-    Link: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_0__.Link
   },
   methods: {
     subscribe: function subscribe() {

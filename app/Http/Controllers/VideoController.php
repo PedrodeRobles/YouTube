@@ -149,6 +149,14 @@ class VideoController extends Controller
 
         Subscriber::create($request->all());
 
+        /* Add a subscriber to the user */
+        $user = User::where('id', $request->otherUser)->first();
+        $user->subscribers;
+        $user->update([
+            'subscribers' => $user->subscribers + 1,
+        ]);
+        /*-----*/
+
         return redirect()->back();
     }
 }

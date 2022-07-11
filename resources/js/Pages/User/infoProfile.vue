@@ -59,6 +59,9 @@ import { Link } from '@inertiajs/inertia-vue3';
 
 
 export default  {
+    components: {
+        Link
+    },
     props: {
         user: String,
         subscribers: Number,
@@ -71,11 +74,9 @@ export default  {
             form: {
                 'user_id': this.userLoggedId,
                 'otherUser': this.userId,
+                'subscribers' :this.subscribers,
             },
         }
-    },
-    components: {
-        Link
     },
     methods: {
         subscribe() {
