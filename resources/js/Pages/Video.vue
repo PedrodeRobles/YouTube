@@ -49,9 +49,9 @@
                                 <img src="../../img/profile.png" alt="Profile">
                             </div>
                             <div class="ml-2 sm:w-60">
-                                <h3 class="text-semibold">
+                                <Link :href="route('userVideos', video.user.name)" class="text-semibold">
                                     {{ video.user.name }}
-                                </h3>
+                                </Link>
                                 <p class="text-gray-500 text-sm">
                                     {{ video.user.subscribers }} subscribers
                                 </p>
