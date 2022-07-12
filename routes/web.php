@@ -38,4 +38,3 @@ Route::resource('videos', VideoController::class);
 Route::post('subscribe', [UserController::class, 'subscribe']);
 Route::delete('unsubscribe', [UserController::class, 'unsubscribe'])->name('unsubscribe');
 Route::post('videos/subscribe', [VideoController::class, 'subscribe']);
-Route::delete('videos/unsubscribe', [VideoController::class, 'unsubscribe']);

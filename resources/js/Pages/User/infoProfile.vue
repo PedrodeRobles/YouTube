@@ -38,14 +38,14 @@
                                 <p class="text-white">SUBSCRIBE</p> 
                             </button>
                         </form>
-                        <form v-else>
+                        <div v-else>
                             <button  
                                 @click.prevent="unsubscribe" 
                                 class="bg-gray-600 py-2 px-3"
                             >
                                 <p class="text-gray-800">UNSUBSCRIBE</p>
                             </button>
-                        </form>
+                        </div>
                     </div>
 
                     <div class="flex justify-center md:hidden">

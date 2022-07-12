@@ -64,7 +64,12 @@
                                 </button>
                             </form>
                             <div v-else>
-                                Chau
+                                <button  
+                                    @click.prevent="unsubscribe" 
+                                    class="bg-gray-600 py-2 px-3"
+                                >
+                                    <p class="text-gray-800">UNSUBSCRIBE</p>
+                                </button>
                             </div>
                         </div>
                         
@@ -136,6 +141,7 @@ export default {
             form: {
                 'user_id': this.userLoggedId,
                 'otherUser': this.userId,
+                'subscribers' :this.subscribers,
             },
         }
     },
@@ -146,6 +152,9 @@ export default {
         subscribe() {
             this.$inertia.post('subscribe', this.form)
         },
+        unsubscribe() {
+            this.$inertia.delete(this.route('unsubscribe', this.form));
+        }
     },
 }
 
