@@ -38,9 +38,14 @@
                                 <p class="text-white">SUBSCRIBE</p> 
                             </button>
                         </form>
-                        <div v-else>
-                            Chau
-                        </div>
+                        <form v-else>
+                            <button  
+                                @click.prevent="unsubscribe" 
+                                class="bg-gray-600 py-2 px-3"
+                            >
+                                <p class="text-gray-800">UNSUBSCRIBE</p>
+                            </button>
+                        </form>
                     </div>
 
                     <div class="flex justify-center md:hidden">
@@ -82,6 +87,9 @@ export default  {
         subscribe() {
             this.$inertia.post('subscribe', this.form)
         },
+        unsubscribe() {
+            this.$inertia.delete(this.route('unsubscribe', this.form));
+        }
     },
 }
 

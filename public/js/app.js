@@ -24529,6 +24529,9 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     subscribe: function subscribe() {
       this.$inertia.post('subscribe', this.form);
+    },
+    unsubscribe: function unsubscribe() {
+      this.$inertia["delete"](this.route('unsubscribe', this.form));
     }
   }
 });
@@ -29561,10 +29564,18 @@ var _hoisted_16 = [_hoisted_15];
 var _hoisted_17 = {
   key: 1
 };
-var _hoisted_18 = {
+
+var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+  "class": "text-gray-800"
+}, "UNSUBSCRIBE", -1
+/* HOISTED */
+);
+
+var _hoisted_19 = [_hoisted_18];
+var _hoisted_20 = {
   "class": "flex justify-center md:hidden"
 };
-var _hoisted_19 = {
+var _hoisted_21 = {
   "class": "text-white"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -29592,7 +29603,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }, ["prevent"]))
   }, _hoisted_16, 32
   /* HYDRATE_EVENTS */
-  )) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_17, " Chau "))])), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.subscribers) + " subscribers ", 1
+  )) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("form", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    onClick: _cache[1] || (_cache[1] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
+      return $options.unsubscribe && $options.unsubscribe.apply($options, arguments);
+    }, ["prevent"])),
+    "class": "bg-gray-600 py-2 px-3"
+  }, _hoisted_19)]))])), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.subscribers) + " subscribers ", 1
   /* TEXT */
   )])])])])]);
 }

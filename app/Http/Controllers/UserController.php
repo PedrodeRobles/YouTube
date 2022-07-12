@@ -102,4 +102,25 @@ class UserController extends Controller
 
         return redirect()->back();
     }
+
+    public function unsubscribe(Request $request)
+    {
+        /*Get subscription record and delete */
+        $subscription = Subscriber::where('user_id', $request->user_id)
+            ->where('otherUser', $request->otherUser)
+            ->first();
+        
+        $subscription->delete();
+        /*-----*/
+
+        /* Subtract a subscriber to the user */
+        $user = User::where('id', $request->otherUser)->first();
+        $user->subscribers;
+        $user->update([
+            'subscribers' => $user->subscribers - 1,
+        ]);
+        /*-----*/
+
+        return redirect()->back();
+    }
 }
