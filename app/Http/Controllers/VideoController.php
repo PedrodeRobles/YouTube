@@ -63,7 +63,9 @@ class VideoController extends Controller
             'views'       => 0
         ]);
 
-        return Redirect::route('home');
+        $userLoggedName = auth()->user()->name;
+
+        return redirect(route('userVideos', $userLoggedName));
     }
 
     public function show(Video $video)
