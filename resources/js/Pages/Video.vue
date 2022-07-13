@@ -143,6 +143,12 @@ export default {
                 'otherUser': this.userId,
                 'subscribers' :this.subscribers,
             },
+            q: null,
+        }
+    },
+    watch: {
+        q: function (q) {
+            this.$inertia.get(this.route('home', {q: q}), {}, {preserveState: true})
         }
     },
     methods: {

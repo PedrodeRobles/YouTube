@@ -68,7 +68,7 @@ class VideoController extends Controller
         return redirect(route('userVideos', $userLoggedName));
     }
 
-    public function show(Video $video)
+    public function show(Video $video, Request $request)
     {
         /*Show user´s img or show Log in and Register*/ 
         $userAuth = false;
@@ -97,6 +97,11 @@ class VideoController extends Controller
             ->first();
         /*-----*/
 
+        /*Search bar, Query*/
+        $videos = Video::latest()
+            ->where('title', 'LIKE', "%$request->q%")
+            ->get();
+        /*-----*/
 
         return Inertia::render('Video', [
             'userAuth'       => $userAuth,
@@ -192,7 +197,12 @@ class VideoController extends Controller
 
     public function destroy(Video $video)
     {
-        //
+        Storage::delete('public/' . $video->image);
+        Storage::delete('public/' . $video->video);
+
+        $video->delete();
+        
+        return redirect()->back();
     }
 
     public function subscribe(Request $request)
