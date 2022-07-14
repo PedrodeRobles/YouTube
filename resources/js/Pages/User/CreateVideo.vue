@@ -31,7 +31,7 @@
                             >
                         </div>
                         <div>
-                            <p>Video (.mp4)</p>
+                            <p>Video (.mp4) / Max 60.000 KB</p>
                             <input 
                                 type="file"
                                 ref="video"

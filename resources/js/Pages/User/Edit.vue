@@ -33,7 +33,7 @@
                             >
                         </div>
                         <div>
-                            <p>Video (.mp4)</p>
+                            <p>Video (.mp4) / Max 60.000 KB</p>
                             <p class="text-red-600">Select the same video or a new video</p>
                             <input 
                                 type="file"

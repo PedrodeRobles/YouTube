@@ -20,7 +20,7 @@
         <p class="text-2xl text-white pt-4 bg-slate-900 sm:pl-16 md:pl-10">
             Uploads
         </p>
-        <div class="bg-slate-900 pb-96 pt-4 sm:grid sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-8 md:px-10 md:gap-2">
+        <div class="bg-slate-900 pb-[50rem] pt-4 sm:grid sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-8 md:px-10 md:gap-2">
             <div v-for="video in userVideos" :key="video.id" class="sm:flex sm:justify-center">
                 <Link :href="route('videos.show', video.id)">
                     <div class="mb-2 grid grid-cols-1 place-content-start">

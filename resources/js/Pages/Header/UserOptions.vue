@@ -12,7 +12,7 @@
                 </Link>
             </div>
             <form @submit.prevent="logout">
-                <button>
+                <button class="text-red-500">
                     Log Out
                 </button>
             </form>

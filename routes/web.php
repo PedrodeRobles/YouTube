@@ -36,10 +36,10 @@ Route::get('/', [PageController::class, 'home'])->name('home');
 /*Own videos*/
 Route::get('{user:name}', [UserController::class, 'index'])->name('userVideos');
 Route::resource('videos', VideoController::class);
-Route::post('subscribe', [UserController::class, 'subscribe']);
-Route::delete('unsubscribe', [UserController::class, 'unsubscribe'])->name('unsubscribe');
-Route::post('videos/subscribe', [VideoController::class, 'subscribe']);
-Route::post('videos/like', [VideoController::class, 'like'])->name('like');
-Route::delete('unlike', [VideoController::class, 'unlike'])->name('unlike');
-Route::post('videos/dislike', [VideoController::class, 'dislike'])->name('dislike');
-Route::delete('undislike', [VideoController::class, 'undislike'])->name('undislike');
+Route::post('subscribe', [UserController::class, 'subscribe'])->middleware('auth');
+Route::delete('unsubscribe', [UserController::class, 'unsubscribe'])->name('unsubscribe')->middleware('auth');
+Route::post('videos/subscribe', [VideoController::class, 'subscribe'])->middleware('auth');
+Route::post('videos/like', [VideoController::class, 'like'])->name('like')->middleware('auth');
+Route::delete('unlike', [VideoController::class, 'unlike'])->name('unlike')->middleware('auth');
+Route::post('videos/dislike', [VideoController::class, 'dislike'])->name('dislike')->middleware('auth');
+Route::delete('undislike', [VideoController::class, 'undislike'])->name('undislike')->middleware('auth');

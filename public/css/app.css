@@ -1729,6 +1729,9 @@ select {
 .pt-12 {
   padding-top: 3rem;
 }
+.pb-\[50rem\] {
+  padding-bottom: 50rem;
+}
 .text-left {
   text-align: left;
 }
