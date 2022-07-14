@@ -31,10 +31,26 @@
                             </p>
                         </div>
                         <div class="flex justify-around md:justify-start md:space-x-5 mt-2">
-                            <div class="md:flex md:items-center md:space-x-2">
-                                <img src="../../img/like.png" alt="Like">
+                            <form 
+                                v-if="liked == null"
+                                @submit.prevent="like" 
+                                class="md:flex md:items-center md:space-x-2"
+                            >
+                                <button type="submit">
+                                    <img src="../../img/like.png" alt="Like">
+                                </button>
                                 <p>{{ video.likes }}</p>
-                            </div>
+                            </form>
+                            <form 
+                                v-else 
+                                @submit.prevent="unlike" 
+                                class="md:flex md:items-center md:space-x-2"
+                            >
+                                <button type="submit">
+                                    <img src="../../img/clickLike.png" alt="Unlike">
+                                </button>
+                                <p>{{ video.likes }}</p>
+                            </form>
                             <div class="md:flex md:items-center md:space-x-2">
                                 <img src="../../img/disLike.png" alt="Dislike">
                                 <p>{{ video.dislikes }}</p>
@@ -135,6 +151,7 @@ export default {
         userLoggedId: Number,
         userId: Number,
         subscribed: Object,
+        liked: Object,
     },
     data() {
         return {
@@ -142,6 +159,7 @@ export default {
                 'user_id': this.userLoggedId,
                 'otherUser': this.userId,
                 'subscribers' :this.subscribers,
+                'video_id': this.video.id
             },
             q: null,
         }
@@ -160,6 +178,12 @@ export default {
         },
         unsubscribe() {
             this.$inertia.delete(this.route('unsubscribe', this.form));
+        },
+        like() {
+            this.$inertia.post('like', this.form);
+        },
+        unlike() {
+            this.$inertia.delete(this.route('unlike', this.form));
         }
     },
 }

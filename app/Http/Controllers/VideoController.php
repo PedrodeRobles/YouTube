@@ -8,6 +8,7 @@ use App\Models\Video;
 use App\Models\Category;
 use App\Models\User;
 use App\Models\Subscriber;
+use App\Models\Likes;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
@@ -97,6 +98,12 @@ class VideoController extends Controller
             ->first();
         /*-----*/
 
+        /*Get 'like' record to validate if the user liked to this video*/
+        $liked = Likes::where('user_id', $userLoggedId)
+            ->where('video_id', $video->id)
+            ->first();
+        /*-----*/
+
         /*Search bar, Query*/
         $videos = Video::latest()
             ->where('title', 'LIKE', "%$request->q%")
@@ -110,6 +117,7 @@ class VideoController extends Controller
             'iframe'         => $video->video,
             'image'          => $video->image,
             'subscribed'     => $subscribed,
+            'liked'          => $liked,
             'userLoggedId'   => $userLoggedId,
             'userId'         => $userId,
             'videos'         => Video::orderByRaw("RAND()")
@@ -219,6 +227,47 @@ class VideoController extends Controller
         $user->subscribers;
         $user->update([
             'subscribers' => $user->subscribers + 1,
+        ]);
+        /*-----*/
+
+        return redirect()->back();
+    }
+
+    public function like(Request $request)
+    {
+        $request->validate([
+            'user_id'   => 'required',
+            'video_id' => 'required',
+        ]);
+
+        Likes::create($request->all());
+
+        /* Add a like to the video */
+        $video = Video::where('id', $request->video_id)->first();
+        $video->likes;
+        $video->update([
+            'likes' => $video->likes + 1,
+        ]);
+        /*-----*/
+
+        return redirect()->back();
+    }
+
+    public function unlike(Request $request)
+    {
+        /*Get like record and delete */
+        $like = Likes::where('user_id', $request->user_id)
+            ->where('video_id', $request->video_id)
+            ->first();
+
+        $like->delete();
+        /*-----*/
+
+        /* Subtract a like to the video */
+        $video = Video::where('id', $request->video_id)->first();
+        $video->likes;
+        $video->update([
+            'likes' => $video->likes - 1,
         ]);
         /*-----*/
 

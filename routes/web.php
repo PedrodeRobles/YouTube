@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LikesController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -38,3 +39,5 @@ Route::resource('videos', VideoController::class);
 Route::post('subscribe', [UserController::class, 'subscribe']);
 Route::delete('unsubscribe', [UserController::class, 'unsubscribe'])->name('unsubscribe');
 Route::post('videos/subscribe', [VideoController::class, 'subscribe']);
+Route::post('videos/like', [VideoController::class, 'like'])->name('like');
+Route::delete('unlike', [VideoController::class, 'unlike'])->name('unlike');

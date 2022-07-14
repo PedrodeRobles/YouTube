@@ -12,6 +12,7 @@ use Laravel\Sanctum\HasApiTokens;
 use App\Models\Video;
 use App\Models\Comment;
 use App\Models\Subscriber;
+use App\Models\Likes;
 
 class User extends Authenticatable
 {
@@ -76,5 +77,10 @@ class User extends Authenticatable
     public function subscribers() 
     {
         return $this->hasMany(Subscriber::class);
+    }
+
+    public function likes() 
+    {
+        return $this->hasMany(Likes::class);
     }
 }
