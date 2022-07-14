@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use App\Models\Category;
 use App\Models\Comment;
+use App\Models\Dislike;
+use App\Models\Likes;
 
 class Video extends Model
 {
@@ -42,5 +44,10 @@ class Video extends Model
     public function likes() 
     {
         return $this->hasMany(Likes::class);
+    }
+
+    public function dislikes() 
+    {
+        return $this->hasMany(Dislike::class);
     }
 }

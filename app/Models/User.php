@@ -13,6 +13,7 @@ use App\Models\Video;
 use App\Models\Comment;
 use App\Models\Subscriber;
 use App\Models\Likes;
+use App\Models\Dislike;
 
 class User extends Authenticatable
 {
@@ -82,5 +83,10 @@ class User extends Authenticatable
     public function likes() 
     {
         return $this->hasMany(Likes::class);
+    }
+
+    public function dislikes() 
+    {
+        return $this->hasMany(Dislike::class);
     }
 }

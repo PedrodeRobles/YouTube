@@ -41,3 +41,5 @@ Route::delete('unsubscribe', [UserController::class, 'unsubscribe'])->name('unsu
 Route::post('videos/subscribe', [VideoController::class, 'subscribe']);
 Route::post('videos/like', [VideoController::class, 'like'])->name('like');
 Route::delete('unlike', [VideoController::class, 'unlike'])->name('unlike');
+Route::post('videos/dislike', [VideoController::class, 'dislike'])->name('dislike');
+Route::delete('undislike', [VideoController::class, 'undislike'])->name('undislike');

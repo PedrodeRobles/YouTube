@@ -51,10 +51,26 @@
                                 </button>
                                 <p>{{ video.likes }}</p>
                             </form>
-                            <div class="md:flex md:items-center md:space-x-2">
-                                <img src="../../img/disLike.png" alt="Dislike">
+                            <form 
+                                v-if="disliked == null"
+                                @submit.prevent="dislike" 
+                                class="md:flex md:items-center md:space-x-2"
+                            >
+                                <button type="submit">
+                                    <img src="../../img/disLike.png" alt="Dislike">
+                                </button>
                                 <p>{{ video.dislikes }}</p>
-                            </div>
+                            </form>
+                            <form 
+                                v-else
+                                @submit.prevent="undislike" 
+                                class="md:flex md:items-center md:space-x-2"
+                            >
+                                <button type="submit">
+                                    <img src="../../img/clickDislike.png" alt="">
+                                </button>
+                                <p>{{ video.dislikes }}</p>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -152,6 +168,7 @@ export default {
         userId: Number,
         subscribed: Object,
         liked: Object,
+        disliked: Object,
     },
     data() {
         return {
@@ -184,7 +201,13 @@ export default {
         },
         unlike() {
             this.$inertia.delete(this.route('unlike', this.form));
-        }
+        },
+        dislike() {
+            this.$inertia.post('dislike', this.form);
+        },
+        undislike() {
+            this.$inertia.delete(this.route('undislike', this.form));
+        },
     },
 }
 

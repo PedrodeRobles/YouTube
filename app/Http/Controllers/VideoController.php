@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\Video;
 use App\Models\Category;
+use App\Models\Dislike;
 use App\Models\User;
 use App\Models\Subscriber;
 use App\Models\Likes;
@@ -104,6 +105,12 @@ class VideoController extends Controller
             ->first();
         /*-----*/
 
+        /*Get 'dislike' record to validate if the user disliked to this video*/
+        $disliked = Dislike::where('user_id', $userLoggedId)
+            ->where('video_id', $video->id)
+            ->first();
+        /*-----*/
+
         /*Search bar, Query*/
         $videos = Video::latest()
             ->where('title', 'LIKE', "%$request->q%")
@@ -118,6 +125,7 @@ class VideoController extends Controller
             'image'          => $video->image,
             'subscribed'     => $subscribed,
             'liked'          => $liked,
+            'disliked'       => $disliked,
             'userLoggedId'   => $userLoggedId,
             'userId'         => $userId,
             'videos'         => Video::orderByRaw("RAND()")
@@ -268,6 +276,47 @@ class VideoController extends Controller
         $video->likes;
         $video->update([
             'likes' => $video->likes - 1,
+        ]);
+        /*-----*/
+
+        return redirect()->back();
+    }
+
+    public function dislike(Request $request)
+    {
+        $request->validate([
+            'user_id'   => 'required',
+            'video_id' => 'required',
+        ]);
+
+        Dislike::create($request->all());
+
+        /* Add a like to the video */
+        $video = Video::where('id', $request->video_id)->first();
+        $video->dislikes;
+        $video->update([
+            'dislikes' => $video->dislikes + 1,
+        ]);
+        /*-----*/
+
+        return redirect()->back();
+    }
+
+    public function undislike(Request $request)
+    {
+        /*Get dislike record and delete */
+        $dislike = Dislike::where('user_id', $request->user_id)
+            ->where('video_id', $request->video_id)
+            ->first();
+
+        $dislike->delete();
+        /*-----*/
+
+        /* Subtract a dislike to the video */
+        $video = Video::where('id', $request->video_id)->first();
+        $video->dislike;
+        $video->update([
+            'dislike' => $video->dislike - 1,
         ]);
         /*-----*/
 
