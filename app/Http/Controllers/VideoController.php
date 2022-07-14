@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\Video;
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\Dislike;
 use App\Models\User;
 use App\Models\Subscriber;
@@ -117,6 +118,9 @@ class VideoController extends Controller
             ->get();
         /*-----*/
 
+        /*Get comments of this video */
+        $comments = Comment::where('video_id', $video->id)->get();
+
         return Inertia::render('Video', [
             'userAuth'       => $userAuth,
             'userLoggedName' => $userLoggedName,
@@ -128,6 +132,7 @@ class VideoController extends Controller
             'disliked'       => $disliked,
             'userLoggedId'   => $userLoggedId,
             'userId'         => $userId,
+            'comments'       => $comments,
             'videos'         => Video::orderByRaw("RAND()")
                 ->limit(10)
                 ->get()

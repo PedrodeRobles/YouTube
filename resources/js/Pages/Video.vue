@@ -111,6 +111,24 @@
                             {{ video.description }}
                         </p>
                     </div>
+                    <div class="border-t border-slate-600">
+                        <h3 class="pt-4">Comments</h3>
+                        <div v-for="comment in comments" :key="comment.id">
+                            <div class="flex">
+                                <div>
+                                    <img src="../../img/profile.png" alt="Profile">
+                                </div>
+                                <div class="ml-2 ">
+                                    <Link :href="route('userVideos', video.user.name)" class="text-semibold">
+                                        {{ video.user.name }}
+                                    </Link>
+                                    <p class="text-gray-500 text-sm w-full">
+                                        {{ comment.content }} 
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="mt-5 md:flex md:justify-center lg:justify-start lg:mr-6 lg:col-span-3 xl:col-span-2">
@@ -169,6 +187,7 @@ export default {
         subscribed: Object,
         liked: Object,
         disliked: Object,
+        comments: Array,
     },
     data() {
         return {
