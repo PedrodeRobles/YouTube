@@ -4,6 +4,7 @@
             @getQuery="querySon"
             :userAuth="userAuth"
             :userLoggedName="userLoggedName"
+            :userLoggedId="userLoggedId"
         >
         </Header>
 
@@ -86,7 +87,8 @@ const props = defineProps({
     categories: Array,
     userAuth: Boolean,
     userLoggedName: String,
-    video: Object
+    video: Object,
+    userLoggedId: Number,
 });
 
 const form = useForm({

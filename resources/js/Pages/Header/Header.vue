@@ -34,6 +34,7 @@
                         <UserOptions 
                             v-show="showOptions"
                             :userLoggedName="userLoggedName"
+                            :userLoggedId="userLoggedId"
                         ></UserOptions>
                     </div>
                 </div>
@@ -57,6 +58,7 @@ export default {
     props: {
         userAuth: Boolean,
         userLoggedName: String,
+        userLoggedId: Number,
     },
     data() {
         return {

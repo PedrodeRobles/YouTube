@@ -123,4 +123,23 @@ class UserController extends Controller
 
         return redirect()->back();
     }
+
+    public function editProfile(User $user)
+    {
+        dd($user);
+    }
+
+    public function editProfileImg(Request $request)
+    {
+        $request->validate([
+            'profile_image' => 'required',
+        ]);
+
+        $userLoggedId = auth()->user()->id;
+        $user = User::where('id', $userLoggedId)->first();
+
+        $user->update(['profile_image' => $request->profile_image]);
+
+        return 'Hi';
+    }
 }

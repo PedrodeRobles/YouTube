@@ -4,6 +4,7 @@
             @getQuery="querySon"
             :userAuth="userAuth"
             :userLoggedName="userLoggedName"
+            :userLoggedId="userLoggedId"
         >
         </Header>
 
@@ -88,7 +89,8 @@ export default {
     props: {
         categories: Array,
         userAuth: Boolean,
-        userLoggedName: String
+        userLoggedName: String,
+        userLoggedId: Number
     },
     methods: {
         submit() {

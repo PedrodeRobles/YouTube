@@ -11,6 +11,11 @@
                     Dashboard
                 </Link>
             </div>
+            <div>
+                <Link :href="route('editProfile', userLoggedId)">
+                    Edit profile
+                </Link>
+            </div>
             <form @submit.prevent="logout">
                 <button class="text-red-500">
                     Log Out
@@ -25,7 +30,8 @@ import { Link } from '@inertiajs/inertia-vue3';
 
 export default {
     props: {
-        userLoggedName: String
+        userLoggedName: String,
+        userLoggedId: Number
     },
     components: {
         Link

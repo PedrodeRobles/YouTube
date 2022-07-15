@@ -7,7 +7,7 @@ use Inertia\Inertia;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VideoController;
-
+use App\Models\User;
 
 Route::redirect('/', 'login');
 Route::redirect('/', 'register');
@@ -27,7 +27,9 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::get('/dashboard', function () {
-        return Inertia::render('Dashboard');
+        $userLogged = auth()->user();
+
+        return Inertia::render('Dashboard', ['userLogged' => $userLogged]);
     })->name('dashboard');
 });
 
@@ -44,3 +46,6 @@ Route::delete('unlike', [VideoController::class, 'unlike'])->name('unlike')->mid
 Route::post('videos/dislike', [VideoController::class, 'dislike'])->name('dislike')->middleware('auth');
 Route::delete('undislike', [VideoController::class, 'undislike'])->name('undislike')->middleware('auth');
 Route::post('videos/comment', [VideoController::class, 'comment'])->name('comment')->middleware('auth');
+
+Route::get('users/editProfile/{user:id}', [UserController::class, 'editProfile'])->name('editProfile');
+// Route::put('dashboard', [UserController::class, 'editProfileImg']);

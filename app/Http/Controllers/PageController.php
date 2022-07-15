@@ -27,14 +27,17 @@ class PageController extends Controller
         
         if(Auth::check()) {
             $userLoggedName= auth()->user()->name;
+            $userLoggedId= auth()->user()->id;
         } else {
             $userLoggedName = null;
+            $userLoggedId = null;
         }
         /*-----*/
 
         return Inertia::render('Home', [
             'userAuth'       => $userAuth,
             'userLoggedName' => $userLoggedName,
+            'userLoggedId'   => $userLoggedId,
             'videos'         => Video::where('title', 'LIKE', "%$request->q%")
                 ->orderBy('id', 'DESC')
                 ->get()

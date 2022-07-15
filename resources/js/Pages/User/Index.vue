@@ -4,6 +4,7 @@
             @getQuery="querySon"
             :userAuth="userAuth"
             :userLoggedName="userLoggedName"
+            :userLoggedId="userLoggedId"
         >
         </Header>
 

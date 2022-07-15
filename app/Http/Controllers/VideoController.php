@@ -26,9 +26,11 @@ class VideoController extends Controller
         if ( Auth::check() ) {
             $userAuth = true;
             $userLoggedName= auth()->user()->name;
+            $userLoggedId= auth()->user()->id;
         } else {
             $userAuth = false;
             $userLoggedName= null;
+            $userLoggedId = null;
         }
         /*-----*/
 
@@ -37,7 +39,8 @@ class VideoController extends Controller
         return Inertia::render('User/CreateVideo', [
             'userAuth' => $userAuth,
             'userLoggedName' => $userLoggedName,
-            'categories' => $categories
+            'categories' => $categories,
+            'userLoggedId' => $userLoggedId
         ]);
     }
 
@@ -51,8 +54,8 @@ class VideoController extends Controller
             'category_id' => 'required',
         ]);
 
-        $image = $request->file('image')->store('images', 'public');
-        $video = $request->file('video')->store('videos', 'public');
+        $image = $request->file('image')->store('videos/images', 'public');
+        $video = $request->file('video')->store('videos/iframe', 'public');
 
         Video::create([
             'title'       => $request->title,
@@ -171,9 +174,11 @@ class VideoController extends Controller
         if ( Auth::check() ) {
             $userAuth = true;
             $userLoggedName= auth()->user()->name;
+            $userLoggedId= auth()->user()->id;
         } else {
             $userAuth = false;
             $userLoggedName= null;
+            $userLoggedId= null;
         }
         /*-----*/
 
@@ -182,6 +187,7 @@ class VideoController extends Controller
         return Inertia::render('User/Edit', [
             'userAuth' => $userAuth,
             'userLoggedName' => $userLoggedName,
+            'userLoggedId' => $userLoggedId,
             'categories' => $categories,
             'video'      => $video
         ]);
@@ -199,12 +205,12 @@ class VideoController extends Controller
 
         if ($request->file('image')) {
             Storage::delete('public/' . $video->image);
-            $image = $request->file('image')->store('images', 'public');
+            $image = $request->file('image')->store('videos/images', 'public');
         }
 
         if ($request->file('video')) {
             Storage::delete('public/' . $video->video);
-            $newVideo = $request->file('video')->store('videos', 'public');
+            $newVideo = $request->file('video')->store('videos/iframe', 'public');
         }
         
         $video->update([
