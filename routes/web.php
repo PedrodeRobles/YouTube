@@ -43,3 +43,4 @@ Route::post('videos/like', [VideoController::class, 'like'])->name('like')->midd
 Route::delete('unlike', [VideoController::class, 'unlike'])->name('unlike')->middleware('auth');
 Route::post('videos/dislike', [VideoController::class, 'dislike'])->name('dislike')->middleware('auth');
 Route::delete('undislike', [VideoController::class, 'undislike'])->name('undislike')->middleware('auth');
+Route::post('videos/comment', [VideoController::class, 'comment'])->name('comment')->middleware('auth');

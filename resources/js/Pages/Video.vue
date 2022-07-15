@@ -7,7 +7,7 @@
         >
         </Header>
 
-        <div class="pt-14 pb-96 bg-slate-900 text-white lg:grid lg:grid-cols-8">
+        <div class="pt-14 pb-[200rem] bg-slate-900 text-white lg:grid lg:grid-cols-8">
             <div class="lg:col-span-5 xl:col-span-6">
                 <div class="sm:px-5 sm:pt-5">
                     <iframe 
@@ -89,6 +89,7 @@
                                 </p>
                             </div>
                         </div>
+
                         <div class="flex items-center">
                             <form v-if="subscribed == null" @submit.prevent="subscribe">
                                 <button class="bg-red-600 py-2 px-3" type="submit">
@@ -111,26 +112,119 @@
                             {{ video.description }}
                         </p>
                     </div>
-                    <div class="border-t border-slate-600">
-                        <h3 class="pt-4">Comments</h3>
-                        <div v-for="comment in comments" :key="comment.id">
-                            <div class="flex">
-                                <div>
+
+                    <!-- Small to medium screen comments -->
+                    <div class="border-t border-slate-600 lg:invisible lg:w-0 lg:h-0">
+                        <div @click="showComments = !showComments" class="flex justify-between items-center">
+                            <h3 class="py-4 text-lg">
+                                Comments
+                            </h3>
+                            <img v-show="showComments == false" src="../../img/arrowDown.png" alt="Arrow" class="w-8 h-8">
+                            <img v-show="showComments == true" src="../../img/arrowUp.png" alt="Arrow" class="w-8 h-8">
+                        </div>
+                        <div v-show="showComments == true">
+                            <form @submit.prevent="comment">
+                                <div class="grid grid-cols-12 mb-4">
+                                    <div class="col-span-1">
+                                        <img src="../../img/profile.png" alt="Profile">
+                                    </div>
+                                    <div class="ml-2 col-span-11">
+                                        <div>
+                                            <p>Add comment</p>
+                                            <div class="md:flex">
+                                                <textarea 
+                                                    v-model="form.content"
+                                                    cols="30" rows="1" 
+                                                    class="bg-slate-900 borber-b border-slate-500 w-full"
+                                                >
+                                                </textarea>
+                                                <div class="flex justify-end md:pl-4">
+                                                    <button type="submit" class="p-2 bg-blue-600">
+                                                        Comment
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div v-show="showComments" v-for="comment in comments" :key="comment.id">
+                            <div class="grid grid-cols-12 mb-6">
+                                <div class="col-span-1">
                                     <img src="../../img/profile.png" alt="Profile">
                                 </div>
-                                <div class="ml-2 ">
+                                <div class="ml-2 col-span-11">
                                     <Link :href="route('userVideos', video.user.name)" class="text-semibold">
-                                        {{ video.user.name }}
+                                        <p class="text-semibold">
+                                            {{ comment.user.name }}
+                                        </p>
                                     </Link>
-                                    <p class="text-gray-500 text-sm w-full">
+                                    <p class="w-full">
                                         {{ comment.content }} 
                                     </p>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                    <!-- Comments on the large screen -->
+                    <div class="border-t border-slate-600 invisible h-0 lg:visible">
+                        <div class="flex justify-between items-center">
+                            <h3 class="py-4 text-lg">
+                                Comments
+                            </h3>
+                        </div>
+                        <form @submit.prevent="comment">
+                            <div class="grid grid-cols-12 mb-4">
+                                <div class="col-span-1">
+                                    <img src="../../img/profile.png" alt="Profile">
+                                </div>
+                                <div class="ml-2 col-span-11">
+                                    <div>
+                                        <p>Add comment</p>
+                                        <div class="md:flex">
+                                            <textarea 
+                                                v-model="form.content"
+                                                cols="30" rows="1" 
+                                                class="bg-slate-900 borber-b border-slate-500 w-full"
+                                            >
+                                            </textarea>
+                                            <div class="flex justify-end md:pl-4">
+                                                <button type="submit" class="p-2 bg-blue-600">
+                                                    Comment
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <div 
+                            v-for="comment in comments" :key="comment.id"
+                            class="bg-slate-900"
+                        >
+                            <div class="grid grid-cols-12 lg:flex pb-6">
+                                <div class="col-span-1">
+                                    <img src="../../img/profile.png" alt="Profile" class="w-12">
+                                </div>
+                                <div class="ml-2 col-span-11 w-4/5">
+                                    <Link :href="route('userVideos', video.user.name)" class="text-semibold">
+                                        <p class="text-semibold">
+                                            {{ video.user.name }}
+                                        </p>
+                                    </Link>
+                                    <p class="w-full">
+                                        {{ comment.content }} 
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
+
             <div class="mt-5 md:flex md:justify-center lg:justify-start lg:mr-6 lg:col-span-3 xl:col-span-2">
                 <div class="md:grid md:grid-cols-2 md:gap-4 lg:grid-cols-none">
                     <div v-for="video in videos" :key="video.id">
@@ -195,9 +289,11 @@ export default {
                 'user_id': this.userLoggedId,
                 'otherUser': this.userId,
                 'subscribers' :this.subscribers,
-                'video_id': this.video.id
+                'video_id': this.video.id,
+                'content': '',
             },
             q: null,
+            showComments: false
         }
     },
     watch: {
@@ -227,6 +323,10 @@ export default {
         undislike() {
             this.$inertia.delete(this.route('undislike', this.form));
         },
+        comment()
+        {
+            this.$inertia.post('comment', this.form);
+        }
     },
 }
 

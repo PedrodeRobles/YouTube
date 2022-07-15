@@ -119,7 +119,9 @@ class VideoController extends Controller
         /*-----*/
 
         /*Get comments of this video */
-        $comments = Comment::where('video_id', $video->id)->get();
+        $comments = Comment::where('video_id', $video->id)
+            ->orderBy('id', 'desc')
+            ->get();
 
         return Inertia::render('Video', [
             'userAuth'       => $userAuth,
@@ -132,7 +134,7 @@ class VideoController extends Controller
             'disliked'       => $disliked,
             'userLoggedId'   => $userLoggedId,
             'userId'         => $userId,
-            'comments'       => $comments,
+            'comments'       => $comments->load('user'),
             'videos'         => Video::orderByRaw("RAND()")
                 ->limit(10)
                 ->get()
@@ -324,6 +326,19 @@ class VideoController extends Controller
             'dislike' => $video->dislike - 1,
         ]);
         /*-----*/
+
+        return redirect()->back();
+    }
+
+    public function comment(Request $request)
+    {
+        $request->validate([
+            'user_id'  => 'required',
+            'video_id' => 'required',
+            'content'  => ' required',
+        ]);
+
+        Comment::create($request->all());
 
         return redirect()->back();
     }
