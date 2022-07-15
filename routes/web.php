@@ -48,4 +48,4 @@ Route::delete('undislike', [VideoController::class, 'undislike'])->name('undisli
 Route::post('videos/comment', [VideoController::class, 'comment'])->name('comment')->middleware('auth');
 
 Route::get('users/editProfile/{user:id}', [UserController::class, 'editProfile'])->name('editProfile');
-// Route::put('dashboard', [UserController::class, 'editProfileImg']);
+Route::put('users/editProfile/{user:id}/editProfileImg', [UserController::class, 'editProfileImg'])->name('editProfileImg');

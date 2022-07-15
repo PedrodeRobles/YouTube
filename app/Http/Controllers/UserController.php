@@ -126,19 +126,20 @@ class UserController extends Controller
 
     public function editProfile(User $user)
     {
-        dd($user);
+        return Inertia::render('User/EditProfile', ['user' => $user]);
     }
 
-    public function editProfileImg(Request $request)
+    public function editProfileImg(User $user, Request $request)
     {
         $request->validate([
-            'profile_image' => 'required',
+            'information' => 'required',
         ]);
 
-        $userLoggedId = auth()->user()->id;
-        $user = User::where('id', $userLoggedId)->first();
+        // dd($user);
+        // $userLoggedId = auth()->user()->id;
+        // $user = User::where('id', $userLoggedId)->first();
 
-        $user->update(['profile_image' => $request->profile_image]);
+        $user->update(['information' => $request->information]+ $request->all());
 
         return 'Hi';
     }

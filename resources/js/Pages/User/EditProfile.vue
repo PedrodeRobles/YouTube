@@ -1,28 +1,29 @@
 <template>
-    <form @submit.prevent="editProfileImg">
-        <input type="text" v-model="form.profile_image">
+    <form @submit.prevent="editProfileImg(user.id)">
+        <input type="text" v-model="form.information">
         <button type="submit">
             Send
         </button>
     </form>
 </template>
 
-<script setup>
-import { defineProps } from 'vue';
-import { Inertia } from '@inertiajs/inertia';
-import { useForm } from '@inertiajs/inertia-vue3';
+<script>
 
-const props = defineProps({
-    userLogged: Object,
-});
-
-const form = useForm({
-    profile_image: '',
-});
-
-function editProfileImg() {
-    Inertia.put(`/users/${props.userLogged.id}`, {
-    _method: 'put',
-    profile_image: form.profile_image,
-})}
+export default {
+    props: {
+        user: Object
+    },
+    data() {
+        return {
+            form: {
+                information: '',
+            }
+        }
+    },
+    methods: {
+        editProfileImg(id) {
+            this.$inertia.put(route('editProfileImg', id), this.form);
+        }
+    }
+}
 </script>
