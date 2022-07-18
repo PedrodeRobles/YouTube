@@ -85,12 +85,12 @@ class VideoController extends Controller
             $userAuth = true;
             $userLoggedName= auth()->user()->name;
             $userLoggedId= auth()->user()->id;
-            $userLogged= auth()->user();
+            $userLoggedImg= auth()->user()->profile_image;
         } else {
             $userAuth = false;
             $userLoggedName = null;
             $userLoggedId = null;
-            $userLogged = null;
+            $userLoggedImg = null;
         }
         /*-----*/
 
@@ -138,7 +138,7 @@ class VideoController extends Controller
             'liked'          => $liked,
             'disliked'       => $disliked,
             'userLoggedId'   => $userLoggedId,
-            'userLogged'     => $userLogged,
+            'userLoggedImg'  => $userLoggedImg,
             'userId'         => $userId,
             'comments'       => $comments->load('user'),
             'videos'         => Video::orderByRaw("RAND()")

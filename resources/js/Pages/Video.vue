@@ -75,6 +75,7 @@
                         </div>
                     </div>
                 </div>
+                
                 <div class="border-y border-slate-600 mt-2 md:mt-4 px-5 sm:px-0 sm:mx-5 pt-4">
                     <div class="flex justify-between items-start">
                         <div class="flex">
@@ -134,7 +135,7 @@
                             <form @submit.prevent="comment">
                                 <div class="grid grid-cols-12 mb-4">
                                     <div class="col-span-1">
-                                        <div v-if="userLogged.profile_image == null">
+                                        <div v-if="userLoggedImg == null">
                                             <img src="../../img/profile.png" alt="Profile image">
                                         </div>
                                         <div v-else>
@@ -200,7 +201,7 @@
                         <form @submit.prevent="comment">
                             <div class="grid grid-cols-12 mb-4">
                                 <div class="col-span-1">
-                                    <div v-if="userLogged.profile_image == null">
+                                    <div v-if="userLoggedImg == null">
                                         <img src="../../img/profile.png" alt="Profile image">
                                     </div>
                                     <div v-else>
@@ -261,6 +262,7 @@
                 </div>
             </div>
 
+            <!-- Videos of other users -->
             <div class="mt-5 md:flex md:justify-center lg:justify-start lg:mr-6 lg:col-span-3 xl:col-span-2">
                 <div class="md:grid md:grid-cols-2 md:gap-4 lg:grid-cols-none">
                     <div v-for="video in videos" :key="video.id">
@@ -319,7 +321,7 @@ export default {
         disliked: Object,
         comments: Array,
         users: Array,
-        userLogged: Object,
+        userLoggedImg: String,
     },
     data() {
         return {
