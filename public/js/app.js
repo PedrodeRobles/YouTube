@@ -24584,14 +24584,14 @@ __webpack_require__.r(__webpack_exports__);
     });
 
     function editProfileImg(id) {
-      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia.post("/users/editProfile/".concat(id), {
+      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia.post("/users/editProfileImg/".concat(id), {
         _method: 'put',
         profile_image: form.profile_image
       });
     }
 
     function editProfileBackgroundImg(id) {
-      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia.post("/users/editProfile/".concat(id), {
+      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia.post("/users/editProfileBackgroundImg/".concat(id), {
         _method: 'put',
         bg_image: form.bg_image
       });
@@ -29860,12 +29860,6 @@ var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-  type: "submit"
-}, " Send ", -1
-/* HOISTED */
-);
-
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Header"], {
     userAuth: $props.userAuth,
@@ -29916,20 +29910,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   }, 8
   /* PROPS */
-  , ["href"])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
-    onSubmit: _cache[5] || (_cache[5] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
-      return $setup.editProfileImg($setup.props.user.id);
-    }, ["prevent"]))
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-    type: "file",
-    onInput: _cache[4] || (_cache[4] = function ($event) {
-      return $setup.form.profile_image = $event.target.files[0];
-    })
-  }, null, 32
-  /* HYDRATE_EVENTS */
-  ), _hoisted_11], 32
-  /* HYDRATE_EVENTS */
-  )], 64
+  , ["href"])])])])], 64
   /* STABLE_FRAGMENT */
   );
 }

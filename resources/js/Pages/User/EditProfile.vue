@@ -60,13 +60,6 @@
             </div>
         </div>
 
-
-    <form @submit.prevent="editProfileImg(props.user.id)">
-        <input type="file" @input="form.profile_image = $event.target.files[0]">
-        <button type="submit">
-            Send
-        </button>
-    </form>
 </template>
 
 <script setup>
@@ -94,13 +87,13 @@ const form = useForm({
 });
 
 function editProfileImg(id) {
-    Inertia.post(`/users/editProfile/${id}`, {
+    Inertia.post(`/users/editProfileImg/${id}`, {
     _method: 'put',
     profile_image: form.profile_image,
 })}
 
 function editProfileBackgroundImg(id) {
-    Inertia.post(`/users/editProfile/${id}`, {
+    Inertia.post(`/users/editProfileBackgroundImg/${id}`, {
     _method: 'put',
     bg_image: form.bg_image,
 })}
