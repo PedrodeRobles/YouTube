@@ -32,7 +32,10 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'subscribers'
+        'subscribers',
+        'profile_image',
+        'bg_image',
+        'information',
     ];
 
     /**

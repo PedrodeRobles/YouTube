@@ -7,6 +7,11 @@
             :userLoggedId="userLoggedId"
         >
         </Header>
+
+        <div>
+            <input v-model="query" type="radio">
+        </div>
+
         <!-- Videos -->
         <div class="sm:flex justify-center bg-slate-900">
             <div class="pt-24 pb-[100rem] 2xl:pb-[1000px] sm:grid sm:grid-cols-2 sm:gap-x-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">

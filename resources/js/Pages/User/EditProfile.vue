@@ -1,29 +1,35 @@
 <template>
-    <form @submit.prevent="editProfileImg(user.id)">
-        <input type="text" v-model="form.information">
+    <form @submit.prevent="editProfileImg(props.user.id)">
+        <input type="file" @input="form.profile_image = $event.target.files[0]">
         <button type="submit">
             Send
         </button>
     </form>
 </template>
 
-<script>
+<script setup>
+import { useForm } from '@inertiajs/inertia-vue3';
+import Header from '../Header/Header.vue';
+import { defineComponent } from '@vue/runtime-core';
+import { Inertia } from '@inertiajs/inertia';
 
-export default {
-    props: {
-        user: Object
-    },
-    data() {
-        return {
-            form: {
-                information: '',
-            }
-        }
-    },
-    methods: {
-        editProfileImg(id) {
-            this.$inertia.put(route('editProfileImg', id), this.form);
-        }
-    }
+defineComponent({
+    Header
+});
+
+const props = defineProps({
+    user: Object
+});
+
+const form = useForm({
+    profile_image: null,
+});
+
+function editProfileImg(id) {
+    Inertia.post(`/users/editProfile/${id}`, {
+    _method: 'put',
+    profile_image: form.profile_image,
+})
 }
+
 </script>

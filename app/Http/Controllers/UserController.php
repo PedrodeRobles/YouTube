@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -132,14 +133,15 @@ class UserController extends Controller
     public function editProfileImg(User $user, Request $request)
     {
         $request->validate([
-            'information' => 'required',
+            'profile_image' => 'required',
         ]);
 
-        // dd($user);
-        // $userLoggedId = auth()->user()->id;
-        // $user = User::where('id', $userLoggedId)->first();
+        if ($request->file('profile_image')) {
+            Storage::delete('public/' . $user->profile_image);
+            $image = $request->file('profile_image')->store('user/profile', 'public');
+        }
 
-        $user->update(['information' => $request->information]+ $request->all());
+        $user->update(['profile_image' => $image]);
 
         return 'Hi';
     }
