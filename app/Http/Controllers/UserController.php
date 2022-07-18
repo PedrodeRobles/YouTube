@@ -137,13 +137,43 @@ class UserController extends Controller
 
     public function editProfile(User $user)
     {
-        return Inertia::render('User/EditProfile', ['user' => $user]);
+        /*Show user´s img or show Log in and Register*/ 
+        $userAuth = false;
+
+        if ( Auth::check() ) {
+            $userAuth = true;
+        } else {
+            $userAuth = false;
+        }
+        /*-----*/
+
+        /*Get logged user*/
+        $userLoggedId = null;
+        $userLoggedName = null;
+        /*-----*/
+
+        /*Logged user verification*/
+        if(Auth::check()) {
+            $userLoggedId = auth()->user()->id;
+            $userLoggedName = auth()->user()->name;
+        } else {
+            $userLoggedId = null;
+            $userLoggedName = null;
+        }
+        /*-----*/
+
+        return Inertia::render('User/EditProfile', [
+            'user'           => $user,
+            'userAuth'       => $userAuth,
+            'userLoggedId'   => $userLoggedId,
+            'userLoggedName' => $userLoggedName,
+        ]);
     }
 
     public function editProfileImg(User $user, Request $request)
     {
         $request->validate([
-            'profile_image' => 'required',
+            'profile_image' => 'required|image',
         ]);
 
         if ($request->file('profile_image')) {
@@ -153,6 +183,6 @@ class UserController extends Controller
 
         $user->update(['profile_image' => $image]);
 
-        return 'Hi';
+        return redirect()->back();
     }
 }
