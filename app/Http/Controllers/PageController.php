@@ -34,6 +34,13 @@ class PageController extends Controller
         }
         /*-----*/
 
+        // $users = User::all()->map(function ($user) {
+        //     return [
+        //         'profile_image' => asset('storage/' . $user->profile_image),
+        //     ];
+        // });
+        // dd($users);
+
         return Inertia::render('Home', [
             'userAuth'       => $userAuth,
             'userLoggedName' => $userLoggedName,
@@ -54,6 +61,14 @@ class PageController extends Controller
                         'views'       => $video->views,
                     ];
                 }),
+            'users' => User::all()
+                ->map(function ($user) {
+                    return [
+                        'id' => $user->id,
+                        'name' => $user->name,
+                        'profile_image' => asset('storage/' . $user->profile_image),
+                    ];
+                })
         ]);
     }
 }

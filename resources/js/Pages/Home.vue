@@ -23,7 +23,14 @@
                             </div>
                             <div class="grid grid-cols-6 w-80 sm:w-72 space-x-2 mt-2 ml-4 sm:ml-0">
                                 <div class="col-span-1">
-                                    <img src="../../img/profile.png" alt="Profile">
+                                    <div v-if="video.user.profile_image == null">
+                                        <img src="../../img/profile.png" alt="Profile image">
+                                    </div>
+                                    <div v-else>
+                                        <img 
+                                            class="h-[50px] w-[50px] rounded-full"
+                                            :src="users[video.user_id - 1].profile_image" alt="">
+                                    </div>
                                 </div>
                                 <div class="col-span-5">
                                     <h6 class="text-white text-lg font-semibold">{{ video.title }}</h6>
@@ -64,7 +71,8 @@ export default {
         },
         userAuth: Boolean,
         userLoggedName: String,
-        userLoggedId: Number
+        userLoggedId: Number,
+        users: Array,
     },
     methods: {
         querySon(value) {
