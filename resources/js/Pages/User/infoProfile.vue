@@ -1,8 +1,16 @@
 <template>
     <div>
         <div class="bg-slate-800 pt-12">
-            <div class="bg-indigo-600">
-                <img class="h-32 sm:h-26 md:h-44 lg:h-60 w-full" src="../../../img/videoImage.png" alt="image">
+            <div class="bg-slate-700">
+                <div v-if="userBackgroundImage !== null">
+                    <img 
+                        class="h-32 sm:h-26 md:h-44 lg:h-60 w-full"
+                        :src="users[userId - 1].bg_image" alt="">
+                </div>
+                <div v-else>
+                    <img class="h-32 sm:h-26 md:h-44 lg:h-60 w-full" src="../../../img/videoImage.png" alt="image">
+                </div>
+                <!-- <img class="h-32 sm:h-26 md:h-44 lg:h-60 w-full" src="../../../img/videoImage.png" alt="image"> -->
             </div>
             <div class="flex justify-center pt-2 w-full md:py-4">
                 <div class="flex-none md:flex md:w-full md:justify-between md:px-10 md:items-center">
@@ -37,9 +45,6 @@
                         </Link>
                     </div>
                     <div v-else class="flex justify-center py-2">
-                        <!-- <button class="bg-red-600 py-2 px-3">
-                            <p class="text-white">SUBSCRIBE</p> 
-                        </button> -->
                         <form v-if="subscribed == null" @submit.prevent="subscribe">
                             <button class="bg-red-600 py-2 px-3" type="submit">
                                 <p class="text-white">SUBSCRIBE</p> 
@@ -82,6 +87,7 @@ export default  {
         subscribed: Object,
         users: Array,
         userImage: String,
+        userBackgroundImage: String
     },
     data() {
         return {

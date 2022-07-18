@@ -26,10 +26,11 @@ class UserController extends Controller
         /*-----*/
 
         /*Get this data from this user*/
-        $userName    = $user->name;
-        $subscribers = $user->subscribers;
-        $userId      = $user->id;
-        $userImage   = $user->profile_image;
+        $userName            = $user->name;
+        $subscribers         = $user->subscribers;
+        $userId              = $user->id;
+        $userImage           = $user->profile_image;
+        $userBackgroundImage = $user->bg_image;
         /*-----*/
 
         /*Search bar, Query*/
@@ -60,16 +61,19 @@ class UserController extends Controller
         /*-----*/
 
         return Inertia::render('User/Index', [
-            'userAuth'       => $userAuth,
-            'userName'       => $userName,
-            'subscribers'    => $subscribers,
-            'videos'         => $videos->load('user'),
-            'userId'         => $userId,
-            'userImage'      => $userImage,
-            'userLoggedId'   => $userLoggedId,
-            'userLoggedName' => $userLoggedName,
-            'subscribed'     => $subscribed,
-            'userVideos'     => Video::where('user_id', $user->id)->orderBy('id', 'DESC')->get()->map(function($video) {
+            'userAuth'            => $userAuth,
+            'userName'            => $userName,
+            'subscribers'         => $subscribers,
+            'videos'              => $videos->load('user'),
+            'userId'              => $userId,
+            'userImage'           => $userImage,
+            'userBackgroundImage' => $userBackgroundImage,
+            'userLoggedId'        => $userLoggedId,
+            'userLoggedName'      => $userLoggedName,
+            'subscribed'          => $subscribed,
+            'userVideos'          => Video::where('user_id', $user->id)
+                ->orderBy('id', 'DESC')
+                ->get()->map(function($video) {
                 return [
                     'id'          => $video->id,
                     'title'       => $video->title,
@@ -86,9 +90,10 @@ class UserController extends Controller
             'users' => User::all()
                 ->map(function ($user) {
                     return [
-                        'id' => $user->id,
-                        'name' => $user->name,
+                        'id'            => $user->id,
+                        'name'          => $user->name,
                         'profile_image' => asset('storage/' . $user->profile_image),
+                        'bg_image'      => asset('storage/' . $user->bg_image),
                     ];
                 })
         ]);

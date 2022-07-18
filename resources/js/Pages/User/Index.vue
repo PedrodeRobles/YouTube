@@ -16,6 +16,7 @@
             :subscribed="subscribed"
             :users="users"
             :userImage="userImage"
+            :userBackgroundImage="userBackgroundImage"
         >
         </InfoProfile>
 
@@ -101,6 +102,7 @@ export default {
         userId: Number,
         users: Array,
         userImage: String,
+        userBackgroundImage: String,
     },
     data() {
         return {
