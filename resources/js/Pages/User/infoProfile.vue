@@ -9,7 +9,14 @@
                     <div class="flex justify-center">
                         <div class="flex-none md:flex md:items-center">
                             <div class="flex justify-center">
-                                <img class="md:w-20" src="../../../img/profile.png" alt="Profile">
+                                <div v-if="userImage == null">
+                                    <img src="../../../img/profile.png" alt="Profile image">
+                                </div>
+                                <div v-else>
+                                    <img 
+                                        class="h-[50px] w-[50px] rounded-full"
+                                        :src="users[userId - 1].profile_image" alt="">
+                                </div>
                             </div>
                             <div class="text-white h-8 md:ml-4 md:mb-4">
                                 <div class="flex justify-center md:justify-start">
@@ -72,7 +79,9 @@ export default  {
         subscribers: Number,
         userLoggedId: Number,
         userId: Number,
-        subscribed: Object
+        subscribed: Object,
+        users: Array,
+        userImage: String,
     },
     data() {
         return {

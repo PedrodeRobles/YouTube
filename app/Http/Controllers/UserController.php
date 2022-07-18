@@ -29,6 +29,7 @@ class UserController extends Controller
         $userName    = $user->name;
         $subscribers = $user->subscribers;
         $userId      = $user->id;
+        $userImage   = $user->profile_image;
         /*-----*/
 
         /*Search bar, Query*/
@@ -64,6 +65,7 @@ class UserController extends Controller
             'subscribers'    => $subscribers,
             'videos'         => $videos->load('user'),
             'userId'         => $userId,
+            'userImage'      => $userImage,
             'userLoggedId'   => $userLoggedId,
             'userLoggedName' => $userLoggedName,
             'subscribed'     => $subscribed,
@@ -81,6 +83,14 @@ class UserController extends Controller
                     'views'       => 0 
                 ];
             }),
+            'users' => User::all()
+                ->map(function ($user) {
+                    return [
+                        'id' => $user->id,
+                        'name' => $user->name,
+                        'profile_image' => asset('storage/' . $user->profile_image),
+                    ];
+                })
         ]);
     }
 

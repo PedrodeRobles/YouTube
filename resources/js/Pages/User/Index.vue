@@ -14,6 +14,8 @@
             :userLoggedId="userLoggedId"
             :userId="userId"
             :subscribed="subscribed"
+            :users="users"
+            :userImage="userImage"
         >
         </InfoProfile>
 
@@ -96,7 +98,9 @@ export default {
         userLoggedName: String,
         subscribed: Object,
         userLoggedId: Number,
-        userId: Number
+        userId: Number,
+        users: Array,
+        userImage: String,
     },
     data() {
         return {
