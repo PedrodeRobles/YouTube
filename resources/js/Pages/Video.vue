@@ -79,7 +79,14 @@
                     <div class="flex justify-between items-start">
                         <div class="flex">
                             <div>
-                                <img src="../../img/profile.png" alt="Profile">
+                                <div v-if="video.user.profile_image == null">
+                                    <img src="../../img/profile.png" alt="Profile image">
+                                </div>
+                                <div v-else>
+                                    <img 
+                                        class="h-[50px] w-[50px] rounded-full"
+                                        :src="users[video.user_id - 1].profile_image" alt="">
+                                </div>
                             </div>
                             <div class="ml-2 sm:w-60">
                                 <Link :href="route('userVideos', video.user.name)" class="text-semibold">
@@ -127,7 +134,14 @@
                             <form @submit.prevent="comment">
                                 <div class="grid grid-cols-12 mb-4">
                                     <div class="col-span-1">
-                                        <img src="../../img/profile.png" alt="Profile">
+                                        <div v-if="userLogged.profile_image == null">
+                                            <img src="../../img/profile.png" alt="Profile image">
+                                        </div>
+                                        <div v-else>
+                                            <img 
+                                                class="h-7 w-7 rounded-full"
+                                                :src="users[userLoggedId - 1].profile_image" alt="">
+                                        </div>
                                     </div>
                                     <div class="ml-2 col-span-11">
                                         <div>
@@ -153,7 +167,14 @@
                         <div v-show="showComments" v-for="comment in comments" :key="comment.id">
                             <div class="grid grid-cols-12 mb-6">
                                 <div class="col-span-1">
-                                    <img src="../../img/profile.png" alt="Profile">
+                                    <div v-if="comment.user.profile_image == null">
+                                        <img src="../../img/profile.png" alt="Profile image">
+                                    </div>
+                                    <div v-else>
+                                        <img 
+                                            class="h-7 w-7 rounded-full"
+                                            :src="users[comment.user.id - 1].profile_image" alt="">
+                                    </div>
                                 </div>
                                 <div class="ml-2 col-span-11">
                                     <Link :href="route('userVideos', video.user.name)" class="text-semibold">
@@ -179,7 +200,14 @@
                         <form @submit.prevent="comment">
                             <div class="grid grid-cols-12 mb-4">
                                 <div class="col-span-1">
-                                    <img src="../../img/profile.png" alt="Profile">
+                                    <div v-if="userLogged.profile_image == null">
+                                        <img src="../../img/profile.png" alt="Profile image">
+                                    </div>
+                                    <div v-else>
+                                        <img 
+                                            class="h-12 w-12 rounded-full"
+                                            :src="users[userLoggedId - 1].profile_image" alt="">
+                                    </div>
                                 </div>
                                 <div class="ml-2 col-span-11">
                                     <div>
@@ -207,12 +235,19 @@
                         >
                             <div class="grid grid-cols-12 lg:flex pb-6">
                                 <div class="col-span-1">
-                                    <img src="../../img/profile.png" alt="Profile" class="w-12">
+                                    <div v-if="comment.user.profile_image == null">
+                                        <img src="../../img/profile.png" alt="Profile image" class="h-12 w-12">
+                                    </div>
+                                    <div v-else>
+                                        <img 
+                                            class="h-12 w-12 rounded-full"
+                                            :src="users[comment.user.id - 1].profile_image" alt="">
+                                    </div>
                                 </div>
                                 <div class="ml-2 col-span-11 w-4/5">
                                     <Link :href="route('userVideos', video.user.name)" class="text-semibold">
                                         <p class="text-semibold">
-                                            {{ video.user.name }}
+                                            {{ comment.user.name }}
                                         </p>
                                     </Link>
                                     <p class="w-full">
@@ -283,6 +318,8 @@ export default {
         liked: Object,
         disliked: Object,
         comments: Array,
+        users: Array,
+        userLogged: Object,
     },
     data() {
         return {

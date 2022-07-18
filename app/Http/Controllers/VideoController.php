@@ -85,10 +85,12 @@ class VideoController extends Controller
             $userAuth = true;
             $userLoggedName= auth()->user()->name;
             $userLoggedId= auth()->user()->id;
+            $userLogged= auth()->user();
         } else {
             $userAuth = false;
             $userLoggedName = null;
             $userLoggedId = null;
+            $userLogged = null;
         }
         /*-----*/
 
@@ -136,6 +138,7 @@ class VideoController extends Controller
             'liked'          => $liked,
             'disliked'       => $disliked,
             'userLoggedId'   => $userLoggedId,
+            'userLogged'     => $userLogged,
             'userId'         => $userId,
             'comments'       => $comments->load('user'),
             'videos'         => Video::orderByRaw("RAND()")
@@ -156,6 +159,14 @@ class VideoController extends Controller
                         'user'        => User::where('id', $video->user_id)->first(),
                     ];
                 }),
+            'users' => User::all()
+            ->map(function ($user) {
+                return [
+                    'id' => $user->id,
+                    'name' => $user->name,
+                    'profile_image' => asset('storage/' . $user->profile_image),
+                ];
+            })
         ]);
     }
 
