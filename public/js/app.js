@@ -24561,6 +24561,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   __name: 'EditProfile',
   props: {
@@ -24574,10 +24575,12 @@ __webpack_require__.r(__webpack_exports__);
     expose();
     var props = __props;
     (0,_vue_runtime_core__WEBPACK_IMPORTED_MODULE_3__.defineComponent)({
-      Header: _Header_Header_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+      Header: _Header_Header_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
+      Link: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_0__.Link
     });
     var form = (0,_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_0__.useForm)({
-      profile_image: null
+      profile_image: null,
+      bg_image: null
     });
 
     function editProfileImg(id) {
@@ -24587,14 +24590,23 @@ __webpack_require__.r(__webpack_exports__);
       });
     }
 
+    function editProfileBackgroundImg(id) {
+      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia.post("/users/editProfile/".concat(id), {
+        _method: 'put',
+        bg_image: form.bg_image
+      });
+    }
+
     var __returned__ = {
       props: props,
       form: form,
       editProfileImg: editProfileImg,
+      editProfileBackgroundImg: editProfileBackgroundImg,
       useForm: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_0__.useForm,
       Header: _Header_Header_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
       defineComponent: _vue_runtime_core__WEBPACK_IMPORTED_MODULE_3__.defineComponent,
-      Inertia: _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia
+      Inertia: _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia,
+      Link: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_0__.Link
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,
@@ -29810,7 +29822,33 @@ var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 /* HOISTED */
 );
 
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+var _hoisted_6 = {
+  "class": "border border-slate-500 rounded-lg p-2 mt-6"
+};
+
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Background Image", -1
+/* HOISTED */
+);
+
+var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "pt-4 flex justify-center"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  "class": "bg-slate-600 hover:bg-slate-700 p-2 rounded-md"
+}, " Update ")], -1
+/* HOISTED */
+);
+
+var _hoisted_9 = {
+  "class": "mt-6"
+};
+
+var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", {
+  "class": "p-4 bg-blue-500 hover:bg-blue-600 rounded-md text-center"
+}, " Advanced options to edit profile ", -1
+/* HOISTED */
+);
+
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
   type: "submit"
 }, " Send ", -1
 /* HOISTED */
@@ -29839,18 +29877,45 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* HYDRATE_EVENTS */
   )]), _hoisted_5], 32
   /* HYDRATE_EVENTS */
-  )])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
     onSubmit: _cache[3] || (_cache[3] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
+      return $setup.editProfileBackgroundImg($setup.props.user.id);
+    }, ["prevent"])),
+    "class": "space-y-3"
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "file",
+    accept: "image/*",
+    onInput: _cache[2] || (_cache[2] = function ($event) {
+      return $setup.form.bg_image = $event.target.files[0];
+    }),
+    "class": "bg-slate-900 w-full"
+  }, null, 32
+  /* HYDRATE_EVENTS */
+  )]), _hoisted_8], 32
+  /* HYDRATE_EVENTS */
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Link"], {
+    href: _ctx.route('profile.show')
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [_hoisted_10];
+    }),
+    _: 1
+    /* STABLE */
+
+  }, 8
+  /* PROPS */
+  , ["href"])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
+    onSubmit: _cache[5] || (_cache[5] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
       return $setup.editProfileImg($setup.props.user.id);
     }, ["prevent"]))
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "file",
-    onInput: _cache[2] || (_cache[2] = function ($event) {
+    onInput: _cache[4] || (_cache[4] = function ($event) {
       return $setup.form.profile_image = $event.target.files[0];
     })
   }, null, 32
   /* HYDRATE_EVENTS */
-  ), _hoisted_6], 32
+  ), _hoisted_11], 32
   /* HYDRATE_EVENTS */
   )], 64
   /* STABLE_FRAGMENT */

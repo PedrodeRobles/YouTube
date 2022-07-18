@@ -49,3 +49,4 @@ Route::post('videos/comment', [VideoController::class, 'comment'])->name('commen
 
 Route::get('users/editProfile/{user:id}', [UserController::class, 'editProfile'])->name('editProfile');
 Route::put('users/editProfile/{user:id}', [UserController::class, 'editProfileImg']);
+Route::put('users/editProfile/{user:id}', [UserController::class, 'editProfileBackgroundImg']);

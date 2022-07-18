@@ -185,4 +185,20 @@ class UserController extends Controller
 
         return redirect()->back();
     }
+
+    public function editProfileBackgroundImg(User $user, Request $request)
+    {
+        $request->validate([
+            'bg_image' => 'required|image',
+        ]);
+
+        if ($request->file('bg_image')) {
+            Storage::delete('public/' . $user->bg_image);
+            $image = $request->file('bg_image')->store('user/background', 'public');
+        }
+
+        $user->update(['bg_image' => $image]);
+
+        return redirect()->back();
+    }
 }
