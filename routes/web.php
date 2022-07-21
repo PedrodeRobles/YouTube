@@ -33,7 +33,14 @@ Route::middleware([
     })->name('dashboard');
 });
 
+/*Sections*/
 Route::get('/', [PageController::class, 'home'])->name('home');
+Route::get('gaming', [PageController::class, 'gaming'])->name('gaming');
+Route::get('music', [PageController::class, 'music'])->name('music');
+Route::get('news', [PageController::class, 'news'])->name('news');
+Route::get('sports', [PageController::class, 'sports'])->name('sports');
+Route::get('learning', [PageController::class, 'learning'])->name('learning');
+
 
 /*Own videos*/
 Route::get('{user:name}', [UserController::class, 'index'])->name('userVideos');
@@ -50,3 +57,4 @@ Route::post('videos/comment', [VideoController::class, 'comment'])->name('commen
 Route::get('users/editProfile/{user:id}', [UserController::class, 'editProfile'])->name('editProfile');
 Route::put('users/editProfileImg/{user:id}', [UserController::class, 'editProfileImg']);
 Route::put('users/editProfileBackgroundImg/{user:id}', [UserController::class, 'editProfileBackgroundImg']);
+

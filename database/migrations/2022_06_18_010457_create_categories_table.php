@@ -17,8 +17,20 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        $category = Category::factory()->create([
-            'category' => 'Entretenimiento',
+        Category::factory()->create([
+            'category' => 'Gaming',
+        ]);
+        Category::factory()->create([
+            'category' => 'Music',
+        ]);
+        Category::factory()->create([
+            'category' => 'News',
+        ]);
+        Category::factory()->create([
+            'category' => 'Sports',
+        ]);
+        Category::factory()->create([
+            'category' => 'Learning',
         ]);
     }
 
