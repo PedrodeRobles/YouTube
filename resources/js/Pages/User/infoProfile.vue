@@ -39,9 +39,16 @@
                         </div>
                     </div>
 
-                    <div v-if="userLoggedId == userId" class="flex justify-center">
+                    <div v-if="userLoggedId == userId" class="flex justify-center items-center space-x-2">
+                        <Link :href="route('editProfile', userLoggedId)">
+                            <p class="p-2 bg-blue-500 hover:bg-blue-400">
+                                Edit profile
+                            </p>
+                        </Link>
                         <Link :href="route('videos.create')">
-                            <img src="../../../img/create.png" alt="Add video">
+                            <p class="p-2 bg-red-500 hover:bg-red-400">
+                                Add video
+                            </p>
                         </Link>
                     </div>
                     <div v-else class="flex justify-center py-2">
