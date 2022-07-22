@@ -40,7 +40,7 @@ Route::get('music', [PageController::class, 'music'])->name('music');
 Route::get('news', [PageController::class, 'news'])->name('news');
 Route::get('sports', [PageController::class, 'sports'])->name('sports');
 Route::get('learning', [PageController::class, 'learning'])->name('learning');
-
+Route::get('liked', [PageController::class, 'liked'])->name('liked')->middleware('auth');
 
 /*Own videos*/
 Route::get('{user:name}', [UserController::class, 'index'])->name('userVideos');

@@ -13,6 +13,7 @@ return new class extends Migration
 
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('video_id');
+            $table->integer('count')->default(1);
 
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('video_id')->references('id')->on('videos');
