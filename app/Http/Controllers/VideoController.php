@@ -40,7 +40,16 @@ class VideoController extends Controller
             'userAuth' => $userAuth,
             'userLoggedName' => $userLoggedName,
             'categories' => $categories,
-            'userLoggedId' => $userLoggedId
+            'userLoggedId' => $userLoggedId,
+            'userAuthImg' => User::where('id', $userLoggedId)
+                ->get()
+                ->map(function ($user) {
+                    return [
+                        'id' => $user->id,
+                        'profile_image' => asset('storage/' . $user->profile_image),
+                        'image'         => $user->profile_image
+                    ];
+                }),
         ]);
     }
 
@@ -166,7 +175,16 @@ class VideoController extends Controller
                     'name' => $user->name,
                     'profile_image' => asset('storage/' . $user->profile_image),
                 ];
-            })
+            }),
+            'userAuthImg' => User::where('id', $userLoggedId)
+                ->get()
+                ->map(function ($user) {
+                    return [
+                        'id' => $user->id,
+                        'profile_image' => asset('storage/' . $user->profile_image),
+                        'image'         => $user->profile_image
+                    ];
+                }),
         ]);
     }
 
@@ -200,7 +218,16 @@ class VideoController extends Controller
             'userLoggedName' => $userLoggedName,
             'userLoggedId' => $userLoggedId,
             'categories' => $categories,
-            'video'      => $video
+            'video'      => $video,
+            'userAuthImg' => User::where('id', $userLoggedId)
+                ->get()
+                ->map(function ($user) {
+                    return [
+                        'id' => $user->id,
+                        'profile_image' => asset('storage/' . $user->profile_image),
+                        'image'         => $user->profile_image
+                    ];
+                }),
         ]);
     }
 

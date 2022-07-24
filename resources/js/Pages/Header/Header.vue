@@ -26,9 +26,18 @@
                     <Link :href="route('register')">Register</Link>
                 </div>
                 <div v-else>
-                    <img 
-                        src="../../../img/profile.png" alt="Profile"
+                    <img
+                        v-if="userAuthImg[0].image == null" 
+                        src="../../../img/profile.png" 
                         @click="showOptions = !showOptions"
+                        alt="Profile"
+                    >
+                    <img 
+                        v-else
+                        :src="userAuthImg[0].profile_image" 
+                        @click="showOptions = !showOptions"
+                        alt="Profile"
+                        class="w-[50px] h-[50px] rounded-full"
                     >
                     <div class="flex justify-center">
                         <UserOptions 
@@ -59,6 +68,7 @@ export default {
         userAuth: Boolean,
         userLoggedName: String,
         userLoggedId: Number,
+        userAuthImg: Array,
     },
     data() {
         return {

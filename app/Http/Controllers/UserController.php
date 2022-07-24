@@ -95,7 +95,16 @@ class UserController extends Controller
                         'profile_image' => asset('storage/' . $user->profile_image),
                         'bg_image'      => asset('storage/' . $user->bg_image),
                     ];
-                })
+                }),
+            'userAuthImg' => User::where('id', $userLoggedId)
+                ->get()
+                ->map(function ($user) {
+                    return [
+                        'id' => $user->id,
+                        'profile_image' => asset('storage/' . $user->profile_image),
+                        'image'         => $user->profile_image
+                    ];
+                }),
         ]);
     }
 
@@ -172,6 +181,15 @@ class UserController extends Controller
             'userAuth'       => $userAuth,
             'userLoggedId'   => $userLoggedId,
             'userLoggedName' => $userLoggedName,
+            'userAuthImg' => User::where('id', $userLoggedId)
+                ->get()
+                ->map(function ($user) {
+                    return [
+                        'id' => $user->id,
+                        'profile_image' => asset('storage/' . $user->profile_image),
+                        'image'         => $user->profile_image
+                    ];
+                }),
         ]);
     }
 

@@ -63,7 +63,16 @@ class PageController extends Controller
                         'name' => $user->name,
                         'profile_image' => asset('storage/' . $user->profile_image),
                     ];
-                })
+                }),
+            'userAuthImg' => User::where('id', $userLoggedId)
+                ->get()
+                ->map(function ($user) {
+                    return [
+                        'id' => $user->id,
+                        'profile_image' => asset('storage/' . $user->profile_image),
+                        'image'         => $user->profile_image
+                    ];
+                }),
         ]);
     }
 
@@ -119,7 +128,16 @@ class PageController extends Controller
                         'name' => $user->name,
                         'profile_image' => asset('storage/' . $user->profile_image),
                     ];
-                })
+                }),
+            'userAuthImg' => User::where('id', $userLoggedId)
+                ->get()
+                ->map(function ($user) {
+                    return [
+                        'id' => $user->id,
+                        'profile_image' => asset('storage/' . $user->profile_image),
+                        'image'         => $user->profile_image
+                    ];
+                }),
         ]);
     }
 
@@ -175,7 +193,16 @@ class PageController extends Controller
                         'name' => $user->name,
                         'profile_image' => asset('storage/' . $user->profile_image),
                     ];
-                })
+                }),
+            'userAuthImg' => User::where('id', $userLoggedId)
+                ->get()
+                ->map(function ($user) {
+                    return [
+                        'id' => $user->id,
+                        'profile_image' => asset('storage/' . $user->profile_image),
+                        'image'         => $user->profile_image
+                    ];
+                }),
         ]);
     }
 
@@ -232,7 +259,16 @@ class PageController extends Controller
                         'name' => $user->name,
                         'profile_image' => asset('storage/' . $user->profile_image),
                     ];
-                })
+                }),
+            'userAuthImg' => User::where('id', $userLoggedId)
+                ->get()
+                ->map(function ($user) {
+                    return [
+                        'id' => $user->id,
+                        'profile_image' => asset('storage/' . $user->profile_image),
+                        'image'         => $user->profile_image
+                    ];
+                }),
         ]);
     }
 
@@ -288,7 +324,16 @@ class PageController extends Controller
                         'name' => $user->name,
                         'profile_image' => asset('storage/' . $user->profile_image),
                     ];
-                })
+                }),
+            'userAuthImg' => User::where('id', $userLoggedId)
+                ->get()
+                ->map(function ($user) {
+                    return [
+                        'id' => $user->id,
+                        'profile_image' => asset('storage/' . $user->profile_image),
+                        'image'         => $user->profile_image
+                    ];
+                }),
         ]);
     }
 
@@ -344,7 +389,16 @@ class PageController extends Controller
                         'name' => $user->name,
                         'profile_image' => asset('storage/' . $user->profile_image),
                     ];
-                })
+                }),
+            'userAuthImg' => User::where('id', $userLoggedId)
+                ->get()
+                ->map(function ($user) {
+                    return [
+                        'id' => $user->id,
+                        'profile_image' => asset('storage/' . $user->profile_image),
+                        'image'         => $user->profile_image
+                    ];
+                }),
         ]);
     }
 
@@ -407,6 +461,15 @@ class PageController extends Controller
                         'views'       => $video->views,
                     ];
                 }),
+            'userAuthImg' => User::where('id', $userLoggedId)
+                ->get()
+                ->map(function ($user) {
+                    return [
+                        'id' => $user->id,
+                        'profile_image' => asset('storage/' . $user->profile_image),
+                        'image'         => $user->profile_image
+                    ];
+                }),
         ]);
     }
 
@@ -449,7 +512,16 @@ class PageController extends Controller
                         'profile_imageAsset' => asset('storage/' . $user->profile_image),
                         'profile_image' => $user->profile_image,
                     ];
-                })
+                }),
+            'userAuthImg' => User::where('id', $userLoggedId)
+                ->get()
+                ->map(function ($user) {
+                    return [
+                        'id' => $user->id,
+                        'profile_image' => asset('storage/' . $user->profile_image),
+                        'image'         => $user->profile_image
+                    ];
+                }),
         ]);
     }
 

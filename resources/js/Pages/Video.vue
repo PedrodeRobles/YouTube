@@ -5,6 +5,7 @@
             :userAuth="userAuth"
             :userLoggedName="userLoggedName"
             :userLoggedId="userLoggedId"
+            :userAuthImg="userAuthImg"
         >
         </Header>
 
@@ -322,6 +323,7 @@ export default {
         comments: Array,
         users: Array,
         userLoggedImg: String,
+        userAuthImg: Array
     },
     data() {
         return {

@@ -5,6 +5,7 @@
             :userAuth="userAuth"
             :userLoggedName="userLoggedName"
             :userLoggedId="userLoggedId"
+            :userAuthImg="userAuthImg"
         >
         </Header>
 
@@ -89,6 +90,7 @@ const props = defineProps({
     userLoggedName: String,
     video: Object,
     userLoggedId: Number,
+    userAuthImg: Array
 });
 
 const form = useForm({

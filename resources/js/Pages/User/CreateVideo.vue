@@ -5,6 +5,7 @@
             :userAuth="userAuth"
             :userLoggedName="userLoggedName"
             :userLoggedId="userLoggedId"
+            :userAuthImg="userAuthImg"
         >
         </Header>
 
@@ -90,7 +91,8 @@ export default {
         categories: Array,
         userAuth: Boolean,
         userLoggedName: String,
-        userLoggedId: Number
+        userLoggedId: Number,
+        userAuthImg: Array
     },
     methods: {
         submit() {

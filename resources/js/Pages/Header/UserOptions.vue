@@ -7,11 +7,6 @@
                 </Link>
             </div>
             <div>
-                <Link :href="route('dashboard')">
-                    Dashboard
-                </Link>
-            </div>
-            <div>
                 <Link :href="route('editProfile', userLoggedId)">
                     Edit profile
                 </Link>

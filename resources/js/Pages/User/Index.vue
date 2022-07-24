@@ -5,6 +5,7 @@
             :userAuth="userAuth"
             :userLoggedName="userLoggedName"
             :userLoggedId="userLoggedId"
+            :userAuthImg="userAuthImg"
         >
         </Header>
 
@@ -103,6 +104,7 @@ export default {
         users: Array,
         userImage: String,
         userBackgroundImage: String,
+        userAuthImg: Array
     },
     data() {
         return {

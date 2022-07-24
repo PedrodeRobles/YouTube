@@ -3,6 +3,7 @@
         :userAuth="userAuth"
         :userLoggedName="userLoggedName"
         :userLoggedId="userLoggedId"
+        :userAuthImg="userAuthImg"
     >
     </Header>
 
@@ -79,6 +80,7 @@ const props = defineProps({
     userAuth: Boolean,
     userLoggedName: String,
     userLoggedId: Number,
+    userAuthImg: Array
 });
 
 const form = useForm({

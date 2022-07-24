@@ -5,6 +5,7 @@
             :userAuth="userAuth"
             :userLoggedName="userLoggedName"
             :userLoggedId="userLoggedId"
+            :userAuthImg="userAuthImg"
         >
         </Header>
 
@@ -60,6 +61,7 @@
                 </div>
             </div>
         </section>
+
     </div>
 </template>
 
@@ -78,6 +80,7 @@ export default {
         userLoggedId: Number,
         subscriptions: Array,
         users: Array,
+        userAuthImg: Array
     },
     methods: {
         querySon(value) {

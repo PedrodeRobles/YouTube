@@ -23581,7 +23581,8 @@ __webpack_require__.r(__webpack_exports__);
   props: {
     userAuth: Boolean,
     userLoggedName: String,
-    userLoggedId: Number
+    userLoggedId: Number,
+    userAuthImg: Array
   },
   data: function data() {
     return {
@@ -23661,7 +23662,8 @@ __webpack_require__.r(__webpack_exports__);
     userAuth: Boolean,
     userLoggedName: String,
     userLoggedId: Number,
-    users: Array
+    users: Array,
+    userAuthImg: Array
   },
   methods: {
     querySon: function querySon(value) {
@@ -24379,7 +24381,8 @@ __webpack_require__.r(__webpack_exports__);
     userAuth: Boolean,
     userLoggedName: String,
     userLoggedId: Number,
-    users: Array
+    users: Array,
+    userAuthImg: Array
   },
   methods: {
     querySon: function querySon(value) {
@@ -24431,7 +24434,8 @@ __webpack_require__.r(__webpack_exports__);
     userAuth: Boolean,
     userLoggedName: String,
     userLoggedId: Number,
-    users: Array
+    users: Array,
+    userAuthImg: Array
   },
   methods: {
     querySon: function querySon(value) {
@@ -24476,7 +24480,8 @@ __webpack_require__.r(__webpack_exports__);
     videos: Array,
     userAuth: Boolean,
     userLoggedName: String,
-    userLoggedId: Number
+    userLoggedId: Number,
+    userAuthImg: Array
   },
   methods: {
     querySon: function querySon(value) {
@@ -24528,7 +24533,8 @@ __webpack_require__.r(__webpack_exports__);
     userAuth: Boolean,
     userLoggedName: String,
     userLoggedId: Number,
-    users: Array
+    users: Array,
+    userAuthImg: Array
   },
   methods: {
     querySon: function querySon(value) {
@@ -24580,7 +24586,8 @@ __webpack_require__.r(__webpack_exports__);
     userAuth: Boolean,
     userLoggedName: String,
     userLoggedId: Number,
-    users: Array
+    users: Array,
+    userAuthImg: Array
   },
   methods: {
     querySon: function querySon(value) {
@@ -24632,7 +24639,8 @@ __webpack_require__.r(__webpack_exports__);
     userAuth: Boolean,
     userLoggedName: String,
     userLoggedId: Number,
-    users: Array
+    users: Array,
+    userAuthImg: Array
   },
   methods: {
     querySon: function querySon(value) {
@@ -24677,7 +24685,8 @@ __webpack_require__.r(__webpack_exports__);
     userLoggedName: String,
     userLoggedId: Number,
     subscriptions: Array,
-    users: Array
+    users: Array,
+    userAuthImg: Array
   },
   methods: {
     querySon: function querySon(value) {
@@ -24766,7 +24775,8 @@ __webpack_require__.r(__webpack_exports__);
     categories: Array,
     userAuth: Boolean,
     userLoggedName: String,
-    userLoggedId: Number
+    userLoggedId: Number,
+    userAuthImg: Array
   },
   methods: {
     submit: function submit() {
@@ -24810,7 +24820,8 @@ __webpack_require__.r(__webpack_exports__);
     userAuth: Boolean,
     userLoggedName: String,
     video: Object,
-    userLoggedId: Number
+    userLoggedId: Number,
+    userAuthImg: Array
   },
   setup: function setup(__props, _ref) {
     var expose = _ref.expose;
@@ -24918,7 +24929,8 @@ __webpack_require__.r(__webpack_exports__);
     user: Object,
     userAuth: Boolean,
     userLoggedName: String,
-    userLoggedId: Number
+    userLoggedId: Number,
+    userAuthImg: Array
   },
   setup: function setup(__props, _ref) {
     var expose = _ref.expose;
@@ -25014,7 +25026,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     userAuth: Boolean,
     userLoggedName: String,
     subscribed: Object
-  }, _defineProperty(_props, "userLoggedId", Number), _defineProperty(_props, "userId", Number), _defineProperty(_props, "users", Array), _defineProperty(_props, "userImage", String), _defineProperty(_props, "userBackgroundImage", String), _props),
+  }, _defineProperty(_props, "userLoggedId", Number), _defineProperty(_props, "userId", Number), _defineProperty(_props, "users", Array), _defineProperty(_props, "userImage", String), _defineProperty(_props, "userBackgroundImage", String), _defineProperty(_props, "userAuthImg", Array), _props),
   data: function data() {
     return {
       q: null
@@ -25126,7 +25138,8 @@ __webpack_require__.r(__webpack_exports__);
     disliked: Object,
     comments: Array,
     users: Array,
-    userLoggedImg: String
+    userLoggedImg: String,
+    userAuthImg: Array
   },
   data: function data() {
     return {
@@ -28363,7 +28376,8 @@ var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNo
 var _hoisted_14 = {
   key: 1
 };
-var _hoisted_15 = {
+var _hoisted_15 = ["src"];
+var _hoisted_16 = {
   "class": "flex justify-center"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -28427,13 +28441,24 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   }, 8
   /* PROPS */
-  , ["href"])])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+  , ["href"])])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_14, [$props.userAuthImg[0].image == null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("img", {
+    key: 0,
     src: _img_profile_png__WEBPACK_IMPORTED_MODULE_4__["default"],
-    alt: "Profile",
     onClick: _cache[3] || (_cache[3] = function ($event) {
       return $data.showOptions = !$data.showOptions;
-    })
-  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_UserOptions, {
+    }),
+    alt: "Profile"
+  })) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("img", {
+    key: 1,
+    src: $props.userAuthImg[0].profile_image,
+    onClick: _cache[4] || (_cache[4] = function ($event) {
+      return $data.showOptions = !$data.showOptions;
+    }),
+    alt: "Profile",
+    "class": "w-[50px] h-[50px] rounded-full"
+  }, null, 8
+  /* PROPS */
+  , _hoisted_15)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_UserOptions, {
     userLoggedName: $props.userLoggedName,
     userLoggedId: $props.userLoggedId
   }, null, 8
@@ -28491,17 +28516,15 @@ var _hoisted_2 = {
 
 var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" My Channel ");
 
-var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Dashboard ");
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Edit profile ");
 
-var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Edit profile ");
-
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
   "class": "text-red-500"
 }, " Log Out ", -1
 /* HOISTED */
 );
 
-var _hoisted_7 = [_hoisted_6];
+var _hoisted_6 = [_hoisted_5];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Link");
 
@@ -28517,21 +28540,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, 8
   /* PROPS */
   , ["href"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
-    href: _ctx.route('dashboard')
-  }, {
-    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_4];
-    }),
-    _: 1
-    /* STABLE */
-
-  }, 8
-  /* PROPS */
-  , ["href"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
     href: _ctx.route('editProfile', $props.userLoggedId)
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_5];
+      return [_hoisted_4];
     }),
     _: 1
     /* STABLE */
@@ -28542,7 +28554,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onSubmit: _cache[0] || (_cache[0] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
       return $options.logout && $options.logout.apply($options, arguments);
     }, ["prevent"]))
-  }, _hoisted_7, 32
+  }, _hoisted_6, 32
   /* HYDRATE_EVENTS */
   )])]);
 }
@@ -28720,10 +28732,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onGetQuery: $options.querySon,
     userAuth: $props.userAuth,
     userLoggedName: $props.userLoggedName,
-    userLoggedId: $props.userLoggedId
+    userLoggedId: $props.userLoggedId,
+    userAuthImg: $props.userAuthImg
   }, null, 8
   /* PROPS */
-  , ["onGetQuery", "userAuth", "userLoggedName", "userLoggedId"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("nav", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [_hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
+  , ["onGetQuery", "userAuth", "userLoggedName", "userLoggedId", "userAuthImg"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("nav", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [_hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
     href: _ctx.route('liked')
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -30179,10 +30192,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onGetQuery: $options.querySon,
     userAuth: $props.userAuth,
     userLoggedName: $props.userLoggedName,
-    userLoggedId: $props.userLoggedId
+    userLoggedId: $props.userLoggedId,
+    userAuthImg: $props.userAuthImg
   }, null, 8
   /* PROPS */
-  , ["onGetQuery", "userAuth", "userLoggedName", "userLoggedId"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("nav", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
+  , ["onGetQuery", "userAuth", "userLoggedName", "userLoggedId", "userAuthImg"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("nav", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
     href: _ctx.route('home')
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -30518,10 +30532,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onGetQuery: $options.querySon,
     userAuth: $props.userAuth,
     userLoggedName: $props.userLoggedName,
-    userLoggedId: $props.userLoggedId
+    userLoggedId: $props.userLoggedId,
+    userAuthImg: $props.userAuthImg
   }, null, 8
   /* PROPS */
-  , ["onGetQuery", "userAuth", "userLoggedName", "userLoggedId"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("nav", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
+  , ["onGetQuery", "userAuth", "userLoggedName", "userLoggedId", "userAuthImg"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("nav", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
     href: _ctx.route('home')
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -30785,10 +30800,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onGetQuery: $options.querySon,
     userAuth: $props.userAuth,
     userLoggedName: $props.userLoggedName,
-    userLoggedId: $props.userLoggedId
+    userLoggedId: $props.userLoggedId,
+    userAuthImg: $props.userAuthImg
   }, null, 8
   /* PROPS */
-  , ["onGetQuery", "userAuth", "userLoggedName", "userLoggedId"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("nav", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
+  , ["onGetQuery", "userAuth", "userLoggedName", "userLoggedId", "userAuthImg"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("nav", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
     href: _ctx.route('home')
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -31026,10 +31042,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onGetQuery: $options.querySon,
     userAuth: $props.userAuth,
     userLoggedName: $props.userLoggedName,
-    userLoggedId: $props.userLoggedId
+    userLoggedId: $props.userLoggedId,
+    userAuthImg: $props.userAuthImg
   }, null, 8
   /* PROPS */
-  , ["onGetQuery", "userAuth", "userLoggedName", "userLoggedId"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("nav", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
+  , ["onGetQuery", "userAuth", "userLoggedName", "userLoggedId", "userAuthImg"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("nav", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
     href: _ctx.route('home')
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -31365,10 +31382,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onGetQuery: $options.querySon,
     userAuth: $props.userAuth,
     userLoggedName: $props.userLoggedName,
-    userLoggedId: $props.userLoggedId
+    userLoggedId: $props.userLoggedId,
+    userAuthImg: $props.userAuthImg
   }, null, 8
   /* PROPS */
-  , ["onGetQuery", "userAuth", "userLoggedName", "userLoggedId"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("nav", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
+  , ["onGetQuery", "userAuth", "userLoggedName", "userLoggedId", "userAuthImg"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("nav", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
     href: _ctx.route('home')
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -31704,10 +31722,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onGetQuery: $options.querySon,
     userAuth: $props.userAuth,
     userLoggedName: $props.userLoggedName,
-    userLoggedId: $props.userLoggedId
+    userLoggedId: $props.userLoggedId,
+    userAuthImg: $props.userAuthImg
   }, null, 8
   /* PROPS */
-  , ["onGetQuery", "userAuth", "userLoggedName", "userLoggedId"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("nav", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
+  , ["onGetQuery", "userAuth", "userLoggedName", "userLoggedId", "userAuthImg"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("nav", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
     href: _ctx.route('home')
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -31975,10 +31994,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onGetQuery: $options.querySon,
     userAuth: $props.userAuth,
     userLoggedName: $props.userLoggedName,
-    userLoggedId: $props.userLoggedId
+    userLoggedId: $props.userLoggedId,
+    userAuthImg: $props.userAuthImg
   }, null, 8
   /* PROPS */
-  , ["onGetQuery", "userAuth", "userLoggedName", "userLoggedId"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("nav", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
+  , ["onGetQuery", "userAuth", "userLoggedName", "userLoggedId", "userAuthImg"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("nav", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
     href: _ctx.route('home')
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -32169,10 +32189,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onGetQuery: _ctx.querySon,
     userAuth: $props.userAuth,
     userLoggedName: $props.userLoggedName,
-    userLoggedId: $props.userLoggedId
+    userLoggedId: $props.userLoggedId,
+    userAuthImg: $props.userAuthImg
   }, null, 8
   /* PROPS */
-  , ["onGetQuery", "userAuth", "userLoggedName", "userLoggedId"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
+  , ["onGetQuery", "userAuth", "userLoggedName", "userLoggedId", "userAuthImg"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
     onSubmit: _cache[3] || (_cache[3] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
       return $options.submit && $options.submit.apply($options, arguments);
     }, ["prevent"])),
@@ -32301,10 +32322,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onGetQuery: _ctx.querySon,
     userAuth: $props.userAuth,
     userLoggedName: $props.userLoggedName,
-    userLoggedId: $props.userLoggedId
+    userLoggedId: $props.userLoggedId,
+    userAuthImg: $props.userAuthImg
   }, null, 8
   /* PROPS */
-  , ["onGetQuery", "userAuth", "userLoggedName", "userLoggedId"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
+  , ["onGetQuery", "userAuth", "userLoggedName", "userLoggedId", "userAuthImg"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
     onSubmit: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)($setup.updateVideo, ["prevent"]),
     "class": "space-y-3"
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
@@ -32436,10 +32458,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Header"], {
     userAuth: $props.userAuth,
     userLoggedName: $props.userLoggedName,
-    userLoggedId: $props.userLoggedId
+    userLoggedId: $props.userLoggedId,
+    userAuthImg: $props.userAuthImg
   }, null, 8
   /* PROPS */
-  , ["userAuth", "userLoggedName", "userLoggedId"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
+  , ["userAuth", "userLoggedName", "userLoggedId", "userAuthImg"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
     onSubmit: _cache[1] || (_cache[1] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
       return $setup.editProfileImg($setup.props.user.id);
     }, ["prevent"])),
@@ -32565,10 +32588,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onGetQuery: $options.querySon,
     userAuth: $props.userAuth,
     userLoggedName: $props.userLoggedName,
-    userLoggedId: $props.userLoggedId
+    userLoggedId: $props.userLoggedId,
+    userAuthImg: $props.userAuthImg
   }, null, 8
   /* PROPS */
-  , ["onGetQuery", "userAuth", "userLoggedName", "userLoggedId"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_InfoProfile, {
+  , ["onGetQuery", "userAuth", "userLoggedName", "userLoggedId", "userAuthImg"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_InfoProfile, {
     user: $props.userName,
     subscribers: $props.subscribers,
     userLoggedId: $props.userLoggedId,
@@ -33206,10 +33230,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onGetQuery: $options.querySon,
     userAuth: $props.userAuth,
     userLoggedName: $props.userLoggedName,
-    userLoggedId: $props.userLoggedId
+    userLoggedId: $props.userLoggedId,
+    userAuthImg: $props.userAuthImg
   }, null, 8
   /* PROPS */
-  , ["onGetQuery", "userAuth", "userLoggedName", "userLoggedId"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("iframe", {
+  , ["onGetQuery", "userAuth", "userLoggedName", "userLoggedId", "userAuthImg"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("iframe", {
     src: $props.iframe,
     frameborder: "0",
     "class": "w-full h-56 sm:h-96 lg:h-[22rem] xl:h-[35rem] 2xl:h-[40rem]"
