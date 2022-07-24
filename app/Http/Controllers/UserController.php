@@ -151,6 +151,11 @@ class UserController extends Controller
 
     public function editProfile(User $user)
     {
+        /*Verify user*/
+        if ($user->id != auth()->user()->id) {
+            abort(403);
+        }
+
         /*Show user´s img or show Log in and Register*/ 
         $userAuth = false;
 

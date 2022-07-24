@@ -190,6 +190,11 @@ class VideoController extends Controller
 
     public function edit(Video $video)
     {
+        /*Verify user*/
+        if ($video->user_id != auth()->user()->id) {
+            abort(403);
+        }
+
         /*Validate that the user is the same as the user_id of the video*/
         if( auth()->user()->id != $video->user_id )
         {
