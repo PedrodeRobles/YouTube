@@ -7,7 +7,7 @@
             :userLoggedId="userLoggedId"
         >
         </Header>
-    
+
         <nav class="invisible w-0 h-0 md:visible md:w-16 md:h-screen bg-slate-800 md:mt-14 md:fixed text-white">
             <div class="flex justify-center md:mt-4">
                 <div class="space-y-6">
@@ -21,7 +21,7 @@
                     </div>
                     <div>
                         <Link :href="route('liked')">
-                            <img src="../../../img/clickLike.png" alt="Liked" class="md:ml-2">
+                            <img src="../../../img/like.png" alt="Liked" class="md:ml-2">
                             <p class="text-sm md:ml-1">
                                 Liked
                             </p>
@@ -29,7 +29,7 @@
                     </div>
                     <div>
                         <Link :href="route('subscriptions')">
-                            <img src="../../../img/subscriptions.png" alt="subscriptions" class="md:ml-2 md:h-[24px] md:w-[24px]">
+                            <img src="../../../img/clickSubs.png" alt="subscriptions" class="md:ml-2 md:h-[24px] md:w-[24px]">
                             <p class="text-sm md:ml-1">
                                 Subs.
                             </p>
@@ -38,28 +38,28 @@
                 </div>
             </div>
         </nav>
-
-        <div class="text-white pt-20 flex justify-center">
-            <div>
-                <div>
-                    <h1 class="text-xl">Liked Videos</h1>
-                </div>
-            
-                <div class="pb-[200rem] pt-4">
-                    <div v-for="like in liked" :key="like.id">
-                        <Link :href="route('videos.show', like.video.id)">
-                            <div class="border border-slate-500 p-2 hover:bg-slate-800">
-                                <h3>
-                                    {{ like.video.title }}
-                                </h3>
+    
+        <section class="pt-20 pb-[50rem] text-white">
+            <h1 class="text-xl text-center mb-4">Subscriptions</h1>
+            <div v-for="subscription in subscriptions" :key="subscription.id">
+                <div v-for="user in users" :key="user.id">
+                    <div v-show="subscription.otherUser == user.id" class="flex justify-center">
+                        <Link :href="route('userVideos', user.name)">
+                            <div class="border border-slate-600 flex w-72 p-2 items-center space-x-2 hover:bg-slate-400 hover:text-black">
+                                <img v-if="user.profile_image == null" src="../../../img/profile.png" alt="Profile Image Default">
+                                <img
+                                    v-else
+                                    class="h-[50px] w-[50px] rounded-full"
+                                    :src="user.profile_imageAsset" 
+                                    alt="Profile Image"
+                                >
+                                <p>{{ user.name }}</p>
                             </div>
                         </Link>
                     </div>
                 </div>
-
             </div>
-        </div>
-
+        </section>
     </div>
 </template>
 
@@ -73,11 +73,11 @@ export default {
         Link,
     },
     props: {
-        liked: Array,
-        videos: Array,
         userAuth: Boolean,
         userLoggedName: String,
         userLoggedId: Number,
+        subscriptions: Array,
+        users: Array,
     },
     methods: {
         querySon(value) {

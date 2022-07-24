@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Likes;
+use App\Models\Subscriber;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -349,7 +350,6 @@ class PageController extends Controller
 
     public function liked()
     {
-        
         /*Show user´s img or show Log in and Register*/ 
         $userAuth = false;
 
@@ -393,6 +393,50 @@ class PageController extends Controller
             'userLoggedId'   => $userLoggedId,
             'liked' => $liked->load('video'),
             'videos' => $videos,
+        ]);
+    }
+
+    public function subscriptions()
+    {
+        /*Show user´s img or show Log in and Register*/ 
+        $userAuth = false;
+
+        if ( Auth::check() ) {
+            $userAuth = true;
+        } else {
+            $userAuth = false;
+        }
+        /*-----*/
+
+        /*Logged user verification*/
+        $userLoggedName = null;
+        
+        if(Auth::check()) {
+            $userLoggedName= auth()->user()->name;
+            $userLoggedId= auth()->user()->id;
+        } else {
+            $userLoggedName = null;
+            $userLoggedId = null;
+        }
+        /*-----*/
+
+        $subscriptions = Subscriber::where('user_id', $userLoggedId)->get();
+        
+
+        return Inertia::render('Section/Subscriptions', [
+            'userAuth'       => $userAuth,
+            'userLoggedName' => $userLoggedName,
+            'userLoggedId'   => $userLoggedId,
+            'subscriptions'  => $subscriptions->load('user'),
+            'users' => User::all()
+                ->map(function ($user) {
+                    return [
+                        'id' => $user->id,
+                        'name' => $user->name,
+                        'profile_imageAsset' => asset('storage/' . $user->profile_image),
+                        'profile_image' => $user->profile_image,
+                    ];
+                })
         ]);
     }
 
