@@ -43,12 +43,12 @@
             <div class="flex justify-center">
                 <div class="pt-20 flex justify-between text-white sm:space-x-2 md:space-x-4">
                     <Link :href="route('home')">
-                        <button class="bg-white rounded-[15px] py-1 px-2 text-black">
+                        <button class="bg-slate-800 rounded-[15px] py-1 px-2">
                             All
                         </button>
                     </Link>
                     <Link :href="route('gaming')">
-                        <button class="bg-slate-800 rounded-[15px] py-1 px-2">
+                        <button class="bg-white rounded-[15px] py-1 px-2 text-black">
                             Gaming
                         </button>
                     </Link>

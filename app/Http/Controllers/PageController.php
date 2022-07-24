@@ -348,7 +348,7 @@ class PageController extends Controller
         ]);
     }
 
-    public function liked()
+    public function liked(Request $request)
     {
         /*Show user´s img or show Log in and Register*/ 
         $userAuth = false;
@@ -391,8 +391,22 @@ class PageController extends Controller
             'userAuth'       => $userAuth,
             'userLoggedName' => $userLoggedName,
             'userLoggedId'   => $userLoggedId,
-            'liked' => $liked->load('video'),
-            'videos' => $videos,
+            'liked'          => $liked->load('video'),
+            'videos'         => Video::where('title', 'LIKE', "%$request->q%")
+                ->get()
+                ->map(function($video) {
+                    return [
+                        'id'          => $video->id,
+                        'title'       => $video->title,
+                        'image'       => asset('storage/' . $video->image),
+                        'video'       => asset('storage/' . $video->video),
+                        'description' => $video->description,
+                        'category_id' => $video->category_id,
+                        'user_id'     => $video->user_id,
+                        'user'        => User::where('id', $video->user_id)->first(), //Get relation with user
+                        'views'       => $video->views,
+                    ];
+                }),
         ]);
     }
 
@@ -422,7 +436,6 @@ class PageController extends Controller
 
         $subscriptions = Subscriber::where('user_id', $userLoggedId)->get();
         
-
         return Inertia::render('Section/Subscriptions', [
             'userAuth'       => $userAuth,
             'userLoggedName' => $userLoggedName,

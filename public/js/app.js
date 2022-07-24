@@ -30091,13 +30091,13 @@ var _hoisted_13 = {
 };
 
 var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-  "class": "bg-white rounded-[15px] py-1 px-2 text-black"
+  "class": "bg-slate-800 rounded-[15px] py-1 px-2"
 }, " All ", -1
 /* HOISTED */
 );
 
 var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-  "class": "bg-slate-800 rounded-[15px] py-1 px-2"
+  "class": "bg-white rounded-[15px] py-1 px-2 text-black"
 }, " Gaming ", -1
 /* HOISTED */
 );
@@ -30430,7 +30430,7 @@ var _hoisted_13 = {
 };
 
 var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-  "class": "bg-white rounded-[15px] py-1 px-2 text-black"
+  "class": "bg-slate-800 rounded-[15px] py-1 px-2"
 }, " All ", -1
 /* HOISTED */
 );
@@ -30460,7 +30460,7 @@ var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 );
 
 var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-  "class": "bg-slate-800 rounded-[15px] py-1 px-2"
+  "class": "bg-white rounded-[15px] py-1 px-2 text-black"
 }, " Learning ", -1
 /* HOISTED */
 );
@@ -30772,6 +30772,10 @@ var _hoisted_13 = {
 var _hoisted_14 = {
   "class": "border border-slate-500 p-2 hover:bg-slate-800"
 };
+var _hoisted_15 = ["src"];
+var _hoisted_16 = {
+  "class": "w-72"
+};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Header = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Header");
 
@@ -30824,7 +30828,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       href: _ctx.route('videos.show', like.video.id)
     }, {
       "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-        return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(like.video.title), 1
+        return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div v-show=\"like.video_id == videos[like.video_id - 1].id\">\r\n                                    Culo\r\n                                </div> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+          "class": "h-48 w-full sm:h-40 sm:w-72",
+          src: $props.videos[like.video_id - 1].image,
+          alt: "Video image"
+        }, null, 8
+        /* PROPS */
+        , _hoisted_15), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, like.video_id == $props.videos[like.video_id - 1].id]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", _hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(like.video.title), 1
         /* TEXT */
         )])];
       }),
@@ -30928,7 +30938,7 @@ var _hoisted_13 = {
 };
 
 var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-  "class": "bg-white rounded-[15px] py-1 px-2 text-black"
+  "class": "bg-slate-800 rounded-[15px] py-1 px-2"
 }, " All ", -1
 /* HOISTED */
 );
@@ -30940,7 +30950,7 @@ var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 );
 
 var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-  "class": "bg-slate-800 rounded-[15px] py-1 px-2"
+  "class": "bg-white rounded-[15px] py-1 px-2 text-black"
 }, " Music ", -1
 /* HOISTED */
 );
@@ -31267,7 +31277,7 @@ var _hoisted_13 = {
 };
 
 var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-  "class": "bg-white rounded-[15px] py-1 px-2 text-black"
+  "class": "bg-slate-800 rounded-[15px] py-1 px-2"
 }, " All ", -1
 /* HOISTED */
 );
@@ -31285,7 +31295,7 @@ var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 );
 
 var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-  "class": "bg-slate-800 rounded-[15px] py-1 px-2"
+  "class": "bg-white rounded-[15px] py-1 px-2 text-black"
 }, " News ", -1
 /* HOISTED */
 );
@@ -31606,7 +31616,7 @@ var _hoisted_13 = {
 };
 
 var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-  "class": "bg-white rounded-[15px] py-1 px-2 text-black"
+  "class": "bg-slate-800 rounded-[15px] py-1 px-2"
 }, " All ", -1
 /* HOISTED */
 );
@@ -31630,7 +31640,7 @@ var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 );
 
 var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-  "class": "bg-slate-800 rounded-[15px] py-1 px-2"
+  "class": "bg-white rounded-[15px] py-1 px-2 text-black"
 }, " Sports ", -1
 /* HOISTED */
 );

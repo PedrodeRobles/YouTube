@@ -1772,11 +1772,11 @@ select {
 .pt-32 {
   padding-top: 8rem;
 }
-.pb-96 {
-  padding-bottom: 24rem;
-}
 .pb-\[50rem\] {
   padding-bottom: 50rem;
+}
+.pb-96 {
+  padding-bottom: 24rem;
 }
 .pl-2 {
   padding-left: 0.5rem;
@@ -2073,6 +2073,10 @@ select {
   --tw-bg-opacity: 1;
   background-color: rgb(30 41 59 / var(--tw-bg-opacity));
 }
+.hover\:bg-slate-400:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(148 163 184 / var(--tw-bg-opacity));
+}
 .hover\:bg-slate-700:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(51 65 85 / var(--tw-bg-opacity));
@@ -2088,22 +2092,6 @@ select {
 .hover\:bg-red-400:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(248 113 113 / var(--tw-bg-opacity));
-}
-.hover\:bg-white:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-.hover\:bg-slate-300:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(203 213 225 / var(--tw-bg-opacity));
-}
-.hover\:bg-slate-400:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(148 163 184 / var(--tw-bg-opacity));
-}
-.hover\:text-base:hover {
-  font-size: 1rem;
-  line-height: 1.5rem;
 }
 .hover\:text-gray-500:hover {
   --tw-text-opacity: 1;
@@ -2405,6 +2393,10 @@ select {
 
   .sm\:w-52 {
     width: 13rem;
+  }
+
+  .sm\:w-80 {
+    width: 20rem;
   }
 
   .sm\:max-w-md {
