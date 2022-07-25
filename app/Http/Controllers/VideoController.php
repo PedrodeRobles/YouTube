@@ -14,6 +14,8 @@ use App\Models\Likes;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
+use Illuminate\Support\Str;
 
 class VideoController extends Controller
 {
@@ -57,18 +59,30 @@ class VideoController extends Controller
     {
         $request->validate([
             'title'       => 'required',
-            'image'       => 'required|image|max:2048',
+            'image'       => 'required|image',
             'video'       => 'required|mimes:mp4|max:60000',
             'description' => 'max:200',
             'category_id' => 'required',
         ]);
 
-        $image = $request->file('image')->store('videos/images', 'public');
+        // $image = $request->file('image')->store('videos/images', 'public');
+
+        /*Change image dimension*/
+        $imageName = Str::random(10) . $request->file('image')->getClientOriginalName();
+        $route = storage_path() . '\app\public\videos\images/' . $imageName;
+
+        Image::make($request->file('image'))
+            ->resize(300, null, function ($constraint) {
+                $constraint->aspectRatio();
+            })
+            ->save($route);
+        /*-----*/
+
         $video = $request->file('video')->store('videos/iframe', 'public');
 
         Video::create([
             'title'       => $request->title,
-            'image'       => $image,
+            'image'       => 'videos/images/' . $imageName,
             'video'       => $video,
             'description' => $request->description,
             'category_id' => $request->category_id,
@@ -77,6 +91,7 @@ class VideoController extends Controller
             'dislikes'    => 0,
             'views'       => 0
         ]);
+
 
         $userLoggedName = auth()->user()->name;
 
@@ -151,7 +166,7 @@ class VideoController extends Controller
             'userId'         => $userId,
             'comments'       => $comments->load('user'),
             'videos'         => Video::orderByRaw("RAND()")
-                ->limit(10)
+                ->limit(14)
                 ->get()
                 ->map(function($video) {
                     return [
@@ -240,7 +255,7 @@ class VideoController extends Controller
     {
         $request->validate([
             'title'       => 'required',
-            'image'       => 'required|image|max:2048',
+            'image'       => 'required|image',
             'video'       => 'required|mimes:mp4|max:60000',
             'description' => 'max:200',
             'category_id' => 'required',
@@ -248,7 +263,18 @@ class VideoController extends Controller
 
         if ($request->file('image')) {
             Storage::delete('public/' . $video->image);
-            $image = $request->file('image')->store('videos/images', 'public');
+            // $image = $request->file('image')->store('videos/images', 'public');
+
+            /*Change image dimension*/
+            $imageName = Str::random(10) . $request->file('image')->getClientOriginalName();
+            $route = storage_path() . '\app\public\videos\images/' . $imageName;
+
+            Image::make($request->file('image'))
+                ->resize(300, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                })
+                ->save($route);
+            /*-----*/
         }
 
         if ($request->file('video')) {
@@ -258,7 +284,7 @@ class VideoController extends Controller
         
         $video->update([
             'title'       => $request->title,
-            'image'       => $image,
+            'image'       => 'videos/images/' . $imageName,
             'video'       => $newVideo,
             'description' => $request->description,
             'category_id' => $request->category_id,

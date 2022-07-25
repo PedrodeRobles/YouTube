@@ -10,6 +10,9 @@ use Inertia\Inertia;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
+use Intervention\Image\Facades\Image;
+
 
 class UserController extends Controller
 {
@@ -206,10 +209,23 @@ class UserController extends Controller
 
         if ($request->file('profile_image')) {
             Storage::delete('public/' . $user->profile_image);
-            $image = $request->file('profile_image')->store('user/profile', 'public');
+            // $image = $request->file('profile_image')->store('user/profile', 'public');
+
+            /*Change image dimension*/
+            $imageName = Str::random(10) . $request->file('profile_image')->getClientOriginalName();
+            $route = storage_path() . '\app\public\user/profile/' . $imageName;
+
+            Image::make($request->file('profile_image'))
+                ->resize(120, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                })
+                ->save($route);
+            /*-----*/
         }
 
-        $user->update(['profile_image' => $image]);
+        $user->update([
+            'profile_image' => 'user/profile/' . $imageName
+        ]);
 
         return redirect()->back();
     }
@@ -222,10 +238,23 @@ class UserController extends Controller
 
         if ($request->file('bg_image')) {
             Storage::delete('public/' . $user->bg_image);
-            $image = $request->file('bg_image')->store('user/background', 'public');
+            // $image = $request->file('bg_image')->store('user/background', 'public');
+
+            /*Change image dimension*/
+            $imageName = Str::random(10) . $request->file('bg_image')->getClientOriginalName();
+            $route = storage_path() . '\app\public\user/background/' . $imageName;
+
+            Image::make($request->file('bg_image'))
+                ->resize(300, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                })
+                ->save($route);
+            /*-----*/
         }
 
-        $user->update(['bg_image' => $image]);
+        $user->update([
+            'bg_image' => 'user/background/' . $imageName
+        ]);
 
         return redirect()->back();
     }
