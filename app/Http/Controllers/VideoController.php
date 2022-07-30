@@ -60,7 +60,8 @@ class VideoController extends Controller
         $request->validate([
             'title'       => 'required',
             'image'       => 'required|image',
-            'video'       => 'required|mimes:mp4|max:60000',
+            // 'video'       => 'required|mimes:mp4|max:60000',
+            'video'       => 'required|max:60000',
             'description' => 'max:200',
             'category_id' => 'required',
         ]);
@@ -256,7 +257,8 @@ class VideoController extends Controller
         $request->validate([
             'title'       => 'required',
             'image'       => 'required|image',
-            'video'       => 'required|mimes:mp4|max:60000',
+            // 'video'       => 'required|mimes:mp4|max:60000',
+            'video'       => 'required|max:60000',
             'description' => 'max:200',
             'category_id' => 'required',
         ]);
