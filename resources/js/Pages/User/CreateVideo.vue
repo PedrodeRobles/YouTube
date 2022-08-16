@@ -33,11 +33,11 @@
                             >
                         </div>
                         <div>
-                            <p>Video (.mp4) / Max 60.000 KB</p>
+                            <p>Video / Max 60.000 KB</p>
                             <input 
                                 type="file"
                                 ref="video"
-                                accept="video/mp4"
+                                accept="video/*"
                             >
                         </div>
                         <div>

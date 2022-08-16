@@ -32226,14 +32226,14 @@ var _hoisted_7 = {
   accept: "image/*"
 };
 
-var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Video (.mp4) / Max 60.000 KB", -1
+var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Video / Max 60.000 KB", -1
 /* HOISTED */
 );
 
 var _hoisted_9 = {
   type: "file",
   ref: "video",
-  accept: "video/mp4"
+  accept: "video/*"
 };
 
 var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Description (optional)", -1
@@ -32424,7 +32424,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onInput: _cache[2] || (_cache[2] = function ($event) {
       return $setup.form.video = $event.target.files[0];
     }),
-    accept: "video/mp4"
+    accept: "video/*"
   }, null, 544
   /* HYDRATE_EVENTS, NEED_PATCH */
   )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("textarea", {

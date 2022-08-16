@@ -41,7 +41,7 @@
                                 type="file"
                                 ref="video"
                                 @input="form.video = $event.target.files[0]"
-                                accept="video/mp4"
+                                accept="video/*"
                             >
                         </div>
                         <div>
