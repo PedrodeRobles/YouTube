@@ -3,10 +3,12 @@
         <nav class="md:invisible md:w-0 md:h-0 visible w-screen h-16 bg-slate-800 fixed text-white">
             <div class="flex justify-around items-center">
                 <div>
-                    <img src="../../../img/home.png" alt="Home" class="w-8 md:w-0">
-                    <p class="text-sm">
-                        Home
-                    </p>
+                    <Link :href="route('home')">
+                        <img src="../../../img/home.png" alt="Home" class="w-8 md:w-0">
+                        <p class="text-sm">
+                            Home
+                        </p>
+                    </Link>
                 </div>
                 <div>
                     <Link :href="route('liked')">
