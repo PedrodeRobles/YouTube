@@ -28444,7 +28444,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: _cache[3] || (_cache[3] = function ($event) {
       return $data.showOptions = !$data.showOptions;
     }),
-    alt: "Profile"
+    alt: "Profile",
+    "class": "cursor-pointer"
   })) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("img", {
     key: 1,
     src: $props.userAuthImg[0].profile_image,
@@ -28452,7 +28453,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $data.showOptions = !$data.showOptions;
     }),
     alt: "Profile",
-    "class": "w-[50px] h-[50px] rounded-full"
+    "class": "w-[50px] h-[50px] rounded-full cursor-pointer"
   }, null, 8
   /* PROPS */
   , _hoisted_15)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_UserOptions, {

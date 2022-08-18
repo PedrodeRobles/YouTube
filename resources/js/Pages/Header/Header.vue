@@ -31,13 +31,14 @@
                         src="../../../img/profile.png" 
                         @click="showOptions = !showOptions"
                         alt="Profile"
+                        class="cursor-pointer"
                     >
                     <img 
                         v-else
                         :src="userAuthImg[0].profile_image" 
                         @click="showOptions = !showOptions"
                         alt="Profile"
-                        class="w-[50px] h-[50px] rounded-full"
+                        class="w-[50px] h-[50px] rounded-full cursor-pointer"
                     >
                     <div class="flex justify-center">
                         <UserOptions 
