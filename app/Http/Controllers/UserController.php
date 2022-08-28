@@ -212,20 +212,23 @@ class UserController extends Controller
             // $image = $request->file('profile_image')->store('user/profile', 'public');
 
             /*Change image dimension*/
-            $imageName = Str::random(10) . $request->file('profile_image')->getClientOriginalName();
-            $route = storage_path() . '\app\public\user/profile/' . $imageName;
-
-            Image::make($request->file('profile_image'))
-                ->resize(120, null, function ($constraint) {
+            $path= $request->file('profile_image');
+             // Resize and encode to required type
+            $img = Image::make($path)->resize(120, null, function ($constraint) {
                     $constraint->aspectRatio();
-                })
-                ->save($route);
+                })->encode();
+             //Provide the file name with extension 
+            $filename = time(). '.' .$path->getClientOriginalExtension();
+            //Put file with own name
+            Storage::put($filename, $img);
+            //Move file to your location 
+            Storage::move($filename, 'public/user/profile/' . $filename);
+            //now insert into database 
+            $user->update([
+                'profile_image' => 'user/profile/' . $filename
+            ]);
             /*-----*/
         }
-
-        $user->update([
-            'profile_image' => 'user/profile/' . $imageName
-        ]);
 
         return redirect()->back();
     }
@@ -241,20 +244,23 @@ class UserController extends Controller
             // $image = $request->file('bg_image')->store('user/background', 'public');
 
             /*Change image dimension*/
-            $imageName = Str::random(10) . $request->file('bg_image')->getClientOriginalName();
-            $route = storage_path() . '\app\public\user/background/' . $imageName;
-
-            Image::make($request->file('bg_image'))
-                ->resize(300, null, function ($constraint) {
+            $path= $request->file('bg_image');
+             // Resize and encode to required type
+            $img = Image::make($path)->resize(300, null, function ($constraint) {
                     $constraint->aspectRatio();
-                })
-                ->save($route);
+                })->encode();
+             //Provide the file name with extension 
+            $filename = time(). '.' .$path->getClientOriginalExtension();
+            //Put file with own name
+            Storage::put($filename, $img);
+            //Move file to your location 
+            Storage::move($filename, 'public/user/background/' . $filename);
+            //now insert into database 
+            $user->update([
+                'bg_image' => 'user/background/' . $filename
+            ]);
             /*-----*/
         }
-
-        $user->update([
-            'bg_image' => 'user/background/' . $imageName
-        ]);
 
         return redirect()->back();
     }

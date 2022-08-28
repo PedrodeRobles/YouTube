@@ -68,21 +68,24 @@ class VideoController extends Controller
         // $image = $request->file('image')->store('videos/images', 'public');
 
         /*Change image dimension*/
-        $imageName = Str::random(10) . $request->file('image')->getClientOriginalName();
-        $route = storage_path() . '\app\public\videos\images/' . $imageName;
-
-        Image::make($request->file('image'))
-            ->resize(300, null, function ($constraint) {
+        $path= $request->file('image');
+            // Resize and encode to required type
+        $img = Image::make($path)->resize(200, null, function ($constraint) {
                 $constraint->aspectRatio();
-            })
-            ->save($route);
+            })->encode();
+            //Provide the file name with extension 
+        $filename = time(). '.' .$path->getClientOriginalExtension();
+        //Put file with own name
+        Storage::put($filename, $img);
+        //Move file to your location 
+        Storage::move($filename, 'public/videos/images/' . $filename);
         /*-----*/
 
         $video = $request->file('video')->store('videos/iframe', 'public');
 
         Video::create([
             'title'       => $request->title,
-            'image'       => 'videos/images/' . $imageName,
+            'image'       => 'videos/images/' . $filename,
             'video'       => $video,
             'description' => $request->description,
             'category_id' => $request->category_id,
@@ -266,14 +269,17 @@ class VideoController extends Controller
             // $image = $request->file('image')->store('videos/images', 'public');
 
             /*Change image dimension*/
-            $imageName = Str::random(10) . $request->file('image')->getClientOriginalName();
-            $route = storage_path() . '\app\public\videos\images/' . $imageName;
-
-            Image::make($request->file('image'))
-                ->resize(300, null, function ($constraint) {
+            $path= $request->file('image');
+            // Resize and encode to required type
+            $img = Image::make($path)->resize(200, null, function ($constraint) {
                     $constraint->aspectRatio();
-                })
-                ->save($route);
+                })->encode();
+                //Provide the file name with extension 
+            $filename = time(). '.' .$path->getClientOriginalExtension();
+            //Put file with own name
+            Storage::put($filename, $img);
+            //Move file to your location 
+            Storage::move($filename, 'public/videos/images/' . $filename);
             /*-----*/
         }
 
@@ -284,7 +290,7 @@ class VideoController extends Controller
         
         $video->update([
             'title'       => $request->title,
-            'image'       => 'videos/images/' . $imageName,
+            'image'       => 'videos/images/' . $filename,
             'video'       => $newVideo,
             'description' => $request->description,
             'category_id' => $request->category_id,
