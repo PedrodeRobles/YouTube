@@ -278,11 +278,11 @@
                                 <div class="grid grid-cols-6 w-80 sm:w-72 space-x-2 mt-2 lg:mt-0 ml-4 sm:ml-0 lg:w-40 xl:w-40">
                                     <div class="col-span-1 lg:col-auto">
                                         <div v-if="video.user.profile_image == null">
-                                            <img src="../../img/profile.png" alt="Profile image">
+                                            <img src="../../img/profile.png" alt="Profile image" class="lg:invisible lg:w-0 lg:h-0">
                                         </div>
                                         <div v-else>
                                             <img 
-                                                class="h-[50px] w-[50px] rounded-full"
+                                                class="h-[50px] w-[50px] rounded-full lg:invisible lg:w-0 lg:h-0"
                                                 :src="users[video.user_id - 1].profile_image" alt="">
                                         </div>
                                     </div>

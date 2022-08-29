@@ -33295,7 +33295,8 @@ var _hoisted_87 = {
 
 var _hoisted_88 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
   src: _img_profile_png__WEBPACK_IMPORTED_MODULE_5__["default"],
-  alt: "Profile image"
+  alt: "Profile image",
+  "class": "lg:invisible lg:w-0 lg:h-0"
 }, null, -1
 /* HOISTED */
 );
@@ -33542,7 +33543,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         }, null, 8
         /* PROPS */
         , _hoisted_84)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_85, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_86, [video.user.profile_image == null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_87, _hoisted_89)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_90, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-          "class": "h-[50px] w-[50px] rounded-full",
+          "class": "h-[50px] w-[50px] rounded-full lg:invisible lg:w-0 lg:h-0",
           src: $props.users[video.user_id - 1].profile_image,
           alt: ""
         }, null, 8
