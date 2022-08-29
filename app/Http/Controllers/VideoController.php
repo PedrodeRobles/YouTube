@@ -402,9 +402,9 @@ class VideoController extends Controller
 
         /* Subtract a dislike to the video */
         $video = Video::where('id', $request->video_id)->first();
-        $video->dislike;
+        $video->dislikes;
         $video->update([
-            'dislike' => $video->dislike - 1,
+            'dislikes' => $video->dislikes - 1,
         ]);
         /*-----*/
 
