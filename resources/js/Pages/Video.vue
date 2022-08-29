@@ -277,7 +277,14 @@
                                 </div>
                                 <div class="grid grid-cols-6 w-80 sm:w-72 space-x-2 mt-2 lg:mt-0 ml-4 sm:ml-0 lg:w-40 xl:w-40">
                                     <div class="col-span-1 lg:col-auto">
-                                        <img src="../../img/profile.png" alt="Profile" class="lg:invisible lg:w-0 lg:h-0">
+                                        <div v-if="video.user.profile_image == null">
+                                            <img src="../../img/profile.png" alt="Profile image">
+                                        </div>
+                                        <div v-else>
+                                            <img 
+                                                class="h-[50px] w-[50px] rounded-full"
+                                                :src="users[video.user_id - 1].profile_image" alt="">
+                                        </div>
                                     </div>
                                     <div class="col-span-5 lg:col-span-6">
                                         <h6 class="text-white text-lg font-semibold">{{ video.title }}</h6>
