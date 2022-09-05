@@ -12,7 +12,7 @@
         <div class="pt-20 pb-96 flex justify-center text-white">
             <div>
                 <div class="flex justify-center mb-4">
-                    <h2 class="text-2xl">Upload video</h2>
+                    <h2 class="text-2xl">Update video</h2>
                 </div>
                 <div class="border border-slate-500 rounded-lg p-2">
                     <form @submit.prevent="updateVideo" class="space-y-3">

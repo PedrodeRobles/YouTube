@@ -9,60 +9,81 @@
         >
         </Header>
 
-        <div class="pt-20 pb-96 flex justify-center text-white">
-            <div>
-                <div class="flex justify-center mb-4">
-                    <h2 class="text-2xl">Update video</h2>
-                </div>
-                <div class="border border-slate-500 rounded-lg p-2">
-                    <form @submit.prevent="submit" class="space-y-3">
-                        <div>
-                            <p>Title</p>
-                            <input 
-                                type="text" 
-                                v-model="form.title" 
-                                class="bg-slate-800 w-full"
-                            >
-                        </div>
-                        <div>
-                            <p>Image</p>
-                            <input 
-                                type="file"
-                                ref="photo"
-                                accept="image/*"
-                            >
-                        </div>
-                        <div>
-                            <p>Video / Max 60.000 KB</p>
-                            <input 
-                                type="file"
-                                ref="video"
-                                accept="video/*"
-                            >
-                        </div>
-                        <div>
-                            <p>Description (optional)</p>
-                            <textarea 
-                                v-model="form.description"
-                                cols="30" 
-                                rows="4" 
-                                class="bg-slate-800 w-full"
-                            ></textarea>
-                        </div>
-                        <div>
-                            <p>Category</p>
-                            <select v-model="form.category_id" class="bg-slate-800">
-                                <option v-for="category in categories" :key="category.id" :value="category.id">
-                                    {{ category.category }}
-                                </option>
-                            </select>
-                        </div>
-                        <div class="pt-4 flex justify-center">
-                            <button class="bg-slate-600 hover:bg-slate-700 p-2 rounded-md">
-                                Create
-                            </button>
-                        </div>
-                    </form>
+        
+        <div>
+            <!-- Show message when uploading video -->
+            <div v-show="message == null" class="p-1 w-full bg-yellow-300 pt-6">
+                <p class="text-center text-black text-xl">
+                    .
+                </p>
+            </div>
+            <div v-show="message != null" class="p-1 w-full bg-yellow-300 pt-16">
+                <p class="text-center text-black text-xl">
+                    {{ message }}
+                </p>
+            </div>
+
+            <!-- Form -->
+            <div class="pt-8 pb-96 flex justify-center text-white w-full">
+                <div>
+                    <!-- <div  class="p-1 w-full bg-yellow-300">
+                        <p class="text-center text-black text-xl">
+                            {{ message }}
+                        </p>
+                    </div> -->
+                    <div class="flex justify-center mb-4">
+                        <h2 class="text-2xl">Upload video</h2>
+                    </div>
+                    <div class="border border-slate-500 rounded-lg p-2">
+                        <form @submit.prevent="submit" class="space-y-3">
+                            <div>
+                                <p>Title</p>
+                                <input 
+                                    type="text" 
+                                    v-model="form.title" 
+                                    class="bg-slate-800 w-full"
+                                >
+                            </div>
+                            <div>
+                                <p>Image</p>
+                                <input 
+                                    type="file"
+                                    ref="photo"
+                                    accept="image/*"
+                                >
+                            </div>
+                            <div>
+                                <p>Video / Max 60.000 KB</p>
+                                <input 
+                                    type="file"
+                                    ref="video"
+                                    accept="video/*"
+                                >
+                            </div>
+                            <div>
+                                <p>Description (optional)</p>
+                                <textarea 
+                                    v-model="form.description"
+                                    cols="30" 
+                                    rows="4" 
+                                    class="bg-slate-800 w-full"
+                                ></textarea>
+                            </div>
+                            <div>
+                                <p>Category</p>
+                                <select v-model="form.category_id" class="bg-slate-800">
+                                    <option v-for="category in categories" :key="category.id" :value="category.id">
+                                        {{ category.category }}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="pt-4 flex justify-center">
+                                <button class="bg-slate-600 hover:bg-slate-700 p-2 rounded-md">
+                                    Create
+                                </button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -84,7 +105,9 @@ export default {
                 video: '',
                 description: '',
                 category_id: '',
-            }
+            },
+            // message: "Uploading video please wait...",
+            message: null,
         }
     },
     props: {
@@ -96,11 +119,19 @@ export default {
     },
     methods: {
         submit() {
+            this.message = "Uploading video please wait...";
+
             if (this.$refs.photo && this.$refs.video) {
                 this.form.image = this.$refs.photo.files[0];
                 this.form.video = this.$refs.video.files[0];
             }
             this.$inertia.post(this.route('videos.store'), this.form);
+
+            this.form.title = '';
+            this.form.image = '';
+            this.form.video = '';
+            this.form.description = '';
+            this.form.category_id = '';
         },
     }
 }
