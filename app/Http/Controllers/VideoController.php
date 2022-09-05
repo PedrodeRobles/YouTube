@@ -316,15 +316,23 @@ class VideoController extends Controller
             'otherUser' => 'required',
         ]);
 
-        Subscriber::create($request->all());
+        $subscription = Subscriber::where('user_id', $request->user_id)
+            ->where('otherUser', $request->otherUser)
+            ->first();
 
-        /* Add a subscriber to the user */
-        $user = User::where('id', $request->otherUser)->first();
-        $user->subscribers;
-        $user->update([
-            'subscribers' => $user->subscribers + 1,
-        ]);
-        /*-----*/
+        if ($subscription == null) {
+            Subscriber::create($request->all());
+            
+            /* Add a subscriber to the user */
+            $user = User::where('id', $request->otherUser)->first();
+            $user->subscribers;
+            $user->update([
+                'subscribers' => $user->subscribers + 1,
+            ]);
+            /*-----*/
+        } else {
+            return "Please press the Subscribe button only once. Reload page";
+        }
 
         return redirect()->back();
     }
