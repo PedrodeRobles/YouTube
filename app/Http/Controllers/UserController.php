@@ -117,16 +117,24 @@ class UserController extends Controller
             'user_id'   => 'required',
             'otherUser' => 'required',
         ]);
-
-        Subscriber::create($request->all());
         
-        /* Add a subscriber to the user */
-        $user = User::where('id', $request->otherUser)->first();
-        $user->subscribers;
-        $user->update([
-            'subscribers' => $user->subscribers + 1,
-        ]);
-        /*-----*/
+        $subscription = Subscriber::where('user_id', $request->user_id)
+            ->where('otherUser', $request->otherUser)
+            ->first();
+
+        if ($subscription == null) {
+            Subscriber::create($request->all());
+            
+            /* Add a subscriber to the user */
+            $user = User::where('id', $request->otherUser)->first();
+            $user->subscribers;
+            $user->update([
+                'subscribers' => $user->subscribers + 1,
+            ]);
+            /*-----*/
+        } else {
+            return "Please press the Subscribe button only once. Reload page";
+        }
 
         return redirect()->back();
     }
@@ -138,16 +146,20 @@ class UserController extends Controller
             ->where('otherUser', $request->otherUser)
             ->first();
         
-        $subscription->delete();
-        /*-----*/
+        if ($subscription != null) {
+            $subscription->delete();
 
-        /* Subtract a subscriber to the user */
-        $user = User::where('id', $request->otherUser)->first();
-        $user->subscribers;
-        $user->update([
-            'subscribers' => $user->subscribers - 1,
-        ]);
-        /*-----*/
+            /* Subtract a subscriber to the user */
+            $user = User::where('id', $request->otherUser)->first();
+            $user->subscribers;
+            $user->update([
+                'subscribers' => $user->subscribers - 1,
+            ]);
+        } else {
+            return "Please press the Unsubscribe button only once. Reload page";
+        }
+
+        
 
         return redirect()->back();
     }

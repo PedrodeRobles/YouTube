@@ -336,15 +336,24 @@ class VideoController extends Controller
             'video_id' => 'required',
         ]);
 
-        Likes::create($request->all());
+        $like = Likes::where('user_id', $request->user_id)
+            ->where('video_id', $request->video_id)
+            ->first();
 
-        /* Add a like to the video */
-        $video = Video::where('id', $request->video_id)->first();
-        $video->likes;
-        $video->update([
-            'likes' => $video->likes + 1,
-        ]);
-        /*-----*/
+        if ($like == null) {
+            Likes::create($request->all());
+    
+            /* Add a like to the video */
+            $video = Video::where('id', $request->video_id)->first();
+            $video->likes;
+            $video->update([
+                'likes' => $video->likes + 1,
+            ]);
+            /*-----*/
+        } else {
+            return "Please press the Like button only once. Reload page";
+        }
+
 
         return redirect()->back();
     }
@@ -356,16 +365,18 @@ class VideoController extends Controller
             ->where('video_id', $request->video_id)
             ->first();
 
-        $like->delete();
-        /*-----*/
+        if ($like != null) {
+            /* Subtract a like to the video */
+            $video = Video::where('id', $request->video_id)->first();
+            $video->likes;
+            $video->update([
+                'likes' => $video->likes - 1,
+            ]);
 
-        /* Subtract a like to the video */
-        $video = Video::where('id', $request->video_id)->first();
-        $video->likes;
-        $video->update([
-            'likes' => $video->likes - 1,
-        ]);
-        /*-----*/
+            $like->delete();
+        } else {
+            return "Please press the Like button only once. Reload page";
+        }
 
         return redirect()->back();
     }
@@ -377,15 +388,24 @@ class VideoController extends Controller
             'video_id' => 'required',
         ]);
 
-        Dislike::create($request->all());
+        $dislike = Dislike::where('user_id', $request->user_id)
+            ->where('video_id', $request->video_id)
+            ->first();
 
-        /* Add a like to the video */
-        $video = Video::where('id', $request->video_id)->first();
-        $video->dislikes;
-        $video->update([
-            'dislikes' => $video->dislikes + 1,
-        ]);
-        /*-----*/
+        if ($dislike == null) {
+            Dislike::create($request->all());
+    
+            /* Add a like to the video */
+            $video = Video::where('id', $request->video_id)->first();
+            $video->dislikes;
+            $video->update([
+                'dislikes' => $video->dislikes + 1,
+            ]);
+            /*-----*/
+        } else {
+            return "Please press the Dislike button only once. Reload page";
+        }
+
 
         return redirect()->back();
     }
@@ -397,16 +417,20 @@ class VideoController extends Controller
             ->where('video_id', $request->video_id)
             ->first();
 
-        $dislike->delete();
-        /*-----*/
+        if ($dislike != null) {
+            $dislike->delete();
+            /*-----*/
+    
+            /* Subtract a dislike to the video */
+            $video = Video::where('id', $request->video_id)->first();
+            $video->dislikes;
+            $video->update([
+                'dislikes' => $video->dislikes - 1,
+            ]);
+        } else {
+            return "Please press the Like button only once. Reload page";
+        }
 
-        /* Subtract a dislike to the video */
-        $video = Video::where('id', $request->video_id)->first();
-        $video->dislikes;
-        $video->update([
-            'dislikes' => $video->dislikes - 1,
-        ]);
-        /*-----*/
 
         return redirect()->back();
     }
