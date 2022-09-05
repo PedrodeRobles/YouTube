@@ -18,6 +18,9 @@
                     <form @submit.prevent="updateVideo" class="space-y-3">
                         <div>
                             <p>Title</p>
+                            <div v-if="errors.title" class="text-red-500">
+                                {{ errors.title }}
+                            </div>
                             <input 
                                 type="text" 
                                 v-model="form.title" 
@@ -26,6 +29,9 @@
                         </div>
                         <div>
                             <p>Image</p>
+                            <div v-if="errors.image" class="text-red-500">
+                                {{ errors.image }}
+                            </div>
                             <p class="text-red-600">Select the same image or a new image</p>
                             <input 
                                 type="file"
@@ -36,6 +42,9 @@
                         </div>
                         <div>
                             <p>Video (.mp4) / Max 60.000 KB</p>
+                            <div v-if="errors.video" class="text-red-500">
+                                {{ errors.video }}
+                            </div>
                             <p class="text-red-600">Select the same video or a new video</p>
                             <input 
                                 type="file"
@@ -55,6 +64,9 @@
                         </div>
                         <div>
                             <p>Category</p>
+                            <div v-if="errors.category_id" class="text-red-500">
+                                {{ errors.category_id }}
+                            </div>
                             <select v-model="form.category_id" class="bg-slate-800">
                                 <option v-for="category in categories" :key="category.id" :value="category.id">
                                     {{ category.category }}
@@ -90,13 +102,14 @@ const props = defineProps({
     userLoggedName: String,
     video: Object,
     userLoggedId: Number,
-    userAuthImg: Array
+    userAuthImg: Array,
+    errors: Object,
 });
 
 const form = useForm({
     title: props.video.title,
-    image: props.video.image,
-    video: props.video.video,
+    image: '',
+    video: '',
     description: props.video.description,
     category_id: props.video.category_id,
 });
@@ -112,38 +125,4 @@ function updateVideo() {
 })
 }
 
-// export default {
-//     components:{
-//         Header
-//     },
-//     data() {
-//         return {
-//             form: {
-//                 title: this.video.title,
-//                 image: '',
-//                 video: '',
-//                 description: this.video.description,
-//                 category_id: this.video.category_id,
-//             }
-//         }
-//     },
-//     props: {
-//         categories: Array,
-//         userAuth: Boolean,
-//         userLoggedName: String,
-//         video: Object
-//     },
-//     methods: {
-//         submit() {
-//             // if (this.$refs.photo && this.$refs.video) {
-//             //     this.form.image = this.$refs.photo.files[0];
-//             //     this.form.video = this.$refs.video.files[0];
-//             // }
-//             if (this.$refs.photo) {
-//                 this.form.image = this.$refs.photo.files[0];
-//             }
-//             this.$inertia.put(this.route('videos.update', this.video.id), this.form)
-//         },
-//     }
-// }
 </script>

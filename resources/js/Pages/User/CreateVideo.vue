@@ -26,11 +26,6 @@
             <!-- Form -->
             <div class="pt-8 pb-96 flex justify-center text-white w-full">
                 <div>
-                    <!-- <div  class="p-1 w-full bg-yellow-300">
-                        <p class="text-center text-black text-xl">
-                            {{ message }}
-                        </p>
-                    </div> -->
                     <div class="flex justify-center mb-4">
                         <h2 class="text-2xl">Upload video</h2>
                     </div>
@@ -38,6 +33,9 @@
                         <form @submit.prevent="submit" class="space-y-3">
                             <div>
                                 <p>Title</p>
+                                <div v-if="errors.title" class="text-red-500">
+                                    {{ errors.title }}
+                                </div>
                                 <input 
                                     type="text" 
                                     v-model="form.title" 
@@ -46,6 +44,9 @@
                             </div>
                             <div>
                                 <p>Image</p>
+                                <div v-if="errors.image" class="text-red-500">
+                                    {{ errors.image }}
+                                </div>
                                 <input 
                                     type="file"
                                     ref="photo"
@@ -54,6 +55,9 @@
                             </div>
                             <div>
                                 <p>Video / Max 60.000 KB</p>
+                                <div v-if="errors.video" class="text-red-500">
+                                    {{ errors.video }}
+                                </div>
                                 <input 
                                     type="file"
                                     ref="video"
@@ -71,6 +75,9 @@
                             </div>
                             <div>
                                 <p>Category</p>
+                                <div v-if="errors.category_id" class="text-red-500">
+                                    {{ errors.category_id }}
+                                </div>
                                 <select v-model="form.category_id" class="bg-slate-800">
                                     <option v-for="category in categories" :key="category.id" :value="category.id">
                                         {{ category.category }}
@@ -106,7 +113,6 @@ export default {
                 description: '',
                 category_id: '',
             },
-            // message: "Uploading video please wait...",
             message: null,
         }
     },
@@ -115,7 +121,8 @@ export default {
         userAuth: Boolean,
         userLoggedName: String,
         userLoggedId: Number,
-        userAuthImg: Array
+        userAuthImg: Array,
+        errors: Object,
     },
     methods: {
         submit() {
