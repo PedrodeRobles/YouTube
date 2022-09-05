@@ -25208,6 +25208,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     comment: function comment() {
       this.$inertia.post('comment', this.form);
+      this.form.content = "";
     }
   }
 });

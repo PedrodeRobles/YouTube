@@ -375,6 +375,7 @@ export default {
         comment()
         {
             this.$inertia.post('comment', this.form);
+            this.form.content = "";
         }
     },
 }
