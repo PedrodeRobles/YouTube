@@ -2,7 +2,6 @@
     <div class="bg-slate-900">
         <Header 
             @getQuery="querySon"
-            :userAuth="userAuth"
             :userLoggedName="userLoggedName"
             :userLoggedId="userLoggedId"
             :userAuthImg="userAuthImg"
@@ -75,7 +74,6 @@ export default {
         Link,
     },
     props: {
-        userAuth: Boolean,
         userLoggedName: String,
         userLoggedId: Number,
         subscriptions: Array,

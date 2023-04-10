@@ -2,7 +2,6 @@
     <div>
         <Header 
             @getQuery="querySon"
-            :userAuth="userAuth"
             :userLoggedName="userLoggedName"
             :userLoggedId="userLoggedId"
             :userAuthImg="userAuthImg"
@@ -319,7 +318,6 @@ export default {
         iframe: String,
         image: String,
         videos: Array,
-        userAuth: Boolean,
         userLoggedName: String,
         searchVideos: Array,
         userLoggedId: Number,

@@ -18,14 +18,8 @@
                 </button>
             </div>
             <div class="flex items-center mr-4">
-                <div 
-                    v-if="userAuth === false"
-                    class="text-white space-x-2"
-                >
-                    <Link :href="route('login')">Log in</Link>
-                    <Link :href="route('register')">Register</Link>
-                </div>
-                <div v-else>
+                <!-- Verify if the user has been authenticated -->
+                <div v-if="$page.props.checkAuth">
                     <img
                         v-if="userAuthImg[0].image == null" 
                         src="../../../img/profile.png" 
@@ -48,6 +42,10 @@
                         ></UserOptions>
                     </div>
                 </div>
+                <div v-else class="text-white space-x-2">
+                    <Link :href="route('login')">Log in</Link>
+                    <Link :href="route('register')">Register</Link>
+                </div>
             </div>
         </div>
     </div>
@@ -66,7 +64,6 @@ export default {
         UserOptions,
     },
     props: {
-        userAuth: Boolean,
         userLoggedName: String,
         userLoggedId: Number,
         userAuthImg: Array,

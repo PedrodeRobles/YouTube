@@ -22,15 +22,12 @@ class VideoController extends Controller
     public function create()
     {
         /*Show user´s img or show Log in and Register*/ 
-        $userAuth = false;
         $userLoggedName = null;
 
         if ( Auth::check() ) {
-            $userAuth = true;
             $userLoggedName= auth()->user()->name;
             $userLoggedId= auth()->user()->id;
         } else {
-            $userAuth = false;
             $userLoggedName= null;
             $userLoggedId = null;
         }
@@ -39,7 +36,6 @@ class VideoController extends Controller
         $categories = Category::all();
 
         return Inertia::render('User/CreateVideo', [
-            'userAuth' => $userAuth,
             'userLoggedName' => $userLoggedName,
             'categories' => $categories,
             'userLoggedId' => $userLoggedId,
@@ -104,17 +100,14 @@ class VideoController extends Controller
     public function show(Video $video, Request $request)
     {
         /*Show user´s img or show Log in and Register*/ 
-        $userAuth = false;
         $userLoggedName = null;
         $userLoggedId = null;
 
         if ( Auth::check() ) {
-            $userAuth = true;
             $userLoggedName= auth()->user()->name;
             $userLoggedId= auth()->user()->id;
             $userLoggedImg= auth()->user()->profile_image;
         } else {
-            $userAuth = false;
             $userLoggedName = null;
             $userLoggedId = null;
             $userLoggedImg = null;
@@ -156,7 +149,6 @@ class VideoController extends Controller
             ->get();
 
         return Inertia::render('Video', [
-            'userAuth'       => $userAuth,
             'userLoggedName' => $userLoggedName,
             'video'          => $video->load('user'),
             'iframe'         => $video->video,
@@ -220,15 +212,12 @@ class VideoController extends Controller
         }
 
         /*Show user´s img or show Log in and Register*/ 
-        $userAuth = false;
         $userLoggedName = null;
 
         if ( Auth::check() ) {
-            $userAuth = true;
             $userLoggedName= auth()->user()->name;
             $userLoggedId= auth()->user()->id;
         } else {
-            $userAuth = false;
             $userLoggedName= null;
             $userLoggedId= null;
         }
@@ -237,7 +226,6 @@ class VideoController extends Controller
         $categories = Category::all();
 
         return Inertia::render('User/Edit', [
-            'userAuth' => $userAuth,
             'userLoggedName' => $userLoggedName,
             'userLoggedId' => $userLoggedId,
             'categories' => $categories,

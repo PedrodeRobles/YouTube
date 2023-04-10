@@ -2,7 +2,6 @@
     <div class="bg-slate-900">
         <Header 
             @getQuery="querySon"
-            :userAuth="userAuth"
             :userLoggedName="userLoggedName"
             :userLoggedId="userLoggedId"
             :userAuthImg="userAuthImg"
@@ -98,7 +97,6 @@ defineComponent({
 
 const props = defineProps({
     categories: Array,
-    userAuth: Boolean,
     userLoggedName: String,
     video: Object,
     userLoggedId: Number,

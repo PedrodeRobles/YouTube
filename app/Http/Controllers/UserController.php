@@ -18,16 +18,6 @@ class UserController extends Controller
 {
     public function index(User $user, Request $request)
     {
-        /*Show user´s img or show Log in and Register*/ 
-        $userAuth = false;
-
-        if ( Auth::check() ) {
-            $userAuth = true;
-        } else {
-            $userAuth = false;
-        }
-        /*-----*/
-
         /*Get this data from this user*/
         $userName            = $user->name;
         $subscribers         = $user->subscribers;
@@ -64,7 +54,6 @@ class UserController extends Controller
         /*-----*/
 
         return Inertia::render('User/Index', [
-            'userAuth'            => $userAuth,
             'userName'            => $userName,
             'subscribers'         => $subscribers,
             'videos'              => $videos->load('user'),
@@ -171,16 +160,6 @@ class UserController extends Controller
             abort(403);
         }
 
-        /*Show user´s img or show Log in and Register*/ 
-        $userAuth = false;
-
-        if ( Auth::check() ) {
-            $userAuth = true;
-        } else {
-            $userAuth = false;
-        }
-        /*-----*/
-
         /*Get logged user*/
         $userLoggedId = null;
         $userLoggedName = null;
@@ -198,7 +177,6 @@ class UserController extends Controller
 
         return Inertia::render('User/EditProfile', [
             'user'           => $user,
-            'userAuth'       => $userAuth,
             'userLoggedId'   => $userLoggedId,
             'userLoggedName' => $userLoggedName,
             'userAuthImg' => User::where('id', $userLoggedId)

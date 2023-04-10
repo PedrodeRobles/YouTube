@@ -1,6 +1,5 @@
 <template>
     <Header 
-        :userAuth="userAuth"
         :userLoggedName="userLoggedName"
         :userLoggedId="userLoggedId"
         :userAuthImg="userAuthImg"
@@ -77,7 +76,6 @@ defineComponent({
 
 const props = defineProps({
     user: Object,
-    userAuth: Boolean,
     userLoggedName: String,
     userLoggedId: Number,
     userAuthImg: Array

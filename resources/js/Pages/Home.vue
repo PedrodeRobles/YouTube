@@ -2,7 +2,6 @@
     <div class="bg-slate-900">
         <Header 
             @getQuery="querySon"
-            :userAuth="userAuth"
             :userLoggedName="userLoggedName"
             :userLoggedId="userLoggedId"
             :userAuthImg="userAuthImg"
@@ -135,7 +134,6 @@ export default {
         videos: {
             type: Array,
         },
-        userAuth: Boolean,
         userLoggedName: String,
         userLoggedId: Number,
         users: Array,

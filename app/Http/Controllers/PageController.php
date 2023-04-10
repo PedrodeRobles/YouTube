@@ -14,16 +14,6 @@ class PageController extends Controller
 {
     public function home(Request $request)
     {
-        /*Show user´s img or show Log in and Register*/ 
-        $userAuth = false;
-
-        if ( Auth::check() ) {
-            $userAuth = true;
-        } else {
-            $userAuth = false;
-        }
-        /*-----*/
-
         /*Logged user verification*/
         $userLoggedName = null;
         
@@ -37,7 +27,6 @@ class PageController extends Controller
         /*-----*/
 
         return Inertia::render('Home', [
-            'userAuth'       => $userAuth,
             'userLoggedName' => $userLoggedName,
             'userLoggedId'   => $userLoggedId,
             'videos'         => Video::where('title', 'LIKE', "%$request->q%")
@@ -78,16 +67,6 @@ class PageController extends Controller
 
     public function gaming(Request $request)
     {
-        /*Show user´s img or show Log in and Register*/ 
-        $userAuth = false;
-
-        if ( Auth::check() ) {
-            $userAuth = true;
-        } else {
-            $userAuth = false;
-        }
-        /*-----*/
-
         /*Logged user verification*/
         $userLoggedName = null;
         
@@ -101,7 +80,6 @@ class PageController extends Controller
         /*-----*/
 
         return Inertia::render('Section/Gaming', [
-            'userAuth'       => $userAuth,
             'userLoggedName' => $userLoggedName,
             'userLoggedId'   => $userLoggedId,
             'videos'         => Video::where('title', 'LIKE', "%$request->q%")
@@ -143,16 +121,6 @@ class PageController extends Controller
 
     public function music(Request $request)
     {
-        /*Show user´s img or show Log in and Register*/ 
-        $userAuth = false;
-
-        if ( Auth::check() ) {
-            $userAuth = true;
-        } else {
-            $userAuth = false;
-        }
-        /*-----*/
-
         /*Logged user verification*/
         $userLoggedName = null;
         
@@ -166,7 +134,6 @@ class PageController extends Controller
         /*-----*/
 
         return Inertia::render('Section/Music', [
-            'userAuth'       => $userAuth,
             'userLoggedName' => $userLoggedName,
             'userLoggedId'   => $userLoggedId,
             'videos'         => Video::where('title', 'LIKE', "%$request->q%")
@@ -208,16 +175,6 @@ class PageController extends Controller
 
     public function news(Request $request)
     {
-        /*Show user´s img or show Log in and Register*/ 
-        $userAuth = false;
-
-        if ( Auth::check() ) {
-            $userAuth = true;
-        } else {
-            $userAuth = false;
-        }
-        /*-----*/
-
         /*Logged user verification*/
         $userLoggedName = null;
         
@@ -231,7 +188,6 @@ class PageController extends Controller
         /*-----*/
 
         return Inertia::render('Section/News', [
-            'userAuth'       => $userAuth,
             'userLoggedName' => $userLoggedName,
             'userLoggedId'   => $userLoggedId,
             'news'           => true,
@@ -274,16 +230,6 @@ class PageController extends Controller
 
     public function sports(Request $request)
     {
-        /*Show user´s img or show Log in and Register*/ 
-        $userAuth = false;
-
-        if ( Auth::check() ) {
-            $userAuth = true;
-        } else {
-            $userAuth = false;
-        }
-        /*-----*/
-
         /*Logged user verification*/
         $userLoggedName = null;
         
@@ -297,7 +243,6 @@ class PageController extends Controller
         /*-----*/
 
         return Inertia::render('Section/Sports', [
-            'userAuth'       => $userAuth,
             'userLoggedName' => $userLoggedName,
             'userLoggedId'   => $userLoggedId,
             'videos'         => Video::where('title', 'LIKE', "%$request->q%")
@@ -339,16 +284,6 @@ class PageController extends Controller
 
     public function learning(Request $request)
     {
-        /*Show user´s img or show Log in and Register*/ 
-        $userAuth = false;
-
-        if ( Auth::check() ) {
-            $userAuth = true;
-        } else {
-            $userAuth = false;
-        }
-        /*-----*/
-
         /*Logged user verification*/
         $userLoggedName = null;
         
@@ -362,7 +297,6 @@ class PageController extends Controller
         /*-----*/
 
         return Inertia::render('Section/Learning', [
-            'userAuth'       => $userAuth,
             'userLoggedName' => $userLoggedName,
             'userLoggedId'   => $userLoggedId,
             'videos'         => Video::where('title', 'LIKE', "%$request->q%")
@@ -404,16 +338,6 @@ class PageController extends Controller
 
     public function liked(Request $request)
     {
-        /*Show user´s img or show Log in and Register*/ 
-        $userAuth = false;
-
-        if ( Auth::check() ) {
-            $userAuth = true;
-        } else {
-            $userAuth = false;
-        }
-        /*-----*/
-
         /*Logged user verification*/
         $userLoggedName = null;
         
@@ -442,7 +366,6 @@ class PageController extends Controller
         }
 
         return Inertia::render('Section/Liked', [
-            'userAuth'       => $userAuth,
             'userLoggedName' => $userLoggedName,
             'userLoggedId'   => $userLoggedId,
             'liked'          => $liked->load('video'),
@@ -475,16 +398,6 @@ class PageController extends Controller
 
     public function subscriptions()
     {
-        /*Show user´s img or show Log in and Register*/ 
-        $userAuth = false;
-
-        if ( Auth::check() ) {
-            $userAuth = true;
-        } else {
-            $userAuth = false;
-        }
-        /*-----*/
-
         /*Logged user verification*/
         $userLoggedName = null;
         
@@ -500,7 +413,6 @@ class PageController extends Controller
         $subscriptions = Subscriber::where('user_id', $userLoggedId)->get();
         
         return Inertia::render('Section/Subscriptions', [
-            'userAuth'       => $userAuth,
             'userLoggedName' => $userLoggedName,
             'userLoggedId'   => $userLoggedId,
             'subscriptions'  => $subscriptions->load('user'),
