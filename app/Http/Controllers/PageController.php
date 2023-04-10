@@ -41,16 +41,9 @@ class PageController extends Controller
                         'description' => $video->description,
                         'category_id' => $video->category_id,
                         'user_id'     => $video->user_id,
-                        'user'        => User::where('id', $video->user_id)->first(), //Get relation with user
+                        'user'        => $video->user,
+                        'userImg'     => asset('storage/' . $video->user->profile_image),
                         'views'       => $video->views,
-                    ];
-                }),
-            'users' => User::all()
-                ->map(function ($user) {
-                    return [
-                        'id' => $user->id,
-                        'name' => $user->name,
-                        'profile_image' => asset('storage/' . $user->profile_image),
                     ];
                 }),
             'userAuthImg' => User::where('id', $userLoggedId)

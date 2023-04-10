@@ -91,7 +91,7 @@
                                         <div v-else>
                                             <img 
                                                 class="h-[50px] w-[50px] rounded-full"
-                                                :src="users[video.user_id - 1].profile_image" alt="">
+                                                :src="video.userImg" alt="Profile image">
                                         </div>
                                         </Link>
                                     </div>
@@ -136,7 +136,6 @@ export default {
         },
         userLoggedName: String,
         userLoggedId: Number,
-        users: Array,
         userAuthImg: Array
     },
     methods: {

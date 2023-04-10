@@ -23681,7 +23681,6 @@ __webpack_require__.r(__webpack_exports__);
     },
     userLoggedName: String,
     userLoggedId: Number,
-    users: Array,
     userAuthImg: Array
   },
   methods: {
@@ -28907,8 +28906,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
             return [video.user.profile_image == null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_25, _hoisted_27)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_28, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
               "class": "h-[50px] w-[50px] rounded-full",
-              src: $props.users[video.user_id - 1].profile_image,
-              alt: ""
+              src: video.userImg,
+              alt: "Profile image"
             }, null, 8
             /* PROPS */
             , _hoisted_29)]))];
