@@ -37,8 +37,8 @@
                     <div class="flex justify-center">
                         <UserOptions 
                             v-show="showOptions"
-                            :userLoggedName="userLoggedName"
-                            :userLoggedId="userLoggedId"
+                            :userLoggedName="$page.props.userLoggedName"
+                            :userLoggedId="$page.props.userLoggedId"
                         ></UserOptions>
                     </div>
                 </div>
@@ -64,8 +64,8 @@ export default {
         UserOptions,
     },
     props: {
-        userLoggedName: String,
-        userLoggedId: Number,
+        // userLoggedName: String,
+        // userLoggedId: Number,
         userAuthImg: Array,
     },
     data() {

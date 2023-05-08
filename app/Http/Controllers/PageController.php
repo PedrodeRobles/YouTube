@@ -14,21 +14,7 @@ class PageController extends Controller
 {
     public function home(Request $request)
     {
-        /*Logged user verification*/
-        $userLoggedName = null;
-        
-        if(Auth::check()) {
-            $userLoggedName= auth()->user()->name;
-            $userLoggedId= auth()->user()->id;
-        } else {
-            $userLoggedName = null;
-            $userLoggedId = null;
-        }
-        /*-----*/
-
         return Inertia::render('Home', [
-            'userLoggedName' => $userLoggedName,
-            'userLoggedId'   => $userLoggedId,
             'videos'         => Video::where('title', 'LIKE', "%$request->q%")
                 ->orderBy('id', 'DESC')
                 ->get()
@@ -46,7 +32,7 @@ class PageController extends Controller
                         'views'       => $video->views,
                     ];
                 }),
-            'userAuthImg' => User::where('id', $userLoggedId)
+            'userAuthImg' => User::where('id', getUserLoggedId())
                 ->get()
                 ->map(function ($user) {
                     return [
@@ -60,21 +46,7 @@ class PageController extends Controller
 
     public function gaming(Request $request)
     {
-        /*Logged user verification*/
-        $userLoggedName = null;
-        
-        if(Auth::check()) {
-            $userLoggedName= auth()->user()->name;
-            $userLoggedId= auth()->user()->id;
-        } else {
-            $userLoggedName = null;
-            $userLoggedId = null;
-        }
-        /*-----*/
-
         return Inertia::render('Section/Gaming', [
-            'userLoggedName' => $userLoggedName,
-            'userLoggedId'   => $userLoggedId,
             'videos'         => Video::where('title', 'LIKE', "%$request->q%")
                 ->where('category_id', 1)
                 ->orderBy('id', 'DESC')
@@ -100,7 +72,7 @@ class PageController extends Controller
                         'profile_image' => asset('storage/' . $user->profile_image),
                     ];
                 }),
-            'userAuthImg' => User::where('id', $userLoggedId)
+            'userAuthImg' => User::where('id', getUserLoggedId())
                 ->get()
                 ->map(function ($user) {
                     return [
@@ -114,21 +86,7 @@ class PageController extends Controller
 
     public function music(Request $request)
     {
-        /*Logged user verification*/
-        $userLoggedName = null;
-        
-        if(Auth::check()) {
-            $userLoggedName= auth()->user()->name;
-            $userLoggedId= auth()->user()->id;
-        } else {
-            $userLoggedName = null;
-            $userLoggedId = null;
-        }
-        /*-----*/
-
         return Inertia::render('Section/Music', [
-            'userLoggedName' => $userLoggedName,
-            'userLoggedId'   => $userLoggedId,
             'videos'         => Video::where('title', 'LIKE', "%$request->q%")
                 ->where('category_id', 2)
                 ->orderBy('id', 'DESC')
@@ -154,7 +112,7 @@ class PageController extends Controller
                         'profile_image' => asset('storage/' . $user->profile_image),
                     ];
                 }),
-            'userAuthImg' => User::where('id', $userLoggedId)
+            'userAuthImg' => User::where('id', getUserLoggedId())
                 ->get()
                 ->map(function ($user) {
                     return [
@@ -168,21 +126,7 @@ class PageController extends Controller
 
     public function news(Request $request)
     {
-        /*Logged user verification*/
-        $userLoggedName = null;
-        
-        if(Auth::check()) {
-            $userLoggedName= auth()->user()->name;
-            $userLoggedId= auth()->user()->id;
-        } else {
-            $userLoggedName = null;
-            $userLoggedId = null;
-        }
-        /*-----*/
-
         return Inertia::render('Section/News', [
-            'userLoggedName' => $userLoggedName,
-            'userLoggedId'   => $userLoggedId,
             'news'           => true,
             'videos'         => Video::where('title', 'LIKE', "%$request->q%")
                 ->where('category_id', 3)
@@ -209,7 +153,7 @@ class PageController extends Controller
                         'profile_image' => asset('storage/' . $user->profile_image),
                     ];
                 }),
-            'userAuthImg' => User::where('id', $userLoggedId)
+            'userAuthImg' => User::where('id', getUserLoggedId())
                 ->get()
                 ->map(function ($user) {
                     return [
@@ -223,21 +167,7 @@ class PageController extends Controller
 
     public function sports(Request $request)
     {
-        /*Logged user verification*/
-        $userLoggedName = null;
-        
-        if(Auth::check()) {
-            $userLoggedName= auth()->user()->name;
-            $userLoggedId= auth()->user()->id;
-        } else {
-            $userLoggedName = null;
-            $userLoggedId = null;
-        }
-        /*-----*/
-
         return Inertia::render('Section/Sports', [
-            'userLoggedName' => $userLoggedName,
-            'userLoggedId'   => $userLoggedId,
             'videos'         => Video::where('title', 'LIKE', "%$request->q%")
                 ->where('category_id', 4)
                 ->orderBy('id', 'DESC')
@@ -263,7 +193,7 @@ class PageController extends Controller
                         'profile_image' => asset('storage/' . $user->profile_image),
                     ];
                 }),
-            'userAuthImg' => User::where('id', $userLoggedId)
+            'userAuthImg' => User::where('id', getUserLoggedId())
                 ->get()
                 ->map(function ($user) {
                     return [
@@ -277,21 +207,7 @@ class PageController extends Controller
 
     public function learning(Request $request)
     {
-        /*Logged user verification*/
-        $userLoggedName = null;
-        
-        if(Auth::check()) {
-            $userLoggedName= auth()->user()->name;
-            $userLoggedId= auth()->user()->id;
-        } else {
-            $userLoggedName = null;
-            $userLoggedId = null;
-        }
-        /*-----*/
-
         return Inertia::render('Section/Learning', [
-            'userLoggedName' => $userLoggedName,
-            'userLoggedId'   => $userLoggedId,
             'videos'         => Video::where('title', 'LIKE', "%$request->q%")
                 ->where('category_id', 5)
                 ->orderBy('id', 'DESC')
@@ -317,7 +233,7 @@ class PageController extends Controller
                         'profile_image' => asset('storage/' . $user->profile_image),
                     ];
                 }),
-            'userAuthImg' => User::where('id', $userLoggedId)
+            'userAuthImg' => User::where('id', getUserLoggedId())
                 ->get()
                 ->map(function ($user) {
                     return [
@@ -331,19 +247,7 @@ class PageController extends Controller
 
     public function liked(Request $request)
     {
-        /*Logged user verification*/
-        $userLoggedName = null;
-        
-        if(Auth::check()) {
-            $userLoggedName= auth()->user()->name;
-            $userLoggedId= auth()->user()->id;
-        } else {
-            $userLoggedName = null;
-            $userLoggedId = null;
-        }
-        /*-----*/
-        
-        $liked = Likes::where('user_id', $userLoggedId)->get();
+        $liked = Likes::where('user_id', getUserLoggedId())->get();
         
         $sum = collect($liked)
             ->reduce(function ($carry, $item){
@@ -359,8 +263,6 @@ class PageController extends Controller
         }
 
         return Inertia::render('Section/Liked', [
-            'userLoggedName' => $userLoggedName,
-            'userLoggedId'   => $userLoggedId,
             'liked'          => $liked->load('video'),
             'videos'         => Video::where('title', 'LIKE', "%$request->q%")
                 ->get()
@@ -377,7 +279,7 @@ class PageController extends Controller
                         'views'       => $video->views,
                     ];
                 }),
-            'userAuthImg' => User::where('id', $userLoggedId)
+            'userAuthImg' => User::where('id', getUserLoggedId())
                 ->get()
                 ->map(function ($user) {
                     return [
@@ -391,23 +293,9 @@ class PageController extends Controller
 
     public function subscriptions()
     {
-        /*Logged user verification*/
-        $userLoggedName = null;
-        
-        if(Auth::check()) {
-            $userLoggedName= auth()->user()->name;
-            $userLoggedId= auth()->user()->id;
-        } else {
-            $userLoggedName = null;
-            $userLoggedId = null;
-        }
-        /*-----*/
-
-        $subscriptions = Subscriber::where('user_id', $userLoggedId)->get();
+        $subscriptions = Subscriber::where('user_id', getUserLoggedId())->get();
         
         return Inertia::render('Section/Subscriptions', [
-            'userLoggedName' => $userLoggedName,
-            'userLoggedId'   => $userLoggedId,
             'subscriptions'  => $subscriptions->load('user'),
             'users' => User::all()
                 ->map(function ($user) {
@@ -418,7 +306,7 @@ class PageController extends Controller
                         'profile_image' => $user->profile_image,
                     ];
                 }),
-            'userAuthImg' => User::where('id', $userLoggedId)
+            'userAuthImg' => User::where('id', getUserLoggedId())
                 ->get()
                 ->map(function ($user) {
                     return [

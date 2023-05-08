@@ -2,8 +2,6 @@
     <div class="bg-slate-900">
         <Header 
             @getQuery="querySon"
-            :userLoggedName="userLoggedName"
-            :userLoggedId="userLoggedId"
             :userAuthImg="userAuthImg"
         >
         </Header>
@@ -83,8 +81,6 @@ export default {
     props: {
         liked: Array,
         videos: Array,
-        userLoggedName: String,
-        userLoggedId: Number,
         userAuthImg: Array
     },
     methods: {
