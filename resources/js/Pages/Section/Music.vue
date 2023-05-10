@@ -2,7 +2,6 @@
     <div class="bg-slate-900">
         <Header 
             @getQuery="querySon"
-            :userAuthImg="userAuthImg"
         >
         </Header>
 
@@ -91,7 +90,7 @@
                                         <div v-else>
                                             <img 
                                                 class="h-[50px] w-[50px] rounded-full"
-                                                :src="users[video.user_id - 1].profile_image" alt="">
+                                                :src="video.userImg" alt="">
                                         </div>
                                         </Link>
                                     </div>
@@ -134,7 +133,6 @@ export default {
             type: Array,
         },
         users: Array,
-        userAuthImg: Array
     },
     methods: {
         querySon(value) {

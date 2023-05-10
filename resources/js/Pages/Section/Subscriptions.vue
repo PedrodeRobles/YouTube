@@ -4,7 +4,6 @@
             @getQuery="querySon"
             :userLoggedName="userLoggedName"
             :userLoggedId="userLoggedId"
-            :userAuthImg="userAuthImg"
         >
         </Header>
 
@@ -78,7 +77,6 @@ export default {
         userLoggedId: Number,
         subscriptions: Array,
         users: Array,
-        userAuthImg: Array
     },
     methods: {
         querySon(value) {

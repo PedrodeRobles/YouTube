@@ -21,7 +21,7 @@
                 <!-- Verify if the user has been authenticated -->
                 <div v-if="$page.props.checkAuth">
                     <img
-                        v-if="userAuthImg[0].image == null" 
+                        v-if="$page.props.userAuthImg[0].image == null" 
                         src="../../../img/profile.png" 
                         @click="showOptions = !showOptions"
                         alt="Profile"
@@ -29,7 +29,7 @@
                     >
                     <img 
                         v-else
-                        :src="userAuthImg[0].profile_image" 
+                        :src="$page.props.userAuthImg[0].profile_image" 
                         @click="showOptions = !showOptions"
                         alt="Profile"
                         class="w-[50px] h-[50px] rounded-full cursor-pointer"
@@ -66,7 +66,7 @@ export default {
     props: {
         // userLoggedName: String,
         // userLoggedId: Number,
-        userAuthImg: Array,
+        // userAuthImg: Array,
     },
     data() {
         return {

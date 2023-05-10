@@ -2,7 +2,6 @@
     <div class="bg-slate-900">
         <Header 
             @getQuery="querySon"
-            :userAuthImg="userAuthImg"
         >
         </Header>
     
@@ -76,8 +75,6 @@ export default {
     },
     props: {
         liked: Array,
-        // videos: Array,
-        userAuthImg: Array
     },
     methods: {
         querySon(value) {

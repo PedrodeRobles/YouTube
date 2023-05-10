@@ -2,7 +2,6 @@
     <div class="bg-slate-900">
         <Header 
             @getQuery="querySon"
-            :userAuthImg="userAuthImg"
         >
         </Header>
 
@@ -134,7 +133,7 @@ export default {
         },
         // userLoggedName: String,
         // userLoggedId: Number,
-        userAuthImg: Array
+        // userAuthImg: Array
     },
     methods: {
         querySon(value) {

@@ -15,16 +15,7 @@ class PageController extends Controller
     public function home(Request $request)
     {
         return Inertia::render('Home', [
-            'videos'         => $this->getVideos($request),
-            'userAuthImg' => User::where('id', getUserLoggedId())
-                ->get()
-                ->map(function ($user) {
-                    return [
-                        'id' => $user->id,
-                        'profile_image' => asset('storage/' . $user->profile_image),
-                        'image'         => $user->profile_image
-                    ];
-                }),
+            'videos' => $this->getVideos($request),
         ]);
     }
 
@@ -40,15 +31,6 @@ class PageController extends Controller
                         'profile_image' => asset('storage/' . $user->profile_image),
                     ];
                 }),
-            'userAuthImg' => User::where('id', getUserLoggedId())
-                ->get()
-                ->map(function ($user) {
-                    return [
-                        'id' => $user->id,
-                        'profile_image' => asset('storage/' . $user->profile_image),
-                        'image'         => $user->profile_image
-                    ];
-                }),
         ]);
     }
 
@@ -62,15 +44,6 @@ class PageController extends Controller
                         'id' => $user->id,
                         'name' => $user->name,
                         'profile_image' => asset('storage/' . $user->profile_image),
-                    ];
-                }),
-            'userAuthImg' => User::where('id', getUserLoggedId())
-                ->get()
-                ->map(function ($user) {
-                    return [
-                        'id' => $user->id,
-                        'profile_image' => asset('storage/' . $user->profile_image),
-                        'image'         => $user->profile_image
                     ];
                 }),
         ]);
@@ -89,15 +62,6 @@ class PageController extends Controller
                         'profile_image' => asset('storage/' . $user->profile_image),
                     ];
                 }),
-            'userAuthImg' => User::where('id', getUserLoggedId())
-                ->get()
-                ->map(function ($user) {
-                    return [
-                        'id' => $user->id,
-                        'profile_image' => asset('storage/' . $user->profile_image),
-                        'image'         => $user->profile_image
-                    ];
-                }),
         ]);
     }
 
@@ -111,15 +75,6 @@ class PageController extends Controller
                         'id' => $user->id,
                         'name' => $user->name,
                         'profile_image' => asset('storage/' . $user->profile_image),
-                    ];
-                }),
-            'userAuthImg' => User::where('id', getUserLoggedId())
-                ->get()
-                ->map(function ($user) {
-                    return [
-                        'id' => $user->id,
-                        'profile_image' => asset('storage/' . $user->profile_image),
-                        'image'         => $user->profile_image
                     ];
                 }),
         ]);
@@ -137,15 +92,6 @@ class PageController extends Controller
                         'profile_image' => asset('storage/' . $user->profile_image),
                     ];
                 }),
-            'userAuthImg' => User::where('id', getUserLoggedId())
-                ->get()
-                ->map(function ($user) {
-                    return [
-                        'id' => $user->id,
-                        'profile_image' => asset('storage/' . $user->profile_image),
-                        'image'         => $user->profile_image
-                    ];
-                }),
         ]);
     }
 
@@ -155,15 +101,6 @@ class PageController extends Controller
 
         return Inertia::render('Section/Liked', [
             'liked'          => $likes->load('video'),
-            'userAuthImg' => User::where('id', getUserLoggedId())
-                ->get()
-                ->map(function ($user) {
-                    return [
-                        'id' => $user->id,
-                        'profile_image' => asset('storage/' . $user->profile_image),
-                        'image'         => $user->profile_image
-                    ];
-                }),
         ]);
     }
 
@@ -182,15 +119,6 @@ class PageController extends Controller
                         'profile_image' => $user->profile_image,
                     ];
                 }),
-            'userAuthImg' => User::where('id', getUserLoggedId())
-                ->get()
-                ->map(function ($user) {
-                    return [
-                        'id' => $user->id,
-                        'profile_image' => asset('storage/' . $user->profile_image),
-                        'image'         => $user->profile_image
-                    ];
-                }),
         ]);
     }
 
@@ -205,31 +133,11 @@ class PageController extends Controller
                     'id'          => $video->id,
                     'title'       => $video->title,
                     'image'       => asset('storage/' . $video->image),
-                    // 'video'       => asset('storage/' . $video->video),
-                    // 'description' => $video->description,
-                    // 'category_id' => $video->category_id,
-                    // 'user_id'     => $video->user_id,
                     'user'        => $video->user,
                     'userImg'     => asset('storage/' . $video->user->profile_image),
                     'views'       => $video->views,
                 ];
             });
-
-            // Video::where('title', 'LIKE', "%$request->q%")
-            //     ->get()
-            //     ->map(function($video) {
-            //         return [
-            //             'id'          => $video->id,
-            //             'title'       => $video->title,
-            //             'image'       => asset('storage/' . $video->image),
-            //             'video'       => asset('storage/' . $video->video),
-            //             'description' => $video->description,
-            //             'category_id' => $video->category_id,
-            //             'user_id'     => $video->user_id,
-            //             'user'        => User::where('id', $video->user_id)->first(), //Get relation with user
-            //             'views'       => $video->views,
-            //         ];
-            //     })
 
         return $videos;
     }
