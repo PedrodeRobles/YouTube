@@ -47,13 +47,9 @@
                     <div v-for="like in liked" :key="like.id">
                         <Link :href="route('videos.show', like.video.id)">
                             <div class="border border-slate-500 p-2 hover:bg-slate-800">
-                                <!-- <div v-show="like.video_id == videos[like.video_id - 1].id">
-                                    Culo
-                                </div> -->
                                 <img 
                                     class="h-48 w-full sm:h-40 sm:w-72"
-                                    v-show="like.video_id == videos[like.video_id - 1].id" 
-                                    :src="videos[like.video_id - 1].image" 
+                                    :src="'storage/' + like.video.image" 
                                     alt="Video image">
                                 <h3 class="w-72">
                                     {{ like.video.title }}
@@ -80,7 +76,7 @@ export default {
     },
     props: {
         liked: Array,
-        videos: Array,
+        // videos: Array,
         userAuthImg: Array
     },
     methods: {

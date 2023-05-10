@@ -24489,7 +24489,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   props: {
     liked: Array,
-    videos: Array,
+    // videos: Array,
     userAuthImg: Array
   },
   methods: {
@@ -30884,13 +30884,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       href: _ctx.route('videos.show', like.video.id)
     }, {
       "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-        return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div v-show=\"like.video_id == videos[like.video_id - 1].id\">\r\n                                    Culo\r\n                                </div> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+        return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
           "class": "h-48 w-full sm:h-40 sm:w-72",
-          src: $props.videos[like.video_id - 1].image,
+          src: 'storage/' + like.video.image,
           alt: "Video image"
         }, null, 8
         /* PROPS */
-        , _hoisted_15), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, like.video_id == $props.videos[like.video_id - 1].id]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", _hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(like.video.title), 1
+        , _hoisted_15), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", _hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(like.video.title), 1
         /* TEXT */
         )])];
       }),

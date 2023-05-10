@@ -15,23 +15,7 @@ class PageController extends Controller
     public function home(Request $request)
     {
         return Inertia::render('Home', [
-            'videos'         => Video::where('title', 'LIKE', "%$request->q%")
-                ->orderBy('id', 'DESC')
-                ->get()
-                ->map(function($video) {
-                    return [
-                        'id'          => $video->id,
-                        'title'       => $video->title,
-                        'image'       => asset('storage/' . $video->image),
-                        'video'       => asset('storage/' . $video->video),
-                        'description' => $video->description,
-                        'category_id' => $video->category_id,
-                        'user_id'     => $video->user_id,
-                        'user'        => $video->user,
-                        'userImg'     => asset('storage/' . $video->user->profile_image),
-                        'views'       => $video->views,
-                    ];
-                }),
+            'videos'         => $this->getVideos($request),
             'userAuthImg' => User::where('id', getUserLoggedId())
                 ->get()
                 ->map(function ($user) {
@@ -47,23 +31,7 @@ class PageController extends Controller
     public function gaming(Request $request)
     {
         return Inertia::render('Section/Gaming', [
-            'videos'         => Video::where('title', 'LIKE', "%$request->q%")
-                ->where('category_id', 1)
-                ->orderBy('id', 'DESC')
-                ->get()
-                ->map(function($video) {
-                    return [
-                        'id'          => $video->id,
-                        'title'       => $video->title,
-                        'image'       => asset('storage/' . $video->image),
-                        'video'       => asset('storage/' . $video->video),
-                        'description' => $video->description,
-                        'category_id' => $video->category_id,
-                        'user_id'     => $video->user_id,
-                        'user'        => User::where('id', $video->user_id)->first(), //Get relation with user
-                        'views'       => $video->views,
-                    ];
-                }),
+            'videos'         => $this->getVideos($request, ['category_id' => 1]),
             'users' => User::all()
                 ->map(function ($user) {
                     return [
@@ -87,24 +55,8 @@ class PageController extends Controller
     public function music(Request $request)
     {
         return Inertia::render('Section/Music', [
-            'videos'         => Video::where('title', 'LIKE', "%$request->q%")
-                ->where('category_id', 2)
-                ->orderBy('id', 'DESC')
-                ->get()
-                ->map(function($video) {
-                    return [
-                        'id'          => $video->id,
-                        'title'       => $video->title,
-                        'image'       => asset('storage/' . $video->image),
-                        'video'       => asset('storage/' . $video->video),
-                        'description' => $video->description,
-                        'category_id' => $video->category_id,
-                        'user_id'     => $video->user_id,
-                        'user'        => User::where('id', $video->user_id)->first(), //Get relation with user
-                        'views'       => $video->views,
-                    ];
-                }),
-            'users' => User::all()
+            'videos' => $this->getVideos($request, ['category_id' => 2]),
+            'users'  => User::all()
                 ->map(function ($user) {
                     return [
                         'id' => $user->id,
@@ -128,23 +80,7 @@ class PageController extends Controller
     {
         return Inertia::render('Section/News', [
             'news'           => true,
-            'videos'         => Video::where('title', 'LIKE', "%$request->q%")
-                ->where('category_id', 3)
-                ->orderBy('id', 'DESC')
-                ->get()
-                ->map(function($video) {
-                    return [
-                        'id'          => $video->id,
-                        'title'       => $video->title,
-                        'image'       => asset('storage/' . $video->image),
-                        'video'       => asset('storage/' . $video->video),
-                        'description' => $video->description,
-                        'category_id' => $video->category_id,
-                        'user_id'     => $video->user_id,
-                        'user'        => User::where('id', $video->user_id)->first(), //Get relation with user
-                        'views'       => $video->views,
-                    ];
-                }),
+            'videos'         => $this->getVideos($request, ['category_id' => 3]),
             'users' => User::all()
                 ->map(function ($user) {
                     return [
@@ -168,23 +104,7 @@ class PageController extends Controller
     public function sports(Request $request)
     {
         return Inertia::render('Section/Sports', [
-            'videos'         => Video::where('title', 'LIKE', "%$request->q%")
-                ->where('category_id', 4)
-                ->orderBy('id', 'DESC')
-                ->get()
-                ->map(function($video) {
-                    return [
-                        'id'          => $video->id,
-                        'title'       => $video->title,
-                        'image'       => asset('storage/' . $video->image),
-                        'video'       => asset('storage/' . $video->video),
-                        'description' => $video->description,
-                        'category_id' => $video->category_id,
-                        'user_id'     => $video->user_id,
-                        'user'        => User::where('id', $video->user_id)->first(), //Get relation with user
-                        'views'       => $video->views,
-                    ];
-                }),
+            'videos' => $this->getVideos($request, ['category_id' => 4]),
             'users' => User::all()
                 ->map(function ($user) {
                     return [
@@ -208,23 +128,7 @@ class PageController extends Controller
     public function learning(Request $request)
     {
         return Inertia::render('Section/Learning', [
-            'videos'         => Video::where('title', 'LIKE', "%$request->q%")
-                ->where('category_id', 5)
-                ->orderBy('id', 'DESC')
-                ->get()
-                ->map(function($video) {
-                    return [
-                        'id'          => $video->id,
-                        'title'       => $video->title,
-                        'image'       => asset('storage/' . $video->image),
-                        'video'       => asset('storage/' . $video->video),
-                        'description' => $video->description,
-                        'category_id' => $video->category_id,
-                        'user_id'     => $video->user_id,
-                        'user'        => User::where('id', $video->user_id)->first(), //Get relation with user
-                        'views'       => $video->views,
-                    ];
-                }),
+            'videos' => $this->getVideos($request, ['category_id' => 5]),
             'users' => User::all()
                 ->map(function ($user) {
                     return [
@@ -245,40 +149,12 @@ class PageController extends Controller
         ]);
     }
 
-    public function liked(Request $request)
+    public function liked()
     {
-        $liked = Likes::where('user_id', getUserLoggedId())->get();
-        
-        $sum = collect($liked)
-            ->reduce(function ($carry, $item){
-                return $carry + $item["count"];
-            }, 0);
-
-            
-        $videos = [];
-        for ($i=0; $i < $sum; $i++) { 
-            // array_push($like, $liked[$i]->video_id);
-            $video = Video::where('id', $liked[$i]->video_id)->first();
-            array_push($videos, $video);
-        }
+        $likes = Likes::where('user_id', getUserLoggedId())->get();
 
         return Inertia::render('Section/Liked', [
-            'liked'          => $liked->load('video'),
-            'videos'         => Video::where('title', 'LIKE', "%$request->q%")
-                ->get()
-                ->map(function($video) {
-                    return [
-                        'id'          => $video->id,
-                        'title'       => $video->title,
-                        'image'       => asset('storage/' . $video->image),
-                        'video'       => asset('storage/' . $video->video),
-                        'description' => $video->description,
-                        'category_id' => $video->category_id,
-                        'user_id'     => $video->user_id,
-                        'user'        => User::where('id', $video->user_id)->first(), //Get relation with user
-                        'views'       => $video->views,
-                    ];
-                }),
+            'liked'          => $likes->load('video'),
             'userAuthImg' => User::where('id', getUserLoggedId())
                 ->get()
                 ->map(function ($user) {
@@ -316,6 +192,46 @@ class PageController extends Controller
                     ];
                 }),
         ]);
+    }
+
+    private function getVideos($request, $where = [])
+    {
+        $videos = Video::where('title', 'LIKE', "%$request->q%")
+            ->orderBy('id', 'DESC')
+            ->where($where)
+            ->get()
+            ->map(function($video) {
+                return [
+                    'id'          => $video->id,
+                    'title'       => $video->title,
+                    'image'       => asset('storage/' . $video->image),
+                    // 'video'       => asset('storage/' . $video->video),
+                    // 'description' => $video->description,
+                    // 'category_id' => $video->category_id,
+                    // 'user_id'     => $video->user_id,
+                    'user'        => $video->user,
+                    'userImg'     => asset('storage/' . $video->user->profile_image),
+                    'views'       => $video->views,
+                ];
+            });
+
+            // Video::where('title', 'LIKE', "%$request->q%")
+            //     ->get()
+            //     ->map(function($video) {
+            //         return [
+            //             'id'          => $video->id,
+            //             'title'       => $video->title,
+            //             'image'       => asset('storage/' . $video->image),
+            //             'video'       => asset('storage/' . $video->video),
+            //             'description' => $video->description,
+            //             'category_id' => $video->category_id,
+            //             'user_id'     => $video->user_id,
+            //             'user'        => User::where('id', $video->user_id)->first(), //Get relation with user
+            //             'views'       => $video->views,
+            //         ];
+            //     })
+
+        return $videos;
     }
 
 }
