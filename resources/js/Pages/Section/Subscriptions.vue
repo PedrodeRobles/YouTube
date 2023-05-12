@@ -2,8 +2,6 @@
     <div class="bg-slate-900">
         <Header 
             @getQuery="querySon"
-            :userLoggedName="userLoggedName"
-            :userLoggedId="userLoggedId"
         >
         </Header>
 
@@ -73,8 +71,6 @@ export default {
         Link,
     },
     props: {
-        userLoggedName: String,
-        userLoggedId: Number,
         subscriptions: Array,
         users: Array,
     },

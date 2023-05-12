@@ -22,76 +22,35 @@ class PageController extends Controller
     public function gaming(Request $request)
     {
         return Inertia::render('Section/Gaming', [
-            'videos'         => $this->getVideos($request, ['category_id' => 1]),
-            'users' => User::all()
-                ->map(function ($user) {
-                    return [
-                        'id' => $user->id,
-                        'name' => $user->name,
-                        'profile_image' => asset('storage/' . $user->profile_image),
-                    ];
-                }),
+            'videos' => $this->getVideos($request, ['category_id' => 1])
         ]);
     }
 
     public function music(Request $request)
     {
         return Inertia::render('Section/Music', [
-            'videos' => $this->getVideos($request, ['category_id' => 2]),
-            'users'  => User::all()
-                ->map(function ($user) {
-                    return [
-                        'id' => $user->id,
-                        'name' => $user->name,
-                        'profile_image' => asset('storage/' . $user->profile_image),
-                    ];
-                }),
+            'videos' => $this->getVideos($request, ['category_id' => 2])
         ]);
     }
 
     public function news(Request $request)
     {
         return Inertia::render('Section/News', [
-            'news'           => true,
-            'videos'         => $this->getVideos($request, ['category_id' => 3]),
-            'users' => User::all()
-                ->map(function ($user) {
-                    return [
-                        'id' => $user->id,
-                        'name' => $user->name,
-                        'profile_image' => asset('storage/' . $user->profile_image),
-                    ];
-                }),
+            'videos' => $this->getVideos($request, ['category_id' => 3])
         ]);
     }
 
     public function sports(Request $request)
     {
         return Inertia::render('Section/Sports', [
-            'videos' => $this->getVideos($request, ['category_id' => 4]),
-            'users' => User::all()
-                ->map(function ($user) {
-                    return [
-                        'id' => $user->id,
-                        'name' => $user->name,
-                        'profile_image' => asset('storage/' . $user->profile_image),
-                    ];
-                }),
+            'videos' => $this->getVideos($request, ['category_id' => 4])
         ]);
     }
 
     public function learning(Request $request)
     {
         return Inertia::render('Section/Learning', [
-            'videos' => $this->getVideos($request, ['category_id' => 5]),
-            'users' => User::all()
-                ->map(function ($user) {
-                    return [
-                        'id' => $user->id,
-                        'name' => $user->name,
-                        'profile_image' => asset('storage/' . $user->profile_image),
-                    ];
-                }),
+            'videos' => $this->getVideos($request, ['category_id' => 5])
         ]);
     }
 
@@ -100,14 +59,14 @@ class PageController extends Controller
         $likes = Likes::where('user_id', getUserLoggedId())->get();
 
         return Inertia::render('Section/Liked', [
-            'liked'          => $likes->load('video'),
+            'liked' => $likes->load('video'),
         ]);
     }
 
     public function subscriptions()
     {
         $subscriptions = Subscriber::where('user_id', getUserLoggedId())->get();
-        
+
         return Inertia::render('Section/Subscriptions', [
             'subscriptions'  => $subscriptions->load('user'),
             'users' => User::all()

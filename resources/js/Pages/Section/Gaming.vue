@@ -131,8 +131,7 @@ export default {
     props: {
         videos: {
             type: Array,
-        },
-        users: Array,
+        }
     },
     methods: {
         querySon(value) {
