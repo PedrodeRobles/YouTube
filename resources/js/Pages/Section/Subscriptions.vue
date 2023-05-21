@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-slate-900">
+    <div class="bg-principal">
         <Header 
             @getQuery="querySon"
         >

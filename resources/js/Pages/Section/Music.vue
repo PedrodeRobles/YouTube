@@ -37,43 +37,10 @@
         </nav>
 
         <div class="md:pl-16">
-            <div class="flex justify-center">
-                <div class="pt-20 flex justify-between text-white sm:space-x-2 md:space-x-4">
-                    <Link :href="route('home')">
-                        <button class="bg-slate-800 rounded-[15px] py-1 px-2">
-                            All
-                        </button>
-                    </Link>
-                    <Link :href="route('gaming')">
-                        <button class="bg-slate-800 rounded-[15px] py-1 px-2">
-                            Gaming
-                        </button>
-                    </Link>
-                    <Link :href="route('music')">
-                        <button class="bg-white rounded-[15px] py-1 px-2 text-black">
-                            Music
-                        </button>
-                    </Link>
-                    <Link :href="route('news')">
-                        <button class="bg-slate-800 rounded-[15px] py-1 px-2">
-                            News
-                        </button>
-                    </Link>
-                    <Link :href="route('sports')">
-                        <button class="bg-slate-800 rounded-[15px] py-1 px-2">
-                            Sports
-                        </button>
-                    </Link>
-                    <Link :href="route('learning')">
-                        <button class="bg-slate-800 rounded-[15px] py-1 px-2">
-                            Learning
-                        </button>
-                    </Link>
-                </div>
-            </div>
+            <NavSection/>
     
             <!-- Videos -->
-            <div class="sm:flex justify-center bg-slate-900">
+            <div class="sm:flex justify-center bg-principal">
                 <div class="pt-6 pb-[100rem] 2xl:pb-[1000px] sm:grid sm:grid-cols-2 sm:gap-x-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
                     <div v-for="video in videos" :key="video.id">
                         <Link :href="route('videos.show', video.id)">
@@ -117,11 +84,13 @@
 <script>
 import Header from '../Header/Header.vue';
 import { Link } from '@inertiajs/inertia-vue3';
+import NavSection from './NavSection.vue';
 
 export default {
     components: {
         Header,
         Link,
+        NavSection
     },
     data() {
         return {
