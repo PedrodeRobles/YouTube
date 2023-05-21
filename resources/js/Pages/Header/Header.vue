@@ -12,8 +12,8 @@
                 </div>
             </div>
             <div class="invisible  sm:visible sm:flex sm:items-center">
-                <input v-model="query" class="sm:h-8 sm:bg-[#121212] sm:text-white placeholder:text-slate-600 w-0 sm:w-52 lg:w-96 " type="text" placeholder="Search...">
-                <button @click="sendToFather()" class="border-2 border-slate-600 bg-slate-900 p-1">
+                <input v-model="query" class="sm:h-8 sm:bg-[#121212] sm:text-white placeholder:text-slate-600 w-0 sm:w-52 lg:w-96 rounded-l-full" type="text" placeholder="Search...">
+                <button @click="sendToFather()" class="border-2 border-slate-600 bg-slate-900 p-1 rounded-r-full sm:px-3">
                     <img class="w-5" src="../../../img/searchIcon.png" alt="Search">
                 </button>
             </div>

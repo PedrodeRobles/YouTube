@@ -37,7 +37,7 @@
         </nav>
 
         <div class="md:pl-16">
-            <NavSection/>
+            <NavSection :learning="learning"/>
     
             <!-- Videos -->
             <div class="sm:flex justify-center bg-principal">
@@ -94,7 +94,8 @@ export default {
     },
     data() {
         return {
-            q: null
+            q: null,
+            learning: true
         }
     },
     props: {

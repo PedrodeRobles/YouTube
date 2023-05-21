@@ -23674,7 +23674,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      q: null
+      q: null,
+      all: true
     };
   },
   props: {
@@ -24394,7 +24395,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      q: null
+      q: null,
+      gaming: true
     };
   },
   props: {
@@ -24445,7 +24447,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      q: null
+      q: null,
+      learning: true
     };
   },
   props: {
@@ -24537,7 +24540,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      q: null
+      q: null,
+      music: true
     };
   },
   props: {
@@ -24579,6 +24583,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
     Link: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_0__.Link
+  },
+  props: {
+    all: Boolean,
+    gaming: Boolean,
+    music: Boolean,
+    news: Boolean,
+    sports: Boolean,
+    learning: Boolean
   }
 });
 
@@ -24609,7 +24621,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      q: null
+      q: null,
+      news: true
     };
   },
   props: {
@@ -24660,7 +24673,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      q: null
+      q: null,
+      sports: true
     };
   },
   props: {
@@ -28393,7 +28407,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
       return $data.query = $event;
     }),
-    "class": "sm:h-8 sm:bg-[#121212] sm:text-white placeholder:text-slate-600 w-0 sm:w-52 lg:w-96",
+    "class": "sm:h-8 sm:bg-[#121212] sm:text-white placeholder:text-slate-600 w-0 sm:w-52 lg:w-96 rounded-l-full",
     type: "text",
     placeholder: "Search..."
   }, null, 512
@@ -28402,7 +28416,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: _cache[2] || (_cache[2] = function ($event) {
       return $options.sendToFather();
     }),
-    "class": "border-2 border-slate-600 bg-slate-900 p-1"
+    "class": "border-2 border-slate-600 bg-slate-900 p-1 rounded-r-full sm:px-3"
   }, _hoisted_9)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Verify if the user has been authenticated "), _ctx.$page.props.checkAuth ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_11, [_ctx.$page.props.userAuthImg[0].image == null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("img", {
     key: 0,
     src: _img_profile_png__WEBPACK_IMPORTED_MODULE_4__["default"],
@@ -28788,7 +28802,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   }, 8
   /* PROPS */
-  , ["href"])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_NavSection), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Videos "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.videos, function (video) {
+  , ["href"])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_NavSection, {
+    all: $data.all
+  }, null, 8
+  /* PROPS */
+  , ["all"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Videos "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.videos, function (video) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
       key: video.id
     }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
@@ -28796,7 +28814,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }, {
       "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
         return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-          "class": "h-48 w-full sm:h-40 sm:w-72",
+          "class": "h-48 w-full sm:h-40 sm:w-72 sm:rounded-lg",
           src: video.image,
           alt: "Video Cover"
         }, null, 8
@@ -30148,7 +30166,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   }, 8
   /* PROPS */
-  , ["href"])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_NavSection), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Videos "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.videos, function (video) {
+  , ["href"])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_NavSection, {
+    gaming: $data.gaming
+  }, null, 8
+  /* PROPS */
+  , ["gaming"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Videos "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.videos, function (video) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
       key: video.id
     }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
@@ -30377,7 +30399,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   }, 8
   /* PROPS */
-  , ["href"])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_NavSection), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Videos "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.videos, function (video) {
+  , ["href"])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_NavSection, {
+    learning: $data.learning
+  }, null, 8
+  /* PROPS */
+  , ["learning"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Videos "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.videos, function (video) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
       key: video.id
     }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
@@ -30772,7 +30798,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   }, 8
   /* PROPS */
-  , ["href"])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_NavSection), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Videos "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.videos, function (video) {
+  , ["href"])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_NavSection, {
+    music: $data.music
+  }, null, 8
+  /* PROPS */
+  , ["music"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Videos "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.videos, function (video) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
       key: video.id
     }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
@@ -30853,43 +30883,6 @@ var _hoisted_1 = {
 var _hoisted_2 = {
   "class": "pt-20 flex justify-between text-white sm:space-x-2 md:space-x-4"
 };
-
-var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-  "class": "bg-white rounded-[15px] py-1 px-2 text-black"
-}, " All ", -1
-/* HOISTED */
-);
-
-var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-  "class": "bg-slate-800 rounded-[15px] py-1 px-2"
-}, " Gaming ", -1
-/* HOISTED */
-);
-
-var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-  "class": "bg-slate-800 rounded-[15px] py-1 px-2"
-}, " Music ", -1
-/* HOISTED */
-);
-
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-  "class": "bg-slate-800 rounded-[15px] py-1 px-2"
-}, " News ", -1
-/* HOISTED */
-);
-
-var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-  "class": "bg-slate-800 rounded-[15px] py-1 px-2"
-}, " Sports ", -1
-/* HOISTED */
-);
-
-var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-  "class": "bg-slate-800 rounded-[15px] py-1 px-2"
-}, " Learning ", -1
-/* HOISTED */
-);
-
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Link");
 
@@ -30897,7 +30890,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     href: _ctx.route('home')
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_3];
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+        "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([{
+          'bg-white': $props.all,
+          'text-black': $props.all,
+          'bg-secondary': !$props.all
+        }, "rounded-[10px] py-1 px-2"])
+      }, " All ", 2
+      /* CLASS */
+      )];
     }),
     _: 1
     /* STABLE */
@@ -30908,7 +30909,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     href: _ctx.route('gaming')
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_4];
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+        "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([{
+          'bg-white': $props.gaming,
+          'text-black': $props.gaming,
+          'bg-secondary': !$props.gaming
+        }, "rounded-[10px] py-1 px-2"])
+      }, " Gaming ", 2
+      /* CLASS */
+      )];
     }),
     _: 1
     /* STABLE */
@@ -30919,7 +30928,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     href: _ctx.route('music')
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_5];
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+        "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([{
+          'bg-white': $props.music,
+          'text-black': $props.music,
+          'bg-secondary': !$props.music
+        }, "rounded-[10px] py-1 px-2"])
+      }, " Music ", 2
+      /* CLASS */
+      )];
     }),
     _: 1
     /* STABLE */
@@ -30930,7 +30947,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     href: _ctx.route('news')
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_6];
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+        "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([{
+          'bg-white': $props.news,
+          'text-black': $props.news,
+          'bg-secondary': !$props.news
+        }, "rounded-[10px] py-1 px-2"])
+      }, " News ", 2
+      /* CLASS */
+      )];
     }),
     _: 1
     /* STABLE */
@@ -30941,7 +30966,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     href: _ctx.route('sports')
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_7];
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+        "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([{
+          'bg-white': $props.sports,
+          'text-black': $props.sports,
+          'bg-secondary': !$props.sports
+        }, "rounded-[10px] py-1 px-2"])
+      }, " Sports ", 2
+      /* CLASS */
+      )];
     }),
     _: 1
     /* STABLE */
@@ -30952,7 +30985,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     href: _ctx.route('learning')
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_8];
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+        "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([{
+          'bg-white': $props.learning,
+          'text-black': $props.learning,
+          'bg-secondary': !$props.learning
+        }, "rounded-[10px] py-1 px-2"])
+      }, " Learning ", 2
+      /* CLASS */
+      )];
     }),
     _: 1
     /* STABLE */
@@ -31131,7 +31172,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   }, 8
   /* PROPS */
-  , ["href"])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_NavSection), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Videos "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.videos, function (video) {
+  , ["href"])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_NavSection, {
+    news: $data.news
+  }, null, 8
+  /* PROPS */
+  , ["news"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Videos "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.videos, function (video) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
       key: video.id
     }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
@@ -31360,7 +31405,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   }, 8
   /* PROPS */
-  , ["href"])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_NavSection), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Videos "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.videos, function (video) {
+  , ["href"])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_NavSection, {
+    sports: $data.sports
+  }, null, 8
+  /* PROPS */
+  , ["sports"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Videos "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.videos, function (video) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
       key: video.id
     }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
