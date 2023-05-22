@@ -31699,17 +31699,17 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var _hoisted_1 = {
-  "class": "bg-slate-900"
+  "class": "bg-principal"
 };
 
 var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
-  "class": "text-2xl text-white pt-4 bg-slate-900 sm:pl-16 md:pl-10"
+  "class": "text-2xl text-white pt-4 sm:pl-16 md:pl-10"
 }, " Uploads ", -1
 /* HOISTED */
 );
 
 var _hoisted_3 = {
-  "class": "bg-slate-900 pb-[50rem] pt-4 sm:grid sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-8 md:px-10 md:gap-2"
+  "class": "pb-[50rem] pt-4 sm:grid sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-8 md:px-10 md:gap-2"
 };
 var _hoisted_4 = {
   "class": "mb-2 grid grid-cols-1 place-content-start"
@@ -31725,7 +31725,7 @@ var _hoisted_8 = {
   "class": "text-white text-md font-semibold"
 };
 var _hoisted_9 = {
-  "class": "text-slate-500 flex space-x-2 sm:block sm:space-x-0"
+  "class": "text-txt flex space-x-2 sm:block sm:space-x-0"
 };
 
 var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
@@ -31780,7 +31780,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }, {
       "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
         return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-          "class": "h-48 w-full sm:h-28 sm:w-52 xl:w-full",
+          "class": "h-48 w-full sm:h-28 sm:w-52 xl:w-full sm:rounded-lg",
           src: video.image,
           alt: "Video Cover"
         }, null, 8
@@ -31844,7 +31844,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var _hoisted_1 = {
-  "class": "bg-slate-800 pt-12"
+  "class": "pt-12"
 };
 var _hoisted_2 = {
   "class": "bg-slate-700"
@@ -31858,7 +31858,7 @@ var _hoisted_5 = {
 };
 
 var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-  "class": "h-32 sm:h-26 md:h-44 lg:h-60 w-full",
+  "class": "h-32 sm:h-26 md:h-40 w-full object-cover",
   src: _img_videoImage_png__WEBPACK_IMPORTED_MODULE_1__["default"],
   alt: "image"
 }, null, -1
@@ -31915,13 +31915,13 @@ var _hoisted_22 = {
 };
 
 var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
-  "class": "p-2 bg-blue-500 hover:bg-blue-400"
+  "class": "p-2 bg-blue-500 hover:bg-blue-400 text-white rounded-full"
 }, " Edit profile ", -1
 /* HOISTED */
 );
 
 var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
-  "class": "p-2 bg-red-500 hover:bg-red-400"
+  "class": "p-2 bg-[#FF4E45] hover:bg-red-500 text-white rounded-full"
 }, " Add video ", -1
 /* HOISTED */
 );
@@ -31932,10 +31932,10 @@ var _hoisted_25 = {
 };
 
 var _hoisted_26 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-  "class": "bg-red-600 py-2 px-3",
+  "class": "bg-white py-2 px-3 rounded-full",
   type: "submit"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
-  "class": "text-white"
+  "class": "text-principal"
 }, "SUBSCRIBE")], -1
 /* HOISTED */
 );
@@ -31946,7 +31946,7 @@ var _hoisted_28 = {
 };
 
 var _hoisted_29 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
-  "class": "text-gray-800"
+  "class": "text-white"
 }, "UNSUBSCRIBE", -1
 /* HOISTED */
 );
@@ -31962,7 +31962,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Link");
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [$props.userBackgroundImage !== null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-    "class": "h-32 sm:h-26 md:h-44 lg:h-60 w-full",
+    "class": "h-32 sm:h-26 md:h-40 w-full object-cover",
     src: $props.users[$props.userId - 1].bg_image,
     alt: ""
   }, null, 8
@@ -32010,7 +32010,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: _cache[1] || (_cache[1] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
       return $options.unsubscribe && $options.unsubscribe.apply($options, arguments);
     }, ["prevent"])),
-    "class": "bg-gray-600 py-2 px-3"
+    "class": "bg-secondary py-2 px-3 rounded-full"
   }, _hoisted_30)]))])), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_31, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_32, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.subscribers) + " subscribers ", 1
   /* TEXT */
   )])])])])]);
