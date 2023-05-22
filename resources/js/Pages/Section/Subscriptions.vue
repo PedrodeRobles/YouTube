@@ -5,36 +5,7 @@
         >
         </Header>
 
-        <nav class="invisible w-0 h-0 md:visible md:w-16 md:h-screen bg-slate-800 md:mt-14 md:fixed text-white">
-            <div class="flex justify-center md:mt-4">
-                <div class="space-y-6">
-                    <div>
-                        <Link :href="route('home')">
-                            <img src="../../../img/unHome.png" alt="Home" class="md:ml-2">
-                            <p class="text-sm">
-                                Home
-                            </p>
-                        </Link>
-                    </div>
-                    <div>
-                        <Link :href="route('liked')">
-                            <img src="../../../img/like.png" alt="Liked" class="md:ml-2">
-                            <p class="text-sm md:ml-1">
-                                Liked
-                            </p>
-                        </Link>
-                    </div>
-                    <div>
-                        <Link :href="route('subscriptions')">
-                            <img src="../../../img/clickSubs.png" alt="subscriptions" class="md:ml-2 md:h-[24px] md:w-[24px]">
-                            <p class="text-sm md:ml-1">
-                                Subs.
-                            </p>
-                        </Link>
-                    </div>
-                </div>
-            </div>
-        </nav>
+        <NavBar :subsView="subsView"/>
     
         <section class="pt-20 pb-[50rem] text-white">
             <h1 class="text-xl text-center mb-4">Subscriptions</h1>
@@ -64,11 +35,13 @@
 <script>
 import Header from '../Header/Header.vue';
 import { Link } from '@inertiajs/inertia-vue3';
+import NavBar from './NavBar.vue';
 
 export default {
     components: {
         Header,
         Link,
+        NavBar
     },
     props: {
         subscriptions: Array,
@@ -84,5 +57,10 @@ export default {
             this.$inertia.get(this.route('home', {q: q}), {}, {preserveState: true})
         }
     },
+    data() {
+        return {
+            subsView: true
+        }
+    }
 }
 </script>
