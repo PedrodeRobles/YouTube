@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-slate-800 border border-slate-600 text-white fixed mt-1 mr-4">
+    <div class="bg-secondary border border-slate-600 text-white fixed mt-1 mr-4">
         <div class="p-2 w-28 space-y-1">
             <div>
                 <Link :href="route('userVideos', userLoggedName)">
