@@ -101,23 +101,23 @@
 
                         <div class="flex items-center">
                             <form v-if="subscribed == null" @submit.prevent="subscribe">
-                                <button class="bg-red-600 py-2 px-3" type="submit">
-                                    <p class="text-white">SUBSCRIBE</p> 
+                                <button class="bg-white py-2 px-3 rounded-full" type="submit">
+                                    <p class="text-principal">SUBSCRIBE</p> 
                                 </button>
                             </form>
                             <div v-else>
                                 <button  
                                     @click.prevent="unsubscribe" 
-                                    class="bg-gray-600 py-2 px-3"
+                                    class="bg-secondary py-2 px-3 rounded-full"
                                 >
-                                    <p class="text-gray-800">UNSUBSCRIBE</p>
+                                    <p class="text-white">UNSUBSCRIBE</p>
                                 </button>
                             </div>
                         </div>
                         
                     </div>
                     <div class="px-20 pb-4">
-                        <p class="mt-4">
+                        <p class="mt-4 bg-secondary p-3 rounded-lg">
                             {{ video.description }}
                         </p>
                     </div>
@@ -151,7 +151,7 @@
                                                 <textarea 
                                                     v-model="form.content"
                                                     cols="30" rows="1" 
-                                                    class="bg-slate-900 borber-b border-slate-500 w-full"
+                                                    class="bg-secondary borber-b border-slate-500 w-full"
                                                 >
                                                 </textarea>
                                                 <div class="flex justify-end md:pl-4">

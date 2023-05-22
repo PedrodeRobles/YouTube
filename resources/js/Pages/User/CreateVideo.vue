@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-slate-900">
+    <div class="bg-principal">
         <Header 
             @getQuery="querySon"
             :userLoggedName="userLoggedName"
@@ -38,7 +38,7 @@
                                 <input 
                                     type="text" 
                                     v-model="form.title" 
-                                    class="bg-slate-800 w-full"
+                                    class="bg-secondary w-full"
                                 >
                             </div>
                             <div>
@@ -69,7 +69,7 @@
                                     v-model="form.description"
                                     cols="30" 
                                     rows="4" 
-                                    class="bg-slate-800 w-full"
+                                    class="bg-secondary w-full"
                                 ></textarea>
                             </div>
                             <div>
@@ -77,7 +77,7 @@
                                 <div v-if="errors.category_id" class="text-red-500">
                                     {{ errors.category_id }}
                                 </div>
-                                <select v-model="form.category_id" class="bg-slate-800">
+                                <select v-model="form.category_id" class="bg-secondary">
                                     <option v-for="category in categories" :key="category.id" :value="category.id">
                                         {{ category.category }}
                                     </option>

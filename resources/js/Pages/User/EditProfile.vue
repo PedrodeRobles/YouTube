@@ -6,7 +6,7 @@
     >
     </Header>
 
-    <div class="pt-20 pb-96 flex justify-center text-white bg-slate-900">
+    <div class="pt-20 pb-96 flex justify-center text-white bg-principal">
             <div>
                 <div class="flex justify-center mb-4">
                     <h2 class="text-2xl">Update profile</h2>
@@ -19,7 +19,7 @@
                                 type="file"
                                 accept="image/*"
                                 @input="form.profile_image = $event.target.files[0]" 
-                                class="bg-slate-900 w-full"
+                                class="w-full"
                             >
                         </div>
                         <div class="pt-4 flex justify-center">
@@ -38,7 +38,7 @@
                                 type="file"
                                 accept="image/*"
                                 @input="form.bg_image = $event.target.files[0]" 
-                                class="bg-slate-900 w-full"
+                                class="w-full"
                             >
                         </div>
                         <div class="pt-4 flex justify-center">

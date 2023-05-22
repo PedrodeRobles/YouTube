@@ -29,7 +29,7 @@
                 <Link :href="route('videos.show', video.id)">
                     <div class="mb-2 grid grid-cols-1 place-content-start">
                         <div>
-                            <img class="h-48 w-full sm:h-28 sm:w-52 xl:w-full sm:rounded-lg" :src="video.image" alt="Video Cover">
+                            <img class="h-48 w-full sm:h-28 sm:w-52 sm:rounded-lg object-cover" :src="video.image" alt="Video Cover">
                         </div>
                         <div class=" w-full sm:w-52 md:w-full lg:w-full space-x-2 mt-2">
                             <!-- <div class="col-span-1 pl-2">
