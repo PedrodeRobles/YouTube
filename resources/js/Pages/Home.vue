@@ -34,7 +34,7 @@
                                     </div>
                                     <div class="col-span-5">
                                         <h6 class="text-white text-lg font-semibold">{{ video.title }}</h6>
-                                        <div class="text-slate-500 flex space-x-2 sm:block sm:space-x-0">
+                                        <div class="text-txt flex space-x-2 sm:block sm:space-x-0">
                                             <Link :href="route('userVideos', video.user.name)">
                                                 <p class="hover:underline hover:underline-offset-1">{{ video.user.name }} .</p>
                                             </Link>

@@ -8,7 +8,7 @@
         >
         </Header>
 
-        <div class="pt-14 pb-[200rem] bg-slate-900 text-white lg:grid lg:grid-cols-8">
+        <div class="pt-14 pb-[200rem] bg-principal text-white lg:grid lg:grid-cols-8">
             <div class="lg:col-span-5 xl:col-span-6">
                 <div class="sm:px-5 sm:pt-5">
                     <iframe 
@@ -22,12 +22,12 @@
                     <h2 class="text-xl text-bold">
                         {{ video.title }}
                     </h2>
-                    <p class="text-gray-500 md:invisible md:h-0">
+                    <p class="text-txt md:invisible md:h-0">
                         {{ video.views }} views
                     </p>
                     <div class="md:flex md:items-center">
                         <div>
-                            <p class="text-gray-500 invisible h-0 w-0 md:visible md:h-3 md:w-20">
+                            <p class="text-txt invisible h-0 w-0 md:visible md:h-3 md:w-20">
                                 {{ video.views }} views
                             </p>
                         </div>
@@ -93,7 +93,7 @@
                                 <Link :href="route('userVideos', video.user.name)" class="text-semibold">
                                     {{ video.user.name }}
                                 </Link>
-                                <p class="text-gray-500 text-sm">
+                                <p class="text-txt text-sm">
                                     {{ video.user.subscribers }} subscribers
                                 </p>
                             </div>
@@ -217,7 +217,7 @@
                                             <textarea 
                                                 v-model="form.content"
                                                 cols="30" rows="1" 
-                                                class="bg-slate-900 borber-b border-slate-500 w-full"
+                                                class="bg-secondary borber-b border-slate-500 w-full"
                                             >
                                             </textarea>
                                             <div class="flex justify-end md:pl-4">
@@ -232,7 +232,7 @@
                         </form>
                         <div 
                             v-for="comment in comments" :key="comment.id"
-                            class="bg-slate-900"
+                            class="bg-primary"
                         >
                             <div class="grid grid-cols-12 lg:flex pb-6">
                                 <div class="col-span-1">
@@ -272,7 +272,7 @@
                                     <img 
                                         :src="video.image" 
                                         alt="Video"
-                                        class="w-full h-48 sm:h-72 md:h-36 lg:h-24 lg:w-40">
+                                        class="w-full h-48 sm:h-72 md:h-36 lg:h-24 lg:w-40 sm:rounded-lg">
                                 </div>
                                 <div class="grid grid-cols-6 w-80 sm:w-72 space-x-2 mt-2 lg:mt-0 ml-4 sm:ml-0 lg:w-40 xl:w-40">
                                     <div class="col-span-1 lg:col-auto">
@@ -287,7 +287,7 @@
                                     </div>
                                     <div class="col-span-5 lg:col-span-6">
                                         <h6 class="text-white text-lg font-semibold">{{ video.title }}</h6>
-                                        <div class="text-slate-500 flex space-x-2 sm:block sm:space-x-0">
+                                        <div class="text-txt flex space-x-2 sm:block sm:space-x-0">
                                             <Link :href="route('userVideos', video.user.name)">
                                                 <p class="hover:underline hover:underline-offset-1">{{ video.user.name }} .</p>
                                             </Link>
