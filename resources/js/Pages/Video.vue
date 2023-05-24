@@ -86,7 +86,7 @@
                                 <div v-else>
                                     <img 
                                         class="h-[50px] w-[50px] rounded-full"
-                                        :src="users[video.user_id - 1].profile_image" alt="">
+                                        :src="video.userImg" alt="">
                                 </div>
                             </div>
                             <div class="ml-2 sm:w-60">
@@ -135,13 +135,13 @@
                             <form @submit.prevent="comment">
                                 <div class="grid grid-cols-12 mb-4">
                                     <div class="col-span-1">
-                                        <div v-if="userLoggedImg == null">
+                                        <div v-if="$page.props.userAuthImg === null">
                                             <img src="../../img/profile.png" alt="Profile image">
                                         </div>
                                         <div v-else>
                                             <img 
                                                 class="h-7 w-7 rounded-full"
-                                                :src="users[userLoggedId - 1].profile_image" alt="">
+                                                :src="$page.props.userAuthImg[0].profile_image" alt="">
                                         </div>
                                     </div>
                                     <div class="ml-2 col-span-11">
@@ -168,19 +168,19 @@
                         <div v-show="showComments" v-for="comment in comments" :key="comment.id">
                             <div class="grid grid-cols-12 mb-6">
                                 <div class="col-span-1">
-                                    <div v-if="comment.user.profile_image == null">
+                                    <div v-if="comment.profile_image == null">
                                         <img src="../../img/profile.png" alt="Profile image">
                                     </div>
                                     <div v-else>
                                         <img 
                                             class="h-7 w-7 rounded-full"
-                                            :src="users[comment.user.id - 1].profile_image" alt="">
+                                            :src="comment.profile_image" alt="">
                                     </div>
                                 </div>
                                 <div class="ml-2 col-span-11">
                                     <Link :href="route('userVideos', video.user.name)" class="text-semibold">
                                         <p class="text-semibold">
-                                            {{ comment.user.name }}
+                                            {{ comment.user_name }}
                                         </p>
                                     </Link>
                                     <p class="w-full">
@@ -201,13 +201,13 @@
                         <form @submit.prevent="comment">
                             <div class="grid grid-cols-12 mb-4">
                                 <div class="col-span-1">
-                                    <div v-if="userLoggedImg == null">
+                                    <div v-if="$page.props.userAuthImg == null">
                                         <img src="../../img/profile.png" alt="Profile image">
                                     </div>
                                     <div v-else>
                                         <img 
                                             class="h-12 w-12 rounded-full"
-                                            :src="users[userLoggedId - 1].profile_image" alt="">
+                                            :src="$page.props.userAuthImg[0].profile_image" alt="">
                                     </div>
                                 </div>
                                 <div class="ml-2 col-span-11">
@@ -236,19 +236,19 @@
                         >
                             <div class="grid grid-cols-12 lg:flex pb-6">
                                 <div class="col-span-1">
-                                    <div v-if="comment.user.profile_image == null">
+                                    <div v-if="comment.profile_image == null">
                                         <img src="../../img/profile.png" alt="Profile image" class="h-12 w-12">
                                     </div>
                                     <div v-else>
                                         <img 
                                             class="h-12 w-12 rounded-full"
-                                            :src="users[comment.user.id - 1].profile_image" alt="">
+                                            :src="comment.profile_image" alt="">
                                     </div>
                                 </div>
                                 <div class="ml-2 col-span-11 w-4/5">
                                     <Link :href="route('userVideos', video.user.name)" class="text-semibold">
                                         <p class="text-semibold">
-                                            {{ comment.user.name }}
+                                            {{ comment.user_name }}
                                         </p>
                                     </Link>
                                     <p class="w-full">
@@ -282,7 +282,7 @@
                                         <div v-else>
                                             <img 
                                                 class="h-[50px] w-[50px] rounded-full lg:invisible lg:w-0 lg:h-0"
-                                                :src="users[video.user_id - 1].profile_image" alt="">
+                                                :src="video.userImg" alt="">
                                         </div>
                                     </div>
                                     <div class="col-span-5 lg:col-span-6">
@@ -318,17 +318,13 @@ export default {
         iframe: String,
         image: String,
         videos: Array,
-        userLoggedName: String,
         searchVideos: Array,
-        userLoggedId: Number,
         userId: Number,
         subscribed: Object,
         liked: Object,
         disliked: Object,
         comments: Array,
         users: Array,
-        userLoggedImg: String,
-        userAuthImg: Array
     },
     data() {
         return {

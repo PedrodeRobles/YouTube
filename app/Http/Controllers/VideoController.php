@@ -21,34 +21,9 @@ class VideoController extends Controller
 {
     public function create()
     {
-        /*Show user´s img or show Log in and Register*/ 
-        $userLoggedName = null;
-
-        if ( Auth::check() ) {
-            $userLoggedName= auth()->user()->name;
-            $userLoggedId= auth()->user()->id;
-        } else {
-            $userLoggedName= null;
-            $userLoggedId = null;
-        }
-        /*-----*/
-
         $categories = Category::all();
 
-        return Inertia::render('User/CreateVideo', [
-            'userLoggedName' => $userLoggedName,
-            'categories' => $categories,
-            'userLoggedId' => $userLoggedId,
-            'userAuthImg' => User::where('id', $userLoggedId)
-                ->get()
-                ->map(function ($user) {
-                    return [
-                        'id' => $user->id,
-                        'profile_image' => asset('storage/' . $user->profile_image),
-                        'image'         => $user->profile_image
-                    ];
-                }),
-        ]);
+        return Inertia::render('User/CreateVideo', ['categories' => $categories]);
     }
 
     public function store(Request $request)
@@ -60,8 +35,6 @@ class VideoController extends Controller
             'description' => 'max:200',
             'category_id' => 'required',
         ]);
-
-        // $image = $request->file('image')->store('videos/images', 'public');
 
         /*Change image dimension*/
         $path= $request->file('image');
@@ -91,7 +64,6 @@ class VideoController extends Controller
             'views'       => 0
         ]);
 
-
         $userLoggedName = auth()->user()->name;
 
         return redirect(route('userVideos', $userLoggedName));
@@ -99,40 +71,26 @@ class VideoController extends Controller
 
     public function show(Video $video, Request $request)
     {
-        /*Show user´s img or show Log in and Register*/ 
-        $userLoggedName = null;
-        $userLoggedId = null;
-
-        if ( Auth::check() ) {
-            $userLoggedName= auth()->user()->name;
-            $userLoggedId= auth()->user()->id;
-            $userLoggedImg= auth()->user()->profile_image;
-        } else {
-            $userLoggedName = null;
-            $userLoggedId = null;
-            $userLoggedImg = null;
-        }
-        /*-----*/
-
         $userId = $video->user_id;
 
         $video->image = asset('storage/' . $video->image);
         $video->video = asset('storage/' . $video->video);
+        $video->userImg = asset('storage/' . $video->user->profile_image);
 
         /*Get subscription record to validate if the user is subscribed to this channel*/
-        $subscribed = Subscriber::where('user_id', $userLoggedId)
+        $subscribed = Subscriber::where('user_id', getUserLoggedId())
             ->where('otherUser', $userId)
             ->first();
         /*-----*/
 
         /*Get 'like' record to validate if the user liked to this video*/
-        $liked = Likes::where('user_id', $userLoggedId)
+        $liked = Likes::where('user_id', getUserLoggedId())
             ->where('video_id', $video->id)
             ->first();
         /*-----*/
 
         /*Get 'dislike' record to validate if the user disliked to this video*/
-        $disliked = Dislike::where('user_id', $userLoggedId)
+        $disliked = Dislike::where('user_id', getUserLoggedId())
             ->where('video_id', $video->id)
             ->first();
         /*-----*/
@@ -146,38 +104,39 @@ class VideoController extends Controller
         /*Get comments of this video */
         $comments = Comment::where('video_id', $video->id)
             ->orderBy('id', 'desc')
-            ->get();
+            ->get()
+            ->map(function ($comment) {
+                return [
+                    'user_name' => $comment->user->name,
+                    'profile_image' => asset('storage/' . $comment->user->profile_image)
+                ];
+            });
+
+        $videos = Video::limit(14)
+            ->get()
+            ->map(function($video) {
+                return [
+                    'id'          => $video->id,
+                    'title'       => $video->title,
+                    'image'       => asset('storage/' . $video->image),
+                    'video'       => asset('storage/' . $video->video),
+                    'user_id'     => $video->user_id,
+                    'views'       => $video->views,
+                    'user'        => $video->user,
+                    'userImg'     => asset('storage/' . $video->user->profile_image),
+                ];
+            });
 
         return Inertia::render('Video', [
-            'userLoggedName' => $userLoggedName,
             'video'          => $video->load('user'),
             'iframe'         => $video->video,
             'image'          => $video->image,
             'subscribed'     => $subscribed,
             'liked'          => $liked,
             'disliked'       => $disliked,
-            'userLoggedId'   => $userLoggedId,
-            'userLoggedImg'  => $userLoggedImg,
             'userId'         => $userId,
-            'comments'       => $comments->load('user'),
-            'videos'         => Video::orderByRaw("RAND()")
-                ->limit(14)
-                ->get()
-                ->map(function($video) {
-                    return [
-                        'id'          => $video->id,
-                        'title'       => $video->title,
-                        'image'       => asset('storage/' . $video->image),
-                        'video'       => asset('storage/' . $video->video),
-                        'description' => $video->description,
-                        'category_id' => $video->category_id,
-                        'user_id'     => $video->user_id,
-                        'likes'       => $video->likes,
-                        'dislikes'    => $video->dislikes,
-                        'views'       => $video->views,
-                        'user'        => User::where('id', $video->user_id)->first(),
-                    ];
-                }),
+            'comments'       => $comments,
+            'videos'         => $videos,
             'users' => User::all()
             ->map(function ($user) {
                 return [
@@ -186,15 +145,6 @@ class VideoController extends Controller
                     'profile_image' => asset('storage/' . $user->profile_image),
                 ];
             }),
-            'userAuthImg' => User::where('id', $userLoggedId)
-                ->get()
-                ->map(function ($user) {
-                    return [
-                        'id' => $user->id,
-                        'profile_image' => asset('storage/' . $user->profile_image),
-                        'image'         => $user->profile_image
-                    ];
-                }),
         ]);
     }
 
@@ -211,34 +161,11 @@ class VideoController extends Controller
             return abort(403);
         }
 
-        /*Show user´s img or show Log in and Register*/ 
-        $userLoggedName = null;
-
-        if ( Auth::check() ) {
-            $userLoggedName= auth()->user()->name;
-            $userLoggedId= auth()->user()->id;
-        } else {
-            $userLoggedName= null;
-            $userLoggedId= null;
-        }
-        /*-----*/
-
         $categories = Category::all();
 
         return Inertia::render('User/Edit', [
-            'userLoggedName' => $userLoggedName,
-            'userLoggedId' => $userLoggedId,
             'categories' => $categories,
             'video'      => $video,
-            'userAuthImg' => User::where('id', $userLoggedId)
-                ->get()
-                ->map(function ($user) {
-                    return [
-                        'id' => $user->id,
-                        'profile_image' => asset('storage/' . $user->profile_image),
-                        'image'         => $user->profile_image
-                    ];
-                }),
         ]);
     }
 
