@@ -117,7 +117,7 @@
                         
                     </div>
                     <div class="px-20 pb-4">
-                        <p class="mt-4 bg-secondary p-3 rounded-lg">
+                        <p v-if="video.description" class="mt-4 bg-secondary p-3 rounded-lg">
                             {{ video.description }}
                         </p>
                     </div>
