@@ -135,7 +135,7 @@
                             <form @submit.prevent="comment">
                                 <div class="grid grid-cols-12 mb-4">
                                     <div class="col-span-1">
-                                        <div v-if="$page.props.userAuthImg === null">
+                                        <div v-if="$page.props.userAuthImg[0] == null">
                                             <img src="../../img/profile.png" alt="Profile image">
                                         </div>
                                         <div v-else>
@@ -201,7 +201,7 @@
                         <form @submit.prevent="comment">
                             <div class="grid grid-cols-12 mb-4">
                                 <div class="col-span-1">
-                                    <div v-if="$page.props.userAuthImg == null">
+                                    <div v-if="$page.props.userAuthImg[0] == null">
                                         <img src="../../img/profile.png" alt="Profile image">
                                     </div>
                                     <div v-else>
