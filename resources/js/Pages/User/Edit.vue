@@ -31,7 +31,7 @@
                             <div v-if="errors.image" class="text-red-500">
                                 {{ errors.image }}
                             </div>
-                            <p class="text-red-600">Select the same image or a new image</p>
+                            <!-- <p class="text-red-600">Select the same image or a new image</p> -->
                             <input 
                                 type="file"
                                 ref="photo"
@@ -44,7 +44,7 @@
                             <div v-if="errors.video" class="text-red-500">
                                 {{ errors.video }}
                             </div>
-                            <p class="text-red-600">Select the same video or a new video</p>
+                            <!-- <p class="text-red-600">Select the same video or a new video</p> -->
                             <input 
                                 type="file"
                                 ref="video"

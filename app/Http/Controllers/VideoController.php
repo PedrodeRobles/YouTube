@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\VideoRequest;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\Video;
@@ -26,16 +27,8 @@ class VideoController extends Controller
         return Inertia::render('User/CreateVideo', ['categories' => $categories]);
     }
 
-    public function store(Request $request)
+    public function store(VideoRequest $request)
     {
-        $request->validate([
-            'title'       => 'required',
-            'image'       => 'required|image',
-            'video'       => 'required|max:60000',
-            'description' => 'max:200',
-            'category_id' => 'required',
-        ]);
-
         /*Change image dimension*/
         $path= $request->file('image');
             // Resize and encode to required type
@@ -169,18 +162,16 @@ class VideoController extends Controller
         ]);
     }
 
-    public function update(Request $request, Video $video)
+    public function update(VideoRequest $request, Video $video)
     {
-        $request->validate([
-            'title'       => 'required',
-            'image'       => 'required|image',
-            'video'       => 'required|max:60000',
-            'description' => 'max:200',
-            'category_id' => 'required',
-        ]);
+        // dd($video);
+        $currentImage = $video->image;
+        $currentVideo = $video->video;
+
+        $video->fill(array_filter($request->validated()));
 
         if ($request->file('image')) {
-            Storage::delete('public/' . $video->image);
+            Storage::delete('public/' . $currentImage);
             // $image = $request->file('image')->store('videos/images', 'public');
 
             /*Change image dimension*/
@@ -196,20 +187,20 @@ class VideoController extends Controller
             //Move file to your location 
             Storage::move($filename, 'public/videos/images/' . $filename);
             /*-----*/
-        }
+
+            $video->image = 'videos/images/' . $filename;
+        } 
 
         if ($request->file('video')) {
-            Storage::delete('public/' . $video->video);
-            $newVideo = $request->file('video')->store('videos/iframe', 'public');
+            Storage::delete('public/' . $currentVideo);
+            $video->video = $request->file('video')->store('videos/iframe', 'public');
         }
-        
-        $video->update([
-            'title'       => $request->title,
-            'image'       => 'videos/images/' . $filename,
-            'video'       => $newVideo,
-            'description' => $request->description,
-            'category_id' => $request->category_id,
-        ]);
+
+        if ($request->file('image') || $request->file('video')) {
+            $video->save();
+        } else {
+            $video->update(array_filter($request->validated()));
+        }
 
         return redirect(route('userVideos', $video->user->name));
     }
