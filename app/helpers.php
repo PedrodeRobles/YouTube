@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 
 function getUserLoggedName()
 {
@@ -28,4 +30,23 @@ function getUserAuthImg()
                 'image'         => $user->profile_image
             ];
     });
+}
+
+function resizeImage($request)
+{
+    /*Change image dimension*/
+    $path= $request->file('image');
+    // Resize and encode to required type
+    $img = Image::make($path)->resize(200, null, function ($constraint) {
+            $constraint->aspectRatio();
+        })->encode();
+        //Provide the file name with extension 
+    $filename = time(). '.' .$path->getClientOriginalExtension();
+    //Put file with own name
+    Storage::put($filename, $img);
+    //Move file to your location 
+    Storage::move($filename, 'public/videos/images/' . $filename);
+    /*-----*/
+
+    return $filename;
 }

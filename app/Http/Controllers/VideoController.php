@@ -12,11 +12,8 @@ use App\Models\Dislike;
 use App\Models\User;
 use App\Models\Subscriber;
 use App\Models\Likes;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
-use Illuminate\Support\Str;
 
 class VideoController extends Controller
 {
@@ -29,19 +26,7 @@ class VideoController extends Controller
 
     public function store(VideoRequest $request)
     {
-        /*Change image dimension*/
-        $path= $request->file('image');
-            // Resize and encode to required type
-        $img = Image::make($path)->resize(200, null, function ($constraint) {
-                $constraint->aspectRatio();
-            })->encode();
-            //Provide the file name with extension 
-        $filename = time(). '.' .$path->getClientOriginalExtension();
-        //Put file with own name
-        Storage::put($filename, $img);
-        //Move file to your location 
-        Storage::move($filename, 'public/videos/images/' . $filename);
-        /*-----*/
+        $filename = resizeImage($request);
 
         $video = $request->file('video')->store('videos/iframe', 'public');
 
@@ -174,19 +159,7 @@ class VideoController extends Controller
             Storage::delete('public/' . $currentImage);
             // $image = $request->file('image')->store('videos/images', 'public');
 
-            /*Change image dimension*/
-            $path= $request->file('image');
-            // Resize and encode to required type
-            $img = Image::make($path)->resize(200, null, function ($constraint) {
-                    $constraint->aspectRatio();
-                })->encode();
-                //Provide the file name with extension 
-            $filename = time(). '.' .$path->getClientOriginalExtension();
-            //Put file with own name
-            Storage::put($filename, $img);
-            //Move file to your location 
-            Storage::move($filename, 'public/videos/images/' . $filename);
-            /*-----*/
+            $filename = resizeImage($request);
 
             $video->image = 'videos/images/' . $filename;
         } 
