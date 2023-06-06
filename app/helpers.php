@@ -32,20 +32,20 @@ function getUserAuthImg()
     });
 }
 
-function resizeImage($request)
+function resizeImage($imageRequest, $size, $route)
 {
     /*Change image dimension*/
-    $path= $request->file('image');
+    // $path= $request->file('image');
     // Resize and encode to required type
-    $img = Image::make($path)->resize(200, null, function ($constraint) {
+    $img = Image::make($imageRequest)->resize($size, null, function ($constraint) {
             $constraint->aspectRatio();
         })->encode();
         //Provide the file name with extension 
-    $filename = time(). '.' .$path->getClientOriginalExtension();
+    $filename = time(). '.' .$imageRequest->getClientOriginalExtension();
     //Put file with own name
     Storage::put($filename, $img);
     //Move file to your location 
-    Storage::move($filename, 'public/videos/images/' . $filename);
+    Storage::move($filename, $route . $filename);
     /*-----*/
 
     return $filename;

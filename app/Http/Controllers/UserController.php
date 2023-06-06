@@ -199,19 +199,8 @@ class UserController extends Controller
             Storage::delete('public/' . $user->profile_image);
             // $image = $request->file('profile_image')->store('user/profile', 'public');
 
-            /*Change image dimension*/
-            $path= $request->file('profile_image');
-             // Resize and encode to required type
-            $img = Image::make($path)->resize(120, null, function ($constraint) {
-                    $constraint->aspectRatio();
-                })->encode();
-             //Provide the file name with extension 
-            $filename = time(). '.' .$path->getClientOriginalExtension();
-            //Put file with own name
-            Storage::put($filename, $img);
-            //Move file to your location 
-            Storage::move($filename, 'public/user/profile/' . $filename);
-            //now insert into database 
+            $filename = resizeImage($request->file('profile_image'), 200, 'public/user/profile/');
+
             $user->update([
                 'profile_image' => 'user/profile/' . $filename
             ]);
@@ -231,19 +220,8 @@ class UserController extends Controller
             Storage::delete('public/' . $user->bg_image);
             // $image = $request->file('bg_image')->store('user/background', 'public');
 
-            /*Change image dimension*/
-            $path= $request->file('bg_image');
-             // Resize and encode to required type
-            $img = Image::make($path)->resize(300, null, function ($constraint) {
-                    $constraint->aspectRatio();
-                })->encode();
-             //Provide the file name with extension 
-            $filename = time(). '.' .$path->getClientOriginalExtension();
-            //Put file with own name
-            Storage::put($filename, $img);
-            //Move file to your location 
-            Storage::move($filename, 'public/user/background/' . $filename);
-            //now insert into database 
+            $filename = resizeImage($request->file('bg_image'), 300, 'public/user/background/');
+
             $user->update([
                 'bg_image' => 'user/background/' . $filename
             ]);

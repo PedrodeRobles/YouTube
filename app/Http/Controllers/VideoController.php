@@ -26,7 +26,7 @@ class VideoController extends Controller
 
     public function store(VideoRequest $request)
     {
-        $filename = resizeImage($request);
+        $filename = resizeImage($request->file('image'), 200, 'public/videos/images/');
 
         $video = $request->file('video')->store('videos/iframe', 'public');
 
@@ -149,7 +149,6 @@ class VideoController extends Controller
 
     public function update(VideoRequest $request, Video $video)
     {
-        // dd($video);
         $currentImage = $video->image;
         $currentVideo = $video->video;
 
@@ -157,9 +156,8 @@ class VideoController extends Controller
 
         if ($request->file('image')) {
             Storage::delete('public/' . $currentImage);
-            // $image = $request->file('image')->store('videos/images', 'public');
 
-            $filename = resizeImage($request);
+            $filename = resizeImage($request->file('image'), 200, 'public/videos/images/');
 
             $video->image = 'videos/images/' . $filename;
         } 
