@@ -12,6 +12,8 @@ use App\Models\Dislike;
 use App\Models\User;
 use App\Models\Subscriber;
 use App\Models\Likes;
+use App\Notifications\AddVideoNotification;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 
@@ -30,7 +32,7 @@ class VideoController extends Controller
 
         $video = $request->file('video')->store('videos/iframe', 'public');
 
-        Video::create([
+        $newVideo = Video::create([
             'title'       => $request->title,
             'image'       => 'videos/images/' . $filename,
             'video'       => $video,
@@ -41,6 +43,8 @@ class VideoController extends Controller
             'dislikes'    => 0,
             'views'       => 0
         ]);
+
+        Notification::send(auth()->user(), new AddVideoNotification($newVideo));
 
         $userLoggedName = auth()->user()->name;
 
