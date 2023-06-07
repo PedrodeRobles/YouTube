@@ -13,6 +13,7 @@ use App\Models\User;
 use App\Models\Subscriber;
 use App\Models\Likes;
 use App\Notifications\AddVideoNotification;
+use App\Notifications\UpdateVideoNotification;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
@@ -176,6 +177,8 @@ class VideoController extends Controller
         } else {
             $video->update(array_filter($request->validated()));
         }
+
+        Notification::send(auth()->user(), new UpdateVideoNotification($video));
 
         return redirect(route('userVideos', $video->user->name));
     }
