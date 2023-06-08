@@ -36,6 +36,8 @@ class User extends Authenticatable
         'profile_image',
         'bg_image',
         'information',
+        'avatar',
+        'google_id'
     ];
 
     /**

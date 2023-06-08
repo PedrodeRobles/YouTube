@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\LikesController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -8,17 +7,44 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VideoController;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Laravel\Socialite\Facades\Socialite;
 
 Route::redirect('/', 'login');
 Route::redirect('/', 'register');
 
-Route::get('/hola', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
+// Route::get('/hola', function () {
+//     return Inertia::render('Welcome', [
+//         'canLogin' => Route::has('login'),
+//         'canRegister' => Route::has('register'),
+//         'laravelVersion' => Application::VERSION,
+//         'phpVersion' => PHP_VERSION,
+//     ]);
+// });
+
+Route::get('/login-google', function () {
+    return Socialite::driver('google')->redirect();
+});
+
+Route::get('/google-callback', function () {
+    $user = Socialite::driver('google')->user();
+
+    $userExists = User::where('google_id', $user->id)->first();
+    
+    if ($userExists) {
+        Auth::login($userExists);
+    } else {
+        $newUser = User::create([
+            'name' => $user->name,
+            'email' => $user->email,
+            'avatar' => $user->avatar,
+            'google_id' => $user->id,
+        ]);
+
+        Auth::login($newUser);
+    }
+
+    return redirect('/');
 });
 
 Route::middleware([
