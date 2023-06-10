@@ -1,5 +1,7 @@
 <template>
-    <nav class="invisible w-0 h-0 md:visible md:w-16 md:h-screen bg-principal md:mt-14 md:fixed text-white">
+    <nav class="invisible w-0 h-0 md:visible md:w-16 md:h-screen bg-principal md:mt-14 md:fixed text-white animate__animated"
+        :class="{'animate__fadeInLeft': showNavBar, 'animate__fadeOutLeft': !showNavBar}"
+    >
         <div class="flex justify-center md:mt-4">
             <div class="space-y-6">
                 <div>
@@ -42,7 +44,8 @@
 
 <script>
 import { Link } from '@inertiajs/inertia-vue3';
-    
+import 'animate.css';
+
 export default {
     components: {
         Link
@@ -51,6 +54,7 @@ export default {
         homeView: Boolean,
         likesView: Boolean,
         subsView: Boolean,
+        showNavBar: Boolean,
     }
 }
 </script>

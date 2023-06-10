@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-secondary border border-slate-600 text-white fixed mt-1 mr-4">
+    <div class="bg-secondary border border-slate-600 text-white fixed mt-1 mr-4 animate__animated animate__fadeIn">
         <div class="p-2 w-28 space-y-1">
             <div>
                 <Link :href="route('userVideos', userLoggedName)">
@@ -22,11 +22,13 @@
 
 <script>
 import { Link } from '@inertiajs/inertia-vue3';
+import 'animate.css';
 
 export default {
     props: {
         userLoggedName: String,
-        userLoggedId: Number
+        userLoggedId: Number,
+        showOptions: Boolean
     },
     components: {
         Link

@@ -3,7 +3,7 @@
         <div class="bg-principal flex justify-between px-2 py-1">
             <div class="flex">
                 <div class="w-6 flex items-center md:ml-4">
-                    <img class="cursor-pointer" @click="showMenu = !showMenu" src="../../../img/burgerMenu.png" alt="Menu">
+                    <img class="cursor-pointer" @click="toggleNavBar()" src="../../../img/burgerMenu.png" alt="Menu">
                 </div>
                 <div class="w-12 flex items-center ml-5">
                     <Link :href="route('home')">
@@ -39,6 +39,7 @@
                             v-show="showOptions"
                             :userLoggedName="$page.props.userLoggedName"
                             :userLoggedId="$page.props.userLoggedId"
+                            :showOptions="showOptions"
                         ></UserOptions>
                     </div>
                 </div>
@@ -60,14 +61,9 @@ export default {
         Link,
         UserOptions,
     },
-    props: {
-        // userLoggedName: String,
-        // userLoggedId: Number,
-        // userAuthImg: Array,
-    },
     data() {
         return {
-            showMenu: false,
+            showNavBar: true,
             query: null,
             showOptions: false,
         }
@@ -75,7 +71,12 @@ export default {
     methods: {
         sendToFather() {
             this.$emit('getQuery', this.query);
+            this.toggleNavBar()
         },
+        toggleNavBar() {
+            this.showNavBar = !this.showNavBar
+            this.$emit('getShowNavBar', this.showNavBar);
+        }
     },
 }
 

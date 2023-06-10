@@ -1,11 +1,16 @@
 <template>
-    <div class="bg-slate-900">
+    <div class="bg-principal">
         <Header 
             @getQuery="querySon"
+            @getShowNavBar="getShowNavBar"
+            :showNavBar="showNavBar"
         >
         </Header>
 
-        <NavBar :homeView="homeView"/>
+        <NavBar 
+            :homeView="homeView"
+            :showNavBar="showNavBar"
+        />
 
         <div class="md:pl-16">
             <NavSection :all="all"/>
@@ -70,20 +75,22 @@ export default {
         return {
             q: null,
             all: true,
-            homeView: true
+            homeView: true,
+            showNavBar: true
         }
     },
     props: {
         videos: {
             type: Array,
         },
-        // userLoggedName: String,
-        // userLoggedId: Number,
-        // userAuthImg: Array
     },
     methods: {
         querySon(value) {
             this.q = value;
+        },
+        getShowNavBar(data) {
+            this.showNavBar = data;
+            console.log(this.showNavBar);
         }
     },
     watch: {
