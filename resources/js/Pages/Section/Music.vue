@@ -1,11 +1,15 @@
 <template>
-    <div class="bg-slate-900">
+    <div class="bg-principal">
         <Header 
             @getQuery="querySon"
+            @getShowNavBar="getShowNavBar"
         >
         </Header>
 
-        <NavBar/>
+        <NavBar 
+            :homeView="homeView"
+            :showNavBar="showNavBar"
+        />
 
         <div class="md:pl-16">
             <NavSection :music="music"/>
@@ -68,7 +72,8 @@ export default {
     data() {
         return {
             q: null,
-            music: true
+            music: true,
+            showNavBar: true
         }
     },
     props: {
@@ -79,6 +84,10 @@ export default {
     methods: {
         querySon(value) {
             this.q = value;
+        },
+        getShowNavBar(data) {
+            this.showNavBar = data;
+            console.log(this.showNavBar);
         }
     },
     watch: {

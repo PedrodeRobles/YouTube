@@ -24385,7 +24385,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       q: null,
-      gaming: true
+      gaming: true,
+      showNavBar: true
     };
   },
   props: {
@@ -24396,6 +24397,10 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     querySon: function querySon(value) {
       this.q = value;
+    },
+    getShowNavBar: function getShowNavBar(data) {
+      this.showNavBar = data;
+      console.log(this.showNavBar);
     }
   },
   watch: {
@@ -24440,7 +24445,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       q: null,
-      learning: true
+      learning: true,
+      showNavBar: true
     };
   },
   props: {
@@ -24451,6 +24457,10 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     querySon: function querySon(value) {
       this.q = value;
+    },
+    getShowNavBar: function getShowNavBar(data) {
+      this.showNavBar = data;
+      console.log(this.showNavBar);
     }
   },
   watch: {
@@ -24544,7 +24554,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       q: null,
-      music: true
+      music: true,
+      showNavBar: true
     };
   },
   props: {
@@ -24555,6 +24566,10 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     querySon: function querySon(value) {
       this.q = value;
+    },
+    getShowNavBar: function getShowNavBar(data) {
+      this.showNavBar = data;
+      console.log(this.showNavBar);
     }
   },
   watch: {
@@ -24657,7 +24672,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       q: null,
-      news: true
+      news: true,
+      showNavBar: true
     };
   },
   props: {
@@ -24668,6 +24684,10 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     querySon: function querySon(value) {
       this.q = value;
+    },
+    getShowNavBar: function getShowNavBar(data) {
+      this.showNavBar = data;
+      console.log(this.showNavBar);
     }
   },
   watch: {
@@ -24712,7 +24732,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       q: null,
-      sports: true
+      sports: true,
+      showNavBar: true
     };
   },
   props: {
@@ -24723,6 +24744,10 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     querySon: function querySon(value) {
       this.q = value;
+    },
+    getShowNavBar: function getShowNavBar(data) {
+      this.showNavBar = data;
+      console.log(this.showNavBar);
     }
   },
   watch: {
@@ -29873,7 +29898,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var _hoisted_1 = {
-  "class": "bg-slate-900"
+  "class": "bg-principal"
 };
 var _hoisted_2 = {
   "class": "md:pl-16"
@@ -29932,10 +29957,16 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Link");
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Header, {
-    onGetQuery: $options.querySon
+    onGetQuery: $options.querySon,
+    onGetShowNavBar: $options.getShowNavBar
   }, null, 8
   /* PROPS */
-  , ["onGetQuery"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_NavBar), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_NavSection, {
+  , ["onGetQuery", "onGetShowNavBar"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_NavBar, {
+    homeView: _ctx.homeView,
+    showNavBar: $data.showNavBar
+  }, null, 8
+  /* PROPS */
+  , ["homeView", "showNavBar"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_NavSection, {
     gaming: $data.gaming
   }, null, 8
   /* PROPS */
@@ -30017,7 +30048,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var _hoisted_1 = {
-  "class": "bg-slate-900"
+  "class": "bg-principal"
 };
 var _hoisted_2 = {
   "class": "md:pl-16"
@@ -30076,10 +30107,16 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Link");
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Header, {
-    onGetQuery: $options.querySon
+    onGetQuery: $options.querySon,
+    onGetShowNavBar: $options.getShowNavBar
   }, null, 8
   /* PROPS */
-  , ["onGetQuery"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_NavBar), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_NavSection, {
+  , ["onGetQuery", "onGetShowNavBar"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_NavBar, {
+    homeView: _ctx.homeView,
+    showNavBar: $data.showNavBar
+  }, null, 8
+  /* PROPS */
+  , ["homeView", "showNavBar"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_NavSection, {
     learning: $data.learning
   }, null, 8
   /* PROPS */
@@ -30242,7 +30279,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var _hoisted_1 = {
-  "class": "bg-slate-900"
+  "class": "bg-principal"
 };
 var _hoisted_2 = {
   "class": "md:pl-16"
@@ -30301,10 +30338,16 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Link");
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Header, {
-    onGetQuery: $options.querySon
+    onGetQuery: $options.querySon,
+    onGetShowNavBar: $options.getShowNavBar
   }, null, 8
   /* PROPS */
-  , ["onGetQuery"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_NavBar), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_NavSection, {
+  , ["onGetQuery", "onGetShowNavBar"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_NavBar, {
+    homeView: _ctx.homeView,
+    showNavBar: $data.showNavBar
+  }, null, 8
+  /* PROPS */
+  , ["homeView", "showNavBar"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_NavSection, {
     music: $data.music
   }, null, 8
   /* PROPS */
@@ -30672,7 +30715,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var _hoisted_1 = {
-  "class": "bg-slate-900"
+  "class": "bg-principal"
 };
 var _hoisted_2 = {
   "class": "md:pl-16"
@@ -30731,10 +30774,16 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Link");
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Header, {
-    onGetQuery: $options.querySon
+    onGetQuery: $options.querySon,
+    onGetShowNavBar: $options.getShowNavBar
   }, null, 8
   /* PROPS */
-  , ["onGetQuery"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_NavBar), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_NavSection, {
+  , ["onGetQuery", "onGetShowNavBar"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_NavBar, {
+    homeView: _ctx.homeView,
+    showNavBar: $data.showNavBar
+  }, null, 8
+  /* PROPS */
+  , ["homeView", "showNavBar"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_NavSection, {
     news: $data.news
   }, null, 8
   /* PROPS */
@@ -30816,7 +30865,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var _hoisted_1 = {
-  "class": "bg-slate-900"
+  "class": "bg-principal"
 };
 var _hoisted_2 = {
   "class": "md:pl-16"
@@ -30875,10 +30924,16 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Link");
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Header, {
-    onGetQuery: $options.querySon
+    onGetQuery: $options.querySon,
+    onGetShowNavBar: $options.getShowNavBar
   }, null, 8
   /* PROPS */
-  , ["onGetQuery"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_NavBar), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_NavSection, {
+  , ["onGetQuery", "onGetShowNavBar"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_NavBar, {
+    homeView: _ctx.homeView,
+    showNavBar: $data.showNavBar
+  }, null, 8
+  /* PROPS */
+  , ["homeView", "showNavBar"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_NavSection, {
     sports: $data.sports
   }, null, 8
   /* PROPS */
