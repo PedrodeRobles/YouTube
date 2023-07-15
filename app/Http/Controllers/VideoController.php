@@ -90,8 +90,10 @@ class VideoController extends Controller
             ->get()
             ->map(function ($comment) {
                 return [
-                    'user_name' => $comment->user->name,
-                    'profile_image' => asset('storage/' . $comment->user->profile_image)
+                    'user_name'         => $comment->user->name,
+                    'has_profile_image' => $comment->user->profile_image ? true : false,
+                    'profile_image'     => asset('storage/' . $comment->user->profile_image),
+                    'content'           => $comment->content
                 ];
             });
 

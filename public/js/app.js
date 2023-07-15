@@ -25213,7 +25213,8 @@ __webpack_require__.r(__webpack_exports__);
     liked: Object,
     disliked: Object,
     comments: Array,
-    users: Array
+    users: Array,
+    userLoggedId: Number
   },
   data: function data() {
     return {
@@ -32159,19 +32160,19 @@ var _hoisted_49 = {
 var _hoisted_50 = {
   key: 0
 };
+var _hoisted_51 = ["src"];
+var _hoisted_52 = {
+  key: 1
+};
 
-var _hoisted_51 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+var _hoisted_53 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
   src: _img_profile_png__WEBPACK_IMPORTED_MODULE_5__["default"],
   alt: "Profile image"
 }, null, -1
 /* HOISTED */
 );
 
-var _hoisted_52 = [_hoisted_51];
-var _hoisted_53 = {
-  key: 1
-};
-var _hoisted_54 = ["src"];
+var _hoisted_54 = [_hoisted_53];
 var _hoisted_55 = {
   "class": "ml-2 col-span-11"
 };
@@ -32245,8 +32246,12 @@ var _hoisted_72 = {
 var _hoisted_73 = {
   key: 0
 };
+var _hoisted_74 = ["src"];
+var _hoisted_75 = {
+  key: 1
+};
 
-var _hoisted_74 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+var _hoisted_76 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
   src: _img_profile_png__WEBPACK_IMPORTED_MODULE_5__["default"],
   alt: "Profile image",
   "class": "h-12 w-12"
@@ -32254,11 +32259,7 @@ var _hoisted_74 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_75 = [_hoisted_74];
-var _hoisted_76 = {
-  key: 1
-};
-var _hoisted_77 = ["src"];
+var _hoisted_77 = [_hoisted_76];
 var _hoisted_78 = {
   "class": "ml-2 col-span-11 w-4/5"
 };
@@ -32319,13 +32320,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Link");
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Header, {
-    onGetQuery: $options.querySon,
-    userLoggedName: _ctx.userLoggedName,
-    userLoggedId: _ctx.userLoggedId,
-    userAuthImg: _ctx.userAuthImg
+    onGetQuery: $options.querySon
   }, null, 8
   /* PROPS */
-  , ["onGetQuery", "userLoggedName", "userLoggedId", "userAuthImg"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("iframe", {
+  , ["onGetQuery"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("iframe", {
     src: $props.iframe,
     frameborder: "0",
     "class": "w-full h-56 sm:h-96 lg:h-[22rem] xl:h-[35rem] 2xl:h-[40rem]"
@@ -32448,13 +32446,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.showComments == true]]), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.comments, function (comment) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)(((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
       key: comment.id
-    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_48, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_49, [comment.profile_image == null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_50, _hoisted_52)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_53, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_48, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_49, [comment.has_profile_image ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_50, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
       "class": "h-7 w-7 rounded-full",
       src: comment.profile_image,
       alt: ""
     }, null, 8
     /* PROPS */
-    , _hoisted_54)]))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_55, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
+    , _hoisted_51)])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_52, _hoisted_54))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_55, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
       href: _ctx.route('userVideos', $props.video.user.id),
       "class": "text-semibold"
     }, {
@@ -32498,13 +32496,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
       key: comment.id,
       "class": "bg-primary"
-    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_71, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_72, [comment.profile_image == null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_73, _hoisted_75)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_76, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_71, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_72, [comment.has_profile_image ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_73, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
       "class": "h-12 w-12 rounded-full",
       src: comment.profile_image,
       alt: ""
     }, null, 8
     /* PROPS */
-    , _hoisted_77)]))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_78, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
+    , _hoisted_74)])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_75, _hoisted_77))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_78, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
       href: _ctx.route('userVideos', $props.video.user.id),
       "class": "text-semibold"
     }, {

@@ -2,9 +2,6 @@
     <div>
         <Header 
             @getQuery="querySon"
-            :userLoggedName="userLoggedName"
-            :userLoggedId="userLoggedId"
-            :userAuthImg="userAuthImg"
         >
         </Header>
 
@@ -168,13 +165,13 @@
                         <div v-show="showComments" v-for="comment in comments" :key="comment.id">
                             <div class="grid grid-cols-12 mb-6">
                                 <div class="col-span-1">
-                                    <div v-if="comment.profile_image == null">
-                                        <img src="../../img/profile.png" alt="Profile image">
-                                    </div>
-                                    <div v-else>
+                                    <div v-if="comment.has_profile_image">
                                         <img 
                                             class="h-7 w-7 rounded-full"
                                             :src="comment.profile_image" alt="">
+                                        </div>
+                                    <div v-else>
+                                        <img src="../../img/profile.png" alt="Profile image">
                                     </div>
                                 </div>
                                 <div class="ml-2 col-span-11">
@@ -236,13 +233,13 @@
                         >
                             <div class="grid grid-cols-12 lg:flex pb-6">
                                 <div class="col-span-1">
-                                    <div v-if="comment.profile_image == null">
-                                        <img src="../../img/profile.png" alt="Profile image" class="h-12 w-12">
+                                    <div v-if="comment.has_profile_image">
+                                        <img 
+                                        class="h-12 w-12 rounded-full"
+                                        :src="comment.profile_image" alt="">
                                     </div>
                                     <div v-else>
-                                        <img 
-                                            class="h-12 w-12 rounded-full"
-                                            :src="comment.profile_image" alt="">
+                                        <img src="../../img/profile.png" alt="Profile image" class="h-12 w-12">
                                     </div>
                                 </div>
                                 <div class="ml-2 col-span-11 w-4/5">
@@ -325,6 +322,7 @@ export default {
         disliked: Object,
         comments: Array,
         users: Array,
+        userLoggedId: Number,
     },
     data() {
         return {
