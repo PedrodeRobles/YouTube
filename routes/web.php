@@ -70,7 +70,7 @@ Route::get('liked', [PageController::class, 'liked'])->name('liked')->middleware
 Route::get('subscriptions', [PageController::class, 'subscriptions'])->name('subscriptions')->middleware('auth');
 
 /*Own videos*/
-Route::get('{user:name}', [UserController::class, 'index'])->name('userVideos');
+Route::get('/{user}', [UserController::class, 'index'])->name('userVideos');
 Route::resource('videos', VideoController::class);
 Route::post('subscribe', [UserController::class, 'subscribe'])->middleware('auth');
 Route::delete('unsubscribe', [UserController::class, 'unsubscribe'])->name('unsubscribe')->middleware('auth');

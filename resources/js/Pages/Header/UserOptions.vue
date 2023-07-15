@@ -2,7 +2,7 @@
     <div class="bg-secondary border border-slate-600 text-white fixed mt-1 mr-4 animate__animated animate__fadeIn">
         <div class="p-2 w-28 space-y-1">
             <div>
-                <Link :href="route('userVideos', userLoggedName)">
+                <Link :href="route('userVideos', userLoggedId)">
                     My Channel
                 </Link>
             </div>

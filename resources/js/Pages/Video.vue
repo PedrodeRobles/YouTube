@@ -90,7 +90,7 @@
                                 </div>
                             </div>
                             <div class="ml-2 sm:w-60">
-                                <Link :href="route('userVideos', video.user.name)" class="text-semibold">
+                                <Link :href="route('userVideos', video.user.id)" class="text-semibold">
                                     {{ video.user.name }}
                                 </Link>
                                 <p class="text-txt text-sm">
@@ -178,7 +178,7 @@
                                     </div>
                                 </div>
                                 <div class="ml-2 col-span-11">
-                                    <Link :href="route('userVideos', video.user.name)" class="text-semibold">
+                                    <Link :href="route('userVideos', video.user.id)" class="text-semibold">
                                         <p class="text-semibold">
                                             {{ comment.user_name }}
                                         </p>
@@ -246,7 +246,7 @@
                                     </div>
                                 </div>
                                 <div class="ml-2 col-span-11 w-4/5">
-                                    <Link :href="route('userVideos', video.user.name)" class="text-semibold">
+                                    <Link :href="route('userVideos', video.user.id)" class="text-semibold">
                                         <p class="text-semibold">
                                             {{ comment.user_name }}
                                         </p>
@@ -288,7 +288,7 @@
                                     <div class="col-span-5 lg:col-span-6">
                                         <h6 class="text-white text-lg font-semibold">{{ video.title }}</h6>
                                         <div class="text-txt flex space-x-2 sm:block sm:space-x-0">
-                                            <Link :href="route('userVideos', video.user.name)">
+                                            <Link :href="route('userVideos', video.user.id)">
                                                 <p class="hover:underline hover:underline-offset-1">{{ video.user.name }} .</p>
                                             </Link>
                                             <p>{{ video.views}} Views</p>

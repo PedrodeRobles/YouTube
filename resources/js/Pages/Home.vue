@@ -26,7 +26,7 @@
                                 </div>
                                 <div class="grid grid-cols-6 w-80 sm:w-72 space-x-2 mt-2 ml-4 sm:ml-0">
                                     <div class="col-span-1">
-                                        <Link :href="route('userVideos', video.user.name)">
+                                        <Link :href="route('userVideos', video.user.id)">
                                         <div v-if="video.user.profile_image == null">
                                             <img src="../../img/profile.png" alt="Profile image">
                                         </div>
@@ -40,7 +40,7 @@
                                     <div class="col-span-5">
                                         <h6 class="text-white text-lg font-semibold">{{ video.title }}</h6>
                                         <div class="text-txt flex space-x-2 sm:block sm:space-x-0">
-                                            <Link :href="route('userVideos', video.user.name)">
+                                            <Link :href="route('userVideos', video.user.id)">
                                                 <p class="hover:underline hover:underline-offset-1">{{ video.user.name }} .</p>
                                             </Link>
                                             <p>{{ video.views}} Views</p>
