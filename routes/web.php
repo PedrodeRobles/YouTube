@@ -22,9 +22,7 @@ Route::redirect('/', 'register');
 //     ]);
 // });
 
-Route::get('/login-google', function () {
-    return Socialite::driver('google')->redirect();
-});
+
 
 Route::get('/google-callback', function () {
     $user = Socialite::driver('google')->user();
@@ -58,6 +56,11 @@ Route::middleware([
         return Inertia::render('Dashboard', ['userLogged' => $userLogged]);
     })->name('dashboard');
 });
+
+
+Route::get('/login-google', function () {
+    return Socialite::driver('google')->redirect();
+})->name('login.google');
 
 /*Sections*/
 Route::get('/', [PageController::class, 'home'])->name('home');

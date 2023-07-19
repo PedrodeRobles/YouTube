@@ -7,6 +7,7 @@ import JetInput from '@/Jetstream/Input.vue';
 import JetCheckbox from '@/Jetstream/Checkbox.vue';
 import JetLabel from '@/Jetstream/Label.vue';
 import JetValidationErrors from '@/Jetstream/ValidationErrors.vue';
+import GoogleLogin from './shared/GoogleLogin.vue';
 
 defineProps({
     canResetPassword: Boolean,
@@ -87,7 +88,12 @@ const submit = () => {
                 <JetButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                     Log in
                 </JetButton>
+
             </div>
         </form>
+
+        <div class="flex justify-center mt-4">
+            <GoogleLogin/>
+        </div>
     </JetAuthenticationCard>
 </template>

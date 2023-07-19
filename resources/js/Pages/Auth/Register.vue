@@ -7,6 +7,7 @@ import JetInput from '@/Jetstream/Input.vue';
 import JetCheckbox from '@/Jetstream/Checkbox.vue';
 import JetLabel from '@/Jetstream/Label.vue';
 import JetValidationErrors from '@/Jetstream/ValidationErrors.vue';
+import GoogleLogin from './shared/GoogleLogin.vue';
 
 const form = useForm({
     name: '',
@@ -104,5 +105,9 @@ const submit = () => {
                 </JetButton>
             </div>
         </form>
+
+        <div class="flex justify-center mt-4">
+            <GoogleLogin/>
+        </div>
     </JetAuthenticationCard>
 </template>
