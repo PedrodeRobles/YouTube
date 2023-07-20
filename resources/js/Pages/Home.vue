@@ -16,11 +16,11 @@
             <NavSection :all="all"/>
     
             <!-- Videos -->
-            <div class="sm:flex justify-center bg-principal">
+            <!-- <div class="sm:flex justify-center bg-principal">
                 <div class="pt-6 pb-[100rem] 2xl:pb-[1000px] sm:grid sm:grid-cols-2 sm:gap-x-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
                     <div v-for="video in videos" :key="video.id">
                         <Link :href="route('videos.show', video.id)">
-                            <div class="mb-6 grid grid-cols-1 place-content-start cursor-pointer">
+                            <div class="mb-6 grid grid-cols-1 place-content-start cursor-pointer animate__animated animate__fadeIn">
                                 <div>
                                     <img class="h-48 w-full sm:h-40 sm:w-72 sm:rounded-lg" :src="video.image" alt="Video Cover">
                                 </div>
@@ -51,7 +51,8 @@
                         </Link>
                     </div>
                 </div>
-            </div>
+            </div> -->
+            <HomeVideos :videos="videos"/>
             <!-- endVideos -->
         </div>
 
@@ -63,13 +64,16 @@ import Header from './Header/Header.vue';
 import NavSection from './Section/NavSection.vue';
 import NavBar from './Section/NavBar.vue';
 import { Link } from '@inertiajs/inertia-vue3';
+import HomeVideos from './Components/HomeVideos.vue';
+import 'animate.css';
 
 export default {
     components: {
         Header,
         Link,
         NavSection,
-        NavBar
+        NavBar,
+        HomeVideos
     },
     data() {
         return {
