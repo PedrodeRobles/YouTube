@@ -28459,7 +28459,7 @@ var _hoisted_2 = {
   "class": "pt-6 pb-[100rem] 2xl:pb-[1000px] sm:grid sm:grid-cols-2 sm:gap-x-3 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5"
 };
 var _hoisted_3 = {
-  "class": "mb-6 grid grid-cols-1 place-content-start cursor-pointer animate__animated animate__fadeIn"
+  "class": "mb-6 grid grid-cols-1 place-content-start cursor-pointer"
 };
 var _hoisted_4 = ["src"];
 var _hoisted_5 = {
@@ -28506,7 +28506,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       href: _ctx.route('videos.show', video.id)
     }, {
       "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-        return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+        return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"mb-6 grid grid-cols-1 place-content-start cursor-pointer animate__animated animate__fadeIn\"> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
           "class": "h-48 w-full sm:h-40 sm:w-72 sm:rounded-lg",
           src: video.image,
           alt: "Video Cover"
