@@ -27,8 +27,10 @@ Route::redirect('/', 'register');
 Route::get('/google-callback', function () {
     $user = Socialite::driver('google')->user();
 
-    $userExists = User::where('google_id', $user->id)->first();
-    
+    $userExists = User::where('google_id', $user->id)
+        ->orWhere('email', $user->email)
+        ->first();
+
     if ($userExists) {
         Auth::login($userExists);
     } else {

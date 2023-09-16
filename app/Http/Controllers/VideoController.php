@@ -47,9 +47,9 @@ class VideoController extends Controller
 
         Notification::send(auth()->user(), new AddVideoNotification($newVideo));
 
-        $userLoggedName = auth()->user()->name;
+        $userLoggedId = auth()->user()->id;
 
-        return redirect(route('userVideos', $userLoggedName));
+        return redirect(route('userVideos', $userLoggedId));
     }
 
     public function show(Video $video, Request $request)
@@ -182,7 +182,7 @@ class VideoController extends Controller
 
         Notification::send(auth()->user(), new UpdateVideoNotification($video));
 
-        return redirect(route('userVideos', $video->user->name));
+        return redirect(route('userVideos', $video->user->id));
     }
 
     public function destroy(Video $video)
