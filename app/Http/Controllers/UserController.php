@@ -20,8 +20,8 @@ class UserController extends Controller
         $userName            = $user->name;
         $subscribers         = $user->subscribers;
         $userId              = $user->id;
-        $userImage           = $user->profile_image;
-        $userBackgroundImage = $user->bg_image;
+        $userImage           = $user->profile_image ? asset('storage/' . $user->profile_image) : null;
+        $userBackgroundImage = $user->bg_image ? asset('storage/' . $user->bg_image) : null;
         /*-----*/
 
         /*Search bar, Query*/

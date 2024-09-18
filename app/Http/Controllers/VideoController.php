@@ -16,10 +16,16 @@ use App\Notifications\AddVideoNotification;
 use App\Notifications\UpdateVideoNotification;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Storage;
-use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Auth;
 
 class VideoController extends Controller
 {
+    public function __construct()
+    {
+        // Aplica el middleware 'auth' a todos los métodos excepto 'show'
+        $this->middleware('auth')->except('show');
+    }
+
     public function create()
     {
         $categories = Category::all();
@@ -59,6 +65,12 @@ class VideoController extends Controller
         $video->image = asset('storage/' . $video->image);
         $video->video = asset('storage/' . $video->video);
         $video->userImg = asset('storage/' . $video->user->profile_image);
+
+        if (Auth::check()) {
+            $authUserImage  = auth()->user()->profile_image ? asset('storage/' . auth()->user()->profile_image) : null;
+        } else {
+            $authUserImage = null;
+        }
 
         /*Get subscription record to validate if the user is subscribed to this channel*/
         $subscribed = Subscriber::where('user_id', getUserLoggedId())
@@ -122,6 +134,7 @@ class VideoController extends Controller
             'userId'         => $userId,
             'comments'       => $comments,
             'videos'         => $videos,
+            'authUserImage'  => $authUserImage,
             'users' => User::all()
             ->map(function ($user) {
                 return [

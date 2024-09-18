@@ -44,10 +44,11 @@ class AddVideoNotification extends Notification
     {
         return (new MailMessage)
                     ->subject('New video uploaded: ' . $this->video->title)
-                    ->greeting('Hello!')
+                    ->greeting('YOUR NEW VIDEO!')
                     ->line('Your video "' . $this->video->title . '" was created successfully')
                     ->action('Watch video', url('/videos' . '/' . $this->video->id))
-                    ->line('Thank you for using my application!');
+                    ->line('Thank you for using my application!')
+                    ->line('By Pedro de Robles your fav dev 👨‍💻');
     }
 
     /**

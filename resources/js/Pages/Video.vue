@@ -132,13 +132,13 @@
                             <form @submit.prevent="comment">
                                 <div class="grid grid-cols-12 mb-4">
                                     <div class="col-span-1">
-                                        <div v-if="$page.props.userAuthImg['image'] == null">
+                                        <div v-if="authUserImage == null">
                                             <img src="../../img/profile.png" alt="Profile image">
                                         </div>
                                         <div v-else>
                                             <img 
                                                 class="h-7 w-7 rounded-full"
-                                                :src="$page.props.userAuthImg[0].profile_image" alt="">
+                                                :src="authUserImage" alt="">
                                         </div>
                                     </div>
                                     <div class="ml-2 col-span-11">
@@ -198,13 +198,13 @@
                         <form @submit.prevent="comment">
                             <div class="grid grid-cols-12 mb-4">
                                 <div class="col-span-1">
-                                    <div v-if="$page.props.userAuthImg['image'] == null">
+                                    <div v-if="authUserImage == null">
                                         <img src="../../img/profile.png" alt="Profile image">
                                     </div>
                                     <div v-else>
                                         <img 
                                             class="h-12 w-12 rounded-full"
-                                            :src="$page.props.userAuthImg[0].profile_image" alt="">
+                                            :src="authUserImage" alt="">
                                     </div>
                                 </div>
                                 <div class="ml-2 col-span-11">
@@ -323,6 +323,7 @@ export default {
         comments: Array,
         users: Array,
         userLoggedId: Number,
+        authUserImage: String,
     },
     data() {
         return {

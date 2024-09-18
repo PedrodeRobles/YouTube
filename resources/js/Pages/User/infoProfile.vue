@@ -5,7 +5,7 @@
                 <div v-if="userBackgroundImage !== null">
                     <img 
                         class="h-32 sm:h-26 md:h-40 w-full object-cover"
-                        :src="users[userId - 1].bg_image" alt="">
+                        :src="userBackgroundImage" alt="Cover photo">
                 </div>
                 <div v-else>
                     <img class="h-32 sm:h-26 md:h-40 w-full object-cover" src="../../../img/videoImage.png" alt="image">
@@ -23,7 +23,7 @@
                                 <div v-else>
                                     <img 
                                         class="h-[50px] w-[50px] rounded-full"
-                                        :src="users[userId - 1].profile_image" alt="">
+                                        :src="userImage" alt="User img">
                                 </div>
                             </div>
                             <div class="text-white h-8 md:ml-4 md:mb-4">
@@ -40,15 +40,17 @@
                     </div>
 
                     <div v-if="userLoggedId == userId" class="flex justify-center items-center space-x-2">
-                        <Link :href="route('editProfile', userLoggedId)">
-                            <p class="p-2 bg-blue-500 hover:bg-blue-400 text-white rounded-full">
+                        <Link :href="route('editProfile', userLoggedId)" class="flex items-center p-2 bg-blue-500 hover:bg-blue-400 text-white rounded-lg">
+                            <span>
                                 Edit profile
-                            </p>
+                            </span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24"><path fill="#ffffff" d="M3 21v-4.25L16.2 3.575q.3-.275.663-.425t.762-.15t.775.15t.65.45L20.425 5q.3.275.438.65T21 6.4q0 .4-.137.763t-.438.662L7.25 21zM17.6 7.8L19 6.4L17.6 5l-1.4 1.4z"/></svg>
                         </Link>
-                        <Link :href="route('videos.create')">
-                            <p class="p-2 bg-[#FF4E45] hover:bg-red-500 text-white rounded-full">
+                        <Link :href="route('videos.create')" class="flex items-center p-2 bg-[#FF4E45] hover:bg-red-500 text-white rounded-lg">
+                            <span>
                                 Add video
-                            </p>
+                            </span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24"><path fill="#ffffff" d="M11 16V7.85l-2.6 2.6L7 9l5-5l5 5l-1.4 1.45l-2.6-2.6V16zm-5 4q-.825 0-1.412-.587T4 18v-3h2v3h12v-3h2v3q0 .825-.587 1.413T18 20z"/></svg>
                         </Link>
                     </div>
                     <div v-else class="flex justify-center py-2">
