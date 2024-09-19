@@ -5,7 +5,7 @@
         >
         </Header>
 
-        <div class="pt-14 pb-[200rem] bg-principal text-white lg:grid lg:grid-cols-8">
+        <div class="pt-14 pb-[50rem] bg-principal text-white lg:grid lg:grid-cols-8">
             <div class="lg:col-span-5 xl:col-span-6">
                 <div class="sm:px-5 sm:pt-5">
                     <iframe 
@@ -125,8 +125,8 @@
                             <h3 class="py-4 text-lg">
                                 Comments
                             </h3>
-                            <img v-show="showComments == false" src="../../img/arrowDown.png" alt="Arrow" class="w-8 h-8">
-                            <img v-show="showComments == true" src="../../img/arrowUp.png" alt="Arrow" class="w-8 h-8">
+                            <img v-show="showComments == false" src="../../img/arrowDown.png" alt="Arrow" class="w-8 h-8 cursor-pointer">
+                            <img v-show="showComments == true" src="../../img/arrowUp.png" alt="Arrow" class="w-8 h-8 cursor-pointer">
                         </div>
                         <div v-show="showComments == true">
                             <form @submit.prevent="comment">
@@ -166,27 +166,29 @@
                                 </div>
                             </form>
                         </div>
-                        <div v-show="showComments" v-for="comment in comments" :key="comment.id">
-                            <div class="grid grid-cols-12 mb-6">
-                                <div class="col-span-1">
-                                    <div v-if="comment.has_profile_image">
-                                        <img 
-                                            class="h-7 w-7 rounded-full"
-                                            :src="comment.profile_image" alt="">
+                        <div class="comments-container">
+                            <div v-show="showComments" v-for="comment in comments" :key="comment.id">
+                                <div class="grid grid-cols-12 mb-6">
+                                    <div class="col-span-1">
+                                        <div v-if="comment.has_profile_image">
+                                            <img 
+                                                class="h-7 w-7 rounded-full"
+                                                :src="comment.profile_image" alt="">
+                                            </div>
+                                        <div v-else>
+                                            <img src="../../img/profile.png" alt="Profile image">
                                         </div>
-                                    <div v-else>
-                                        <img src="../../img/profile.png" alt="Profile image">
                                     </div>
-                                </div>
-                                <div class="ml-2 col-span-11">
-                                    <Link :href="route('userVideos', video.user.id)" class="text-semibold">
-                                        <p class="text-semibold">
-                                            {{ comment.user_name }}
+                                    <div class="ml-2 col-span-11">
+                                        <Link :href="route('userVideos', video.user.id)" class="text-semibold">
+                                            <p class="text-semibold">
+                                                {{ comment.user_name }}
+                                            </p>
+                                        </Link>
+                                        <p class="w-full" style="word-break: break-word; overflow-wrap: break-word;">
+                                            {{ comment.content }} 
                                         </p>
-                                    </Link>
-                                    <p class="w-full" style="word-break: break-word; overflow-wrap: break-word;">
-                                        {{ comment.content }} 
-                                    </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -235,30 +237,32 @@
                                 </div>
                             </div>
                         </form>
-                        <div 
-                            v-for="comment in comments" :key="comment.id"
-                            class="bg-primary"
-                        >
-                            <div class="grid grid-cols-12 lg:flex pb-6">
-                                <div class="col-span-1">
-                                    <div v-if="comment.has_profile_image">
-                                        <img 
-                                        class="h-12 w-12 rounded-full"
-                                        :src="comment.profile_image" alt="">
+                        <div class="comments-container">
+                            <div 
+                                v-for="comment in comments" :key="comment.id"
+                                class="bg-primary"
+                            >
+                                <div class="grid grid-cols-12 lg:flex pb-6">
+                                    <div class="col-span-1">
+                                        <div v-if="comment.has_profile_image">
+                                            <img 
+                                            class="h-12 w-12 rounded-full"
+                                            :src="comment.profile_image" alt="">
+                                        </div>
+                                        <div v-else>
+                                            <img src="../../img/profile.png" alt="Profile image" class="h-12 w-12">
+                                        </div>
                                     </div>
-                                    <div v-else>
-                                        <img src="../../img/profile.png" alt="Profile image" class="h-12 w-12">
-                                    </div>
-                                </div>
-                                <div class="ml-2 col-span-11 w-4/5">
-                                    <Link :href="route('userVideos', video.user.id)" class="text-semibold">
-                                        <p class="text-semibold">
-                                            {{ comment.user_name }}
+                                    <div class="ml-2 col-span-11 w-4/5">
+                                        <Link :href="route('userVideos', video.user.id)" class="text-semibold">
+                                            <p class="text-semibold">
+                                                {{ comment.user_name }}
+                                            </p>
+                                        </Link>
+                                        <p class="w-full" style="word-break: break-word; overflow-wrap: break-word;">
+                                            {{ comment.content }} 
                                         </p>
-                                    </Link>
-                                    <p class="w-full" style="word-break: break-word; overflow-wrap: break-word;">
-                                        {{ comment.content }} 
-                                    </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -382,3 +386,29 @@ export default {
 }
 
 </script>
+
+<style scoped>
+.comments-container {
+    max-height: 500px; /* Ajusta la altura según sea necesario */
+    overflow-y: auto; /* Permite el desplazamiento vertical */
+    padding: 1rem; /* Espaciado interno */
+    border: 1px solid #b3b0b05b; /* Borde opcional */
+    border-radius: 8px; /* Bordes redondeados opcionales */
+}
+
+/* Barra de desplazamiento */
+::-webkit-scrollbar {
+    width: 10px; /* Ancho de la barra de desplazamiento */
+}
+
+/* Fondo de la barra de desplazamiento */
+::-webkit-scrollbar-track {
+    background: #f1f1f18a; /* Color de fondo de la pista */
+}
+
+/* Tamaño del "thumb" o la parte que puedes arrastrar */
+::-webkit-scrollbar-thumb {
+    background: #555; /* Color del thumb */
+    border-radius: 10px; /* Bordes redondeados del thumb */
+}
+</style>
