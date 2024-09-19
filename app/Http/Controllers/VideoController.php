@@ -347,7 +347,7 @@ class VideoController extends Controller
         $request->validate([
             'user_id'  => 'required',
             'video_id' => 'required',
-            'content'  => ' required',
+            'content'  => ' required|string|max:250',
         ]);
 
         Comment::create($request->all());

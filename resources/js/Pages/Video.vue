@@ -143,15 +143,19 @@
                                     </div>
                                     <div class="ml-2 col-span-11">
                                         <div>
-                                            <p>Add comment</p>
+                                            <p>Add comment:</p> 
                                             <div class="md:flex">
                                                 <textarea 
                                                     v-model="form.content"
                                                     cols="30" rows="1" 
                                                     class="bg-secondary borber-b border-slate-500 w-full"
+                                                    maxlength="250"
                                                 >
                                                 </textarea>
-                                                <div class="flex justify-end md:pl-4">
+                                                <div class="flex justify-between md:pl-4">
+                                                    <span class="text-gray-300 text-sm">
+                                                        Max 250 characters
+                                                    </span>
                                                     <button type="submit" class="p-2 bg-blue-600">
                                                         Comment
                                                     </button>
@@ -180,7 +184,7 @@
                                             {{ comment.user_name }}
                                         </p>
                                     </Link>
-                                    <p class="w-full">
+                                    <p class="w-full" style="word-break: break-word; overflow-wrap: break-word;">
                                         {{ comment.content }} 
                                     </p>
                                 </div>
@@ -215,6 +219,7 @@
                                                 v-model="form.content"
                                                 cols="30" rows="1" 
                                                 class="bg-secondary borber-b border-slate-500 w-full"
+                                                maxlength="250"
                                             >
                                             </textarea>
                                             <div class="flex justify-end md:pl-4">
@@ -224,6 +229,9 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <span class="text-gray-300 text-sm">
+                                        Max 250 characters
+                                    </span>
                                 </div>
                             </div>
                         </form>
@@ -248,7 +256,7 @@
                                             {{ comment.user_name }}
                                         </p>
                                     </Link>
-                                    <p class="w-full">
+                                    <p class="w-full" style="word-break: break-word; overflow-wrap: break-word;">
                                         {{ comment.content }} 
                                     </p>
                                 </div>
