@@ -28,7 +28,7 @@
                                 {{ video.views }} views
                             </p>
                         </div>
-                        <div class="flex justify-around md:justify-start md:space-x-5 mt-2">
+                        <div class="flex justify-around md:justify-start md:space-x-5 mt-2 md:bg-secondary md:rounded-lg md:p-1">
                             <form 
                                 v-if="liked == null"
                                 @submit.prevent="like" 
@@ -49,6 +49,7 @@
                                 </button>
                                 <p>{{ video.likes }}</p>
                             </form>
+                            <span class="text-gray-600 text-xl invisible md:visible">|</span>
                             <form 
                                 v-if="disliked == null"
                                 @submit.prevent="dislike" 
