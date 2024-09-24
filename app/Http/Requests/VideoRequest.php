@@ -30,6 +30,7 @@ class VideoRequest extends FormRequest
                 $this->route('video') ? 'nullable' : "required"
             ],
             'video'       => [
+                'mimetypes:video/mp4,video/avi,video/mpeg,video/quicktime',
                 'max:60000',
                 $this->route('video') ? 'nullable' : "required"
             ],
