@@ -60,6 +60,8 @@ class VideoController extends Controller
 
     public function show(Video $video, Request $request)
     {
+        $this->add_view($video->id, $video->views);
+
         $userId = $video->user_id;
 
         $video->image = asset('storage/' . $video->image);
@@ -373,5 +375,30 @@ class VideoController extends Controller
         }
 
         return abort(404);
+    }
+
+    protected function add_view($video_id, $video_views)
+    {
+        if (Auth::check()) {
+            $exists_view = \DB::table('views')
+                ->where('video_id', $video_id)
+                ->where('user_id', auth()->user()->id)
+                ->exists();
+
+            if (!$exists_view) {
+                \DB::table('views')->insert([
+                    'video_id' => $video_id,
+                    'user_id' => auth()->user()->id,
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ]);
+
+                \DB::table('videos')
+                ->where('id', $video_id)
+                ->update([
+                    'views' => $video_views + 1
+                ]);
+            }
+        }
     }
 }
