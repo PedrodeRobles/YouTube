@@ -35,8 +35,15 @@ class VideoController extends Controller
 
     public function store(VideoRequest $request)
     {
-        $filename = resizeImage($request->file('image'), 200, 'public/videos/images/');
+        $userId = auth()->user()->id;
 
+        $videoCount = Video::where('user_id', $userId)->count();
+
+        if ($videoCount >= 5) {
+            return 'You have exceeded the maximum number of videos.';
+        }
+
+        $filename = resizeImage($request->file('image'), 200, 'public/videos/images/');
         $video = $request->file('video')->store('videos/iframe', 'public');
 
         $newVideo = Video::create([
