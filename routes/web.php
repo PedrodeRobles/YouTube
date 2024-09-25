@@ -74,6 +74,8 @@ Route::get('learning', [PageController::class, 'learning'])->name('learning');
 Route::get('liked', [PageController::class, 'liked'])->name('liked')->middleware('auth');
 Route::get('subscriptions', [PageController::class, 'subscriptions'])->name('subscriptions')->middleware('auth');
 
+Route::get('download_video/{id}', [VideoController::class, 'download_video'])->name('download_video');
+
 /*Own videos*/
 Route::get('/{user}', [UserController::class, 'index'])->name('userVideos');
 Route::resource('videos', VideoController::class);

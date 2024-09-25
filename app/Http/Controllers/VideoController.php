@@ -23,7 +23,7 @@ class VideoController extends Controller
     public function __construct()
     {
         // Aplica el middleware 'auth' a todos los métodos excepto 'show'
-        $this->middleware('auth')->except('show');
+        $this->middleware('auth')->except(['show', 'download_video']);
     }
 
     public function create()
@@ -353,5 +353,25 @@ class VideoController extends Controller
         Comment::create($request->all());
 
         return redirect()->back();
+    }
+
+    public function download_video($video_id)
+    {
+        $video = Video::find($video_id);
+
+        if($video != null && Storage::disk('local')->exists("public/$video->video")) {
+            $path = Storage::disk('local')->path("public/$video->video");
+            $content = file_get_contents($path);
+
+            $extension = pathinfo($path, PATHINFO_EXTENSION); // Obtener la extensión del archivo
+            $fileName = "$video->title." . $extension; // Asignar un nombre dinámico basado en la extensión
+
+            return response($content)->withHeaders([
+                'Content-Type' => mime_content_type($path),
+                'Content-Disposition' => 'attachment; filename="' . $fileName . '"', // Nombre del archivo dinámico
+            ]);
+        }
+
+        return abort(404);
     }
 }

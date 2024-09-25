@@ -16,9 +16,15 @@
                     </iframe>
                 </div>
                 <div class="mx-5 mt-2">
-                    <h2 class="text-xl text-bold">
-                        {{ video.title }}
-                    </h2>
+                    <div class="flex justify-between items-center">
+                        <h2 class="text-xl text-bold">
+                            {{ video.title }}
+                        </h2>
+                        <a :href="route('download_video', video.id)" class="flex items-center space-x-1 bg-secondary hover:bg-gray-700 rounded-lg p-1 cursor-pointer">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24"><path fill="#ffffff" d="m12 16l-5-5l1.4-1.45l2.6 2.6V4h2v8.15l2.6-2.6L17 11zm-6 4q-.825 0-1.412-.587T4 18v-3h2v3h12v-3h2v3q0 .825-.587 1.413T18 20z"/></svg>
+                            <span>download</span>
+                        </a>
+                    </div>
                     <p class="text-txt md:invisible md:h-0">
                         {{ video.views }} views
                     </p>
