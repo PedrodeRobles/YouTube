@@ -1944,6 +1944,9 @@ select {
 .pt-12 {
   padding-top: 3rem;
 }
+.pb-80 {
+  padding-bottom: 20rem;
+}
 .text-left {
   text-align: left;
 }

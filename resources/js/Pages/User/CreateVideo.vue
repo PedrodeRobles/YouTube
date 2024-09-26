@@ -23,7 +23,7 @@
             </div> -->
 
             <!-- Form -->
-            <div class="pt-8 pb-96 flex justify-center text-white w-full">
+            <div class="pt-16 pb-96 flex justify-center text-white w-full">
                 <div>
                     <div class="flex justify-center mb-4">
                         <h2 class="text-2xl">Upload video</h2>
