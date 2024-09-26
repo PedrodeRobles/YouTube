@@ -16,7 +16,7 @@ return new class extends Migration
             $table->integer('count')->default(1);
 
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('video_id')->references('id')->on('videos');
+            $table->foreign('video_id')->references('id')->on('videos')->onDelete('cascade');
 
             $table->timestamps();
         });
