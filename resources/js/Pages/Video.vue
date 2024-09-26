@@ -8,12 +8,19 @@
         <div class="pt-14 pb-[50rem] bg-principal text-white lg:grid lg:grid-cols-8">
             <div class="lg:col-span-5 xl:col-span-6">
                 <div class="sm:px-5 sm:pt-5">
-                    <iframe 
+                    <!-- <iframe 
                         :src="iframe" 
                         frameborder="0"
                         class="w-full h-56 sm:h-96 lg:h-[22rem] xl:h-[35rem] 2xl:h-[40rem]"
+                        style="object-fit: cover;"
                     >
-                    </iframe>
+                    </iframe> -->
+                    <video 
+                        :src="iframe" 
+                        controls
+                        class="w-full h-56 sm:h-96 lg:h-[22rem] xl:h-[35rem] 2xl:h-[40rem] object-cover"
+                    >
+                    </video>
                 </div>
                 <div class="mx-5 mt-2">
                     <div class="flex justify-between items-center">
