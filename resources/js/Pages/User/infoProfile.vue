@@ -8,9 +8,8 @@
                         :src="userBackgroundImage" alt="Cover photo">
                 </div>
                 <div v-else>
-                    <img class="h-32 sm:h-26 md:h-40 w-full object-cover" src="../../../img/videoImage.png" alt="image">
+                    <img class="h-32 sm:h-26 md:h-40 w-full object-cover" src="../../../img/portraitProfile.png" alt="image">
                 </div>
-                <!-- <img class="h-32 sm:h-26 md:h-44 lg:h-60 w-full" src="../../../img/videoImage.png" alt="image"> -->
             </div>
             <div class="flex justify-center pt-2 w-full md:py-4">
                 <div class="flex-none md:flex md:w-full md:justify-between md:px-10 md:items-center">

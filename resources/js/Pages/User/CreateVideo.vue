@@ -11,16 +11,16 @@
         
         <div>
             <!-- Show message when uploading video -->
-            <div v-show="message == null" class="p-1 w-full bg-yellow-300 pt-6">
+            <!-- <div v-show="message == null" class="p-1 w-full bg-yellow-300 pt-6">
                 <p class="text-center text-black text-xl">
                     .
                 </p>
-            </div>
-            <div v-show="message != null" class="p-1 w-full bg-yellow-300 pt-16">
+            </div> -->
+            <!-- <div v-show="message != null" class="p-1 w-full bg-yellow-300 pt-16">
                 <p class="text-center text-black text-xl">
                     {{ message }}
                 </p>
-            </div>
+            </div> -->
 
             <!-- Form -->
             <div class="pt-8 pb-96 flex justify-center text-white w-full">
@@ -65,6 +65,9 @@
                             </div>
                             <div>
                                 <p>Description (optional)</p>
+                                <div v-if="errors.description" class="text-red-500">
+                                    {{ errors.description }}
+                                </div>
                                 <textarea 
                                     v-model="form.description"
                                     cols="30" 
@@ -84,9 +87,14 @@
                                 </select>
                             </div>
                             <div class="pt-4 flex justify-center">
-                                <button class="bg-slate-600 hover:bg-slate-700 p-2 rounded-md">
+                                <button 
+                                    v-show="!isUploading" 
+                                    class="bg-slate-600 hover:bg-slate-700 p-2 rounded-md"
+                                    :disabled="isUploading"
+                                >
                                     Create
                                 </button>
+                                <div v-show="isUploading" class="loader"></div>
                             </div>
                         </form>
                     </div>
@@ -113,6 +121,7 @@ export default {
                 category_id: '',
             },
             message: null,
+            isUploading: false,
         }
     },
     props: {
@@ -124,20 +133,47 @@ export default {
     },
     methods: {
         submit() {
+            this.isUploading = true;
             this.message = "Uploading video please wait...";
 
             if (this.$refs.photo && this.$refs.video) {
                 this.form.image = this.$refs.photo.files[0];
                 this.form.video = this.$refs.video.files[0];
             }
-            this.$inertia.post(this.route('videos.store'), this.form);
-
-            this.form.title = '';
-            this.form.image = '';
-            this.form.video = '';
-            this.form.description = '';
-            this.form.category_id = '';
+            this.$inertia.post(this.route('videos.store'), this.form, {
+                onFinish: () => {
+                    this.isUploading = false;
+                },
+            });
         },
     }
 }
 </script>
+
+<style scoped>
+.loader {
+  width: 50px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 8px solid #0000;
+  border-right-color: #fff;
+  position: relative;
+  animation: l24 1s infinite linear;
+}
+.loader:before,
+.loader:after {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: inherit;
+  animation: inherit;
+  animation-duration: 2s;
+}
+.loader:after {
+  animation-duration: 4s;
+}
+@keyframes l24 {
+  100% {transform: rotate(1turn)}
+}
+</style>

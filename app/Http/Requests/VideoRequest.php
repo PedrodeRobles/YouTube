@@ -24,7 +24,7 @@ class VideoRequest extends FormRequest
     public function rules()
     {
         return [
-            'title'       => 'required',
+            'title'       => 'required|max:200',
             'image'       => [
                 'image',
                 $this->route('video') ? 'nullable' : "required"
@@ -34,7 +34,7 @@ class VideoRequest extends FormRequest
                 'max:60000',
                 $this->route('video') ? 'nullable' : "required"
             ],
-            'description' => 'max:200',
+            'description' => 'max:1000',
             'category_id' => 'required',
         ];
     }

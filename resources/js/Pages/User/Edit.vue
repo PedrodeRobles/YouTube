@@ -73,9 +73,15 @@
                             </select>
                         </div>
                         <div class="pt-4 flex justify-center">
-                            <button class="bg-slate-600 hover:bg-slate-700 p-2 rounded-md">
+                            <button 
+                                v-show="!isUpdating" 
+                                class="bg-slate-600 hover:bg-slate-700 p-2 rounded-md"
+                                :disabled="isUpdating"
+                            >
                                 Update
                             </button>
+
+                            <div v-show="isUpdating" class="loader"></div>
                         </div>
                     </form>
                 </div>
@@ -104,6 +110,8 @@ const props = defineProps({
     errors: Object,
 });
 
+const isUpdating = ref(false);
+
 const form = useForm({
     title: props.video.title,
     image: '',
@@ -113,14 +121,48 @@ const form = useForm({
 });
 
 function updateVideo() {
+    isUpdating.value = true;
+
     Inertia.post(`/videos/${props.video.id}`, {
-    _method: 'put',
-    title: form.title,
-    image: form.image,
-    video: form.video,
-    description: form.description,
-    category_id: form.category_id,
-})
+        _method: 'put',
+        title: form.title,
+        image: form.image,
+        video: form.video,
+        description: form.description,
+        category_id: form.category_id,
+    }, {
+        onFinish: () => {
+            isUpdating.value = false;
+        },
+    });
 }
 
 </script>
+
+<style scoped>
+.loader {
+  width: 50px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 8px solid #0000;
+  border-right-color: #fff;
+  position: relative;
+  animation: l24 1s infinite linear;
+}
+.loader:before,
+.loader:after {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: inherit;
+  animation: inherit;
+  animation-duration: 2s;
+}
+.loader:after {
+  animation-duration: 4s;
+}
+@keyframes l24 {
+  100% {transform: rotate(1turn)}
+}
+</style>
